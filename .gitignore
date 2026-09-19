@@ -4,11 +4,6 @@
 .Spotlight-V100
 .Trashes
 
-## Cartelle di output della compilazione
-build/
-%OUTDIR%/
-out/
-
 ## LaTeX - file ausiliari
 *.aux
 *.lof
@@ -40,9 +35,6 @@ out/
 *.synctex
 *.synctex.gz
 *.synctex(busy)
-
-## PDF generato (rimuovi questa riga se vuoi versionare il PDF)
-*.pdf
 
 ## Editor / temporanei
 *.swp
