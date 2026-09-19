@@ -1,0 +1,12 @@
+{
+  "latex-workshop.latex.rootFile.path": "${workspaceFolder}/Fisica_3.tex",
+  "latex-workshop.mathpreviewpanel.editorGroup": "below",
+  "latex-workshop.mathpreviewpanel.cursor.enabled": true,
+  "latex-workshop.hover.preview.maxLines": 40,
+  "editor.snippetSuggestions": "top",
+  "cSpell.language": "it,it-IT,en",
+  "ltex.language": "it-IT",
+  "[latex]": {
+    "editor.inlineSuggest.enabled": false
+  }
+}

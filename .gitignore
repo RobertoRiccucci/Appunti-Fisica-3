@@ -1,0 +1,53 @@
+## macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+## Cartelle di output della compilazione
+build/
+%OUTDIR%/
+out/
+
+## LaTeX - file ausiliari
+*.aux
+*.lof
+*.lot
+*.toc
+*.log
+*.fls
+*.out
+*.idx
+*.ilg
+*.ind
+*.glo
+*.gls
+*.glg
+*.acn
+*.acr
+*.alg
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+## latexmk
+*.fdb_latexmk
+*.synctex
+*.synctex.gz
+*.synctex(busy)
+
+## PDF generato (rimuovi questa riga se vuoi versionare il PDF)
+*.pdf
+
+## Editor / temporanei
+*.swp
+*~
+*.bak
+.vscode/*
+!.vscode/settings.json
+!.vscode/latex.code-snippets

@@ -1,0 +1,44 @@
+{
+  "Figure": {
+    "scope": "latex,tex",
+    "prefix": "FIG",
+    "body": [
+      "\\begin{figure}[h]",
+      "  \\centering",
+      "  \\includegraphics[width=0.4\\linewidth]{figure/image${1:nome}.png}",
+      "  \\caption{${2:didascalia}}",
+      "  \\label{fig:${3:etichetta}}",
+      "\\end{figure}"
+    ],
+    "description": "Figura con includegraphics"
+  },
+  "Marker": {
+    "scope": "latex,tex",
+    "prefix": "EVI",
+    "body": [
+      "\\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]"
+    ],
+    "description": "Evidenziatore"
+  },
+  "Eps": {
+    "scope": "latex,tex",
+    "prefix": "eps",
+    "body": [
+      "\\varepsilon"
+    ],
+    "description": "Modo piu veloce di scrivere varepsilon"
+  },
+  "Figure-Tikz": {
+    "scope": "latex,tex",
+    "prefix": "FFIG",
+    "body": [
+      "\\begin{figure}[h]",
+      "  \\centering",
+      "  \\resizebox{0.4\\linewidth}{!}{\\input{figure/image.tex}}",
+      "  \\caption{${2:didascalia}}",
+      "  \\label{fig:${3:etichetta}}",
+      "\\end{figure}"
+    ],
+    "description": "Figura con TikZ"
+  }
+}
