@@ -1,9 +1,19 @@
+\newgeometry{
+    a4paper,
+    top=24mm,
+    bottom=28mm,
+    left=39mm,
+    right=39mm,
+    heightrounded
+}
+\partpage{Teoria}
+\restoregeometry
+
+
 \chapter{Decadimenti}
 
 La fisica nucleare ha avuto un ruolo centrale nello sviluppo della fisica del $20^\circ$ secolo, sia sul piano teorico sia su quello sperimentale. 
-
 Pochi altri campi scientifici abbracciano uno spettro di fenomeni così vasto: gli esperimenti di fisica nucleare hanno contribuito a comprendere processi che vanno dalle interazioni tra i quark, i costituenti più elementari della materia, fino a quanto avvenuto nelle prime fasi dell'universo, subito dopo il Big Bang. 
-
 Anche le sue tecniche hanno trovato applicazione ben oltre i confini della disciplina: in fisica atomica, in fisica dello stato solido e in medicina, dove permettono di effettuare diagnosi e terapie in zone profonde dell'organismo senza ricorrere alla chirurgia. Le stesse conoscenze, però, sono state impiegate anche per costruire armi di distruzione di massa.\\
 
 \section*{Cenni storici}
@@ -20,7 +30,7 @@ Anche se non occupa più una posizione centrale nella ricerca dei costituenti ul
     \item la classificazione e l'interpretazione delle proprietà dei nuclei e delle leggi che ne governano la struttura;
     \item lo sviluppo di applicazioni tecnologiche a vantaggio della società.
 \end{itemize}
-
+%
 \section{Decadimento radioattivo}
 
 I decadimenti radioattivi di minerali naturali contenenti uranio e torio sono in gran parte responsabili della nascita della fisica nucleare.\\
@@ -30,7 +40,6 @@ Si definisce decadimento\mkeyword{decadimento} la trasmutazione spontanea di una
 \begin{equation*}
     P \to p_1 + p_2 + ... + p_n
 \end{equation*}
-
 I decadimenti si possono catalogare praticamente sempre in uno dei seguenti tre gruppi:
 
 \begin{itemize}
@@ -38,9 +47,7 @@ I decadimenti si possono catalogare praticamente sempre in uno dei seguenti tre 
     \item i decadimenti nucleari (per esempio il decadimento $^{14} C \to ^{14}N + e^- + \bar{\nu}_e$)
     \item i decadimenti di particelle elementari (per esempio $\pi^+ \to \mu^+ + \nu_{\mu}$)
 \end{itemize}
-
-L'ipotesi che sta alla base della teoria del decadimento radioattivo è che tutti gli oggetti elementari siano \emph{identici} e si comportano da elementi indistinguibili. 
-
+L'ipotesi che sta alla base della teoria del decadimento radioattivo è che tutti gli oggetti elementari siano \emph{identici} e si comportano da elementi indistinguibili. \\
 Ognuna delle particelle elementari che costituiscono l'insieme ha, in ogni istante, una probabilità \emph{fissata} di scomparire in favore di un altro stato e questa probabilità per unità di tempo è costante e \emph{indipendente dal tempo}. Andiamo a chiamare questa probabilità per unità di tempo costante di decadimento\mkeyword{costante di decadimento}.\\
 
 Supponiamo di considerare $N$ nuclei radioattivi, ciascuno con costante di decadimento $\lambda$, allora, per come abbiamo definito la costante di decadimento, in un istante $t + dt$ vale
@@ -50,7 +57,6 @@ Supponiamo di considerare $N$ nuclei radioattivi, ciascuno con costante di decad
     N(t + dt) = N(t) - N(t) \cdot \lambda \ dt \implies \frac{dN}{dt} = - \lambda \ N
 \end{equation}
 \end{tcolorbox}
-
 Quindi risolvendo questa equazione differenziale con il metodo di separazione delle variabili si ottiene 
 
 \begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
@@ -58,13 +64,11 @@ Quindi risolvendo questa equazione differenziale con il metodo di separazione de
     N(t) = N(0) e^{-\lambda t}
 \end{equation}
 \end{tcolorbox}
-
 È inoltre utile considerare la vita media\mkeyword{vita media} $\tau$, che è definita come il tempo medio di sopravvivenza di un nucleo prima di decadere. 
 
 \begin{equation}
     \tau = \frac{\int_{0}^{\infty} t N(0) e^{-\lambda t} \ dt}{\int_{0}^{\infty} N(0) e^{-\lambda t} \ dt} = \frac{1}{\lambda} \frac{\int_{0}^{\infty} \eta e^{-\eta} \ d\eta}{\int_{0}^{\infty} e^{-\eta} \ d\eta} = \frac{1}{\lambda}
 \end{equation}
-
 Questo significa che la vita media non è altro che l'inverso della costante di decadimento 
 
 \begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
@@ -82,7 +86,6 @@ Un'altra quantità utile, in quanto permette di ricavare $\lambda$ attraverso da
     \mathcal{A}(t) = \left|\frac{dN}{dt}\right|
 \end{equation}
 \end{tcolorbox}
-
 L'attività di un campione radioattivo è esattamente il numero di decadimenti del campione per unità di tempo, e i $\text{decadimenti}/s$ (unità indicata con $Bq$) sono un'unità di misura conveniente. Un'altra unità per misurare l'attività è il curie ($Ci$), che originariamente indicava l'attività di un grammo di radio, ma ora è definito semplicemente come
 
 \begin{equation*}
@@ -101,20 +104,17 @@ Spesso non esiste un solo canale di decadimento, ma ci sono più canali con prob
     ...
 \end{cases}
 \]
-
 La probabilità totale di decadimento è allora $\lambda = \sum_i \lambda_i$ e quindi si ha 
 
 \begin{equation}
     N(t) = N(0) e^{- (\sum_i \lambda_i) t}
     \label{eq:decadimento_molti_canali}
 \end{equation}
-
 Le costanti $\lambda_i$ determinano le probabilità relative, infatti se volessimo sapere quante particelle di tipo $i$ si sono formate a un certo istante $t$ si ha che vale 
 
 \begin{equation}
     \frac{dN_i}{dt} = \lambda_i N
 \end{equation}
-
 Da cui, sostituendo la \eqref{eq:decadimento_molti_canali} e integrando da $0$ a $t$, si ottiene 
 
 \begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
@@ -122,7 +122,6 @@ Da cui, sostituendo la \eqref{eq:decadimento_molti_canali} e integrando da $0$ a
     N_1(t) = \left(\frac{\lambda_1}{\lambda}\right) N_0 \ (1 - e^{-\lambda t})
 \end{equation}
 \end{tcolorbox}
-
 Il rapporto $\lambda_1/\lambda$ prende il nome di frazione di decadimento\mkeyword{frazione di decadimento}. 
 
 \newpage
@@ -135,21 +134,17 @@ Una situazione comune si ha quando il prodotto di un decadimento radioattivo ris
 \[
 A_1 \longrightarrow A_2 \longrightarrow A_3 \longrightarrow \cdots \longrightarrow A_N
 \]
-
 Solitamente si definisce il nucleo originario ($A_1$) come ``padre'' e le ``generazioni'' successive come ``figlio'' ($A_2$), ``nipote'' ($A_3$) e così via. 
-
 Le varie costanti di decadimento sono indicate con $\lambda_1$, $\lambda_2$, $\lambda_3$, etc. Per i nuclei originari vale la relazione usata fino ad adesso 
 
 \begin{equation}
     \frac{dN_1}{dt} = - \lambda_1 N_1
 \end{equation}
-
 Mentre per le generazioni successive, oltre al decadimento dobbiamo tenere conto anche l'aumento dei nuclei a seguito del decadimento della generazione immediatamente precedente
 
 \begin{equation}
     \frac{dN_i}{dt} = \lambda_{i-1} N_{i-1} - \lambda_{i} N_i
 \end{equation}
-
 Allora possiamo andare a identificare la catena di decadimenti come il seguente sistema di equazioni differenziali 
 
 \begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
@@ -160,13 +155,11 @@ Allora possiamo andare a identificare la catena di decadimenti come il seguente 
 \end{aligned}
 \end{equation}
 \end{tcolorbox}
-
 Queste equazioni prendono il nome di equazioni di Bateman\mkeyword{equazioni di Bateman} e una soluzione generale a queste è 
 
 \begin{equation}
     N_n(t)= N_0 \cdot \left(\prod_{i=1}^{n-1} \lambda_i\right) \cdot \sum_{i=1}^n \frac{e^{-\lambda_i t}}{\prod_{j=1, j \neq i}^n\left(\lambda_j-\lambda_i\right)}
 \end{equation}
-
 Supponiamo adesso che il ``nipote'' sia un elemento stabile e che quindi la catena di decadimento si fermi a $A_3$. Per quanto detto sopra e usando la formula di Bateman\footnote{In realtà per questo caso la formula di Bateman non è necessaria, basterebbe risolvere il sistema formato dalle prime due equazioni differenziali} si ottiene che 
 
 \begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
@@ -184,20 +177,18 @@ In base alle relazioni tra $\lambda_1$ e $\lambda_2$ si hanno diversi casi, ma q
 
 Se $\lambda_1 \ll \lambda_2$ allora $\tau_1 \gg \tau_2$: il padre vive molto più a lungo del figlio. 
 
-Nell'espressione di $N_2(t)$ compaiono due esponenziali con andamenti molto diversi. Il termine $e^{-\lambda_2 t}$ si annulla dopo qualche vita media $\tau_2$, mentre su questa scala di tempi $e^{-\lambda_1 t}$ è praticamente costante. Per $t \gg \tau_2$ possiamo quindi trascurare $e^{-\lambda_2 t}$ e si ottiene 
+\noindent Nell'espressione di $N_2(t)$ compaiono due esponenziali con andamenti molto diversi. Il termine $e^{-\lambda_2 t}$ si annulla dopo qualche vita media $\tau_2$, mentre su questa scala di tempi $e^{-\lambda_1 t}$ è praticamente costante. Per $t \gg \tau_2$ possiamo quindi trascurare $e^{-\lambda_2 t}$ e si ottiene 
 
 \begin{equation}
     N_2(t) \simeq N_0 \frac{\lambda_1}{\lambda_2 - \lambda_1} e^{-\lambda_1 t} = \frac{\lambda_1}{\lambda_2 - \lambda_1} N_1(t)
 \end{equation}
-
 Il termine $e^{-\lambda_2 t}$ descriveva quindi solo il transitorio iniziale, in cui i nuclei figli si accumulano partendo da $N_2(0) = 0$. 
 
-Poiché $\lambda_2 \gg \lambda_1$ vale inoltre $\lambda_2 - \lambda_1 \simeq \lambda_2$, per cui 
-
+\noindent Poiché $\lambda_2 \gg \lambda_1$ vale inoltre $\lambda_2 - \lambda_1 \simeq \lambda_2$, per cui 
+%
 \begin{equation}
     N_2(t) \simeq \frac{\lambda_1}{\lambda_2} N_1(t)
 \end{equation}
-
 Moltiplicando per $\lambda_2$ si trova una relazione tra le attività dei due nuclei 
 
 \begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
@@ -205,23 +196,17 @@ Moltiplicando per $\lambda_2$ si trova una relazione tra le attività dei due nu
     \lambda_2 N_2 \simeq \lambda_1 N_1
 \end{equation}
 \end{tcolorbox}
-
-Le due attività sono quindi uguali, anche se il numero di nuclei è molto diverso ($N_2 \ll N_1$). Questa condizione prende il nome di equilibrio secolare\mkeyword{equilibrio secolare}. 
-
+Le due attività sono quindi uguali, anche se il numero di nuclei è molto diverso ($N_2 \ll N_1$). Questa condizione prende il nome di equilibrio secolare\mkeyword{equilibrio secolare}. \\
 Il significato fisico si vede dall'equazione di Bateman per il figlio 
 
 \begin{equation}
     \frac{dN_2}{dt} = \lambda_1 N_1 - \lambda_2 N_2 \simeq 0
 \end{equation}
-
-Il tasso di produzione di $A_2$ è uguale al suo tasso di decadimento: tanti nuclei figli si formano, tanti ne decadono. Di conseguenza $N_2$ rimane circa costante\footnote{Più precisamente, derivando $N_2(t)$ si trova $\frac{dN_2}{dt} \simeq -\lambda_1 N_2$: il figlio decresce con la stessa legge del padre, ma in modo trascurabile rispetto ai due termini $\lambda_1 N_1$ e $\lambda_2 N_2$ che si bilanciano.}. 
-
+%
+Il tasso di produzione di $A_2$ è uguale al suo tasso di decadimento: tanti nuclei figli si formano, tanti ne decadono. Di conseguenza $N_2$ rimane circa costante\footnote{Più precisamente, derivando $N_2(t)$ si trova $\frac{dN_2}{dt} \simeq -\lambda_1 N_2$: il figlio decresce con la stessa legge del padre, ma in modo trascurabile rispetto ai due termini $\lambda_1 N_1$ e $\lambda_2 N_2$ che si bilanciano.}. \\
 In altre parole, dopo il transitorio il figlio perde la sua dinamica propria e segue il padre, con un rapporto costante $N_2/N_1 = \lambda_1/\lambda_2$. Il ragionamento si estende a catene più lunghe, purché il capostipite sia il nucleo più longevo: in equilibrio secolare tutti i membri della catena hanno la stessa attività $\lambda_1 N_1$.\\
 
-L'equilibrio secolare è importante soprattutto per le sue applicazioni pratiche. 
-
-Permette innanzitutto di misurare vite medie molto lunghe, che non si potrebbero osservare direttamente: basta misurare il rapporto $N_2/N_1$ in un campione in equilibrio e, conoscendo $\lambda_2$, si ricava $\lambda_1 = \lambda_2 N_2/N_1$. 
-
-Inoltre, poiché le attività sono uguali, misurare l'attività di un qualsiasi nucleo della catena equivale a misurare quella del padre. Questo è utile quando il padre è difficile da rivelare direttamente. 
-
+L'equilibrio secolare è importante soprattutto per le sue applicazioni pratiche. \\
+Permette innanzitutto di misurare vite medie molto lunghe, che non si potrebbero osservare direttamente: basta misurare il rapporto $N_2/N_1$ in un campione in equilibrio e, conoscendo $\lambda_2$, si ricava $\lambda_1 = \lambda_2 N_2/N_1$. \\
+Inoltre, poiché le attività sono uguali, misurare l'attività di un qualsiasi nucleo della catena equivale a misurare quella del padre. Questo è utile quando il padre è difficile da rivelare direttamente. \\
 Infine, un campione fuori equilibrio indica che la catena è stata perturbata di recente, ad esempio per separazione chimica o per la fuga di un gas come il radon. Su questo si basano alcuni metodi di datazione geologica.

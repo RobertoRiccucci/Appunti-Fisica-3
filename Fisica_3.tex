@@ -1,3 +1,4 @@
+
 \input{chapters/template.tex}
 
 \begin{document}
@@ -26,7 +27,7 @@
 
     \vspace{0.7cm}
 
-    %\makebox[\textwidth][c]{\includegraphics[width=0.7\textwidth]{foto/mo.png}}
+    \makebox[\textwidth][c]{\includegraphics[width=0.7\textwidth]{foto/particelle.png}}
 
     \vspace{0.7cm}
 
@@ -45,6 +46,8 @@
 \tableofcontents
 
 \mainmatter
+
+% --- Teoria ---
 
 \include{chapters/capitolo_1}
 
@@ -73,5 +76,13 @@
 % \include{chapters/capitolo_13}
 
 % \include{chapters/capitolo_14}
+
+% --- Esercitazioni ---
+\setcounter{chapter}{0}
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\theHchapter}{Es.\arabic{chapter}}
+\renewcommand{\chaptername}{Esercitazione}
+
+\include{chapters/esercitazione_1}
 
 \end{document}
