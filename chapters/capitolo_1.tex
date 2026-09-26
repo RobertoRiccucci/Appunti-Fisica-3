@@ -210,3 +210,202 @@ L'equilibrio secolare è importante soprattutto per le sue applicazioni pratiche
 Permette innanzitutto di misurare vite medie molto lunghe, che non si potrebbero osservare direttamente: basta misurare il rapporto $N_2/N_1$ in un campione in equilibrio e, conoscendo $\lambda_2$, si ricava $\lambda_1 = \lambda_2 N_2/N_1$. \\
 Inoltre, poiché le attività sono uguali, misurare l'attività di un qualsiasi nucleo della catena equivale a misurare quella del padre. Questo è utile quando il padre è difficile da rivelare direttamente. \\
 Infine, un campione fuori equilibrio indica che la catena è stata perturbata di recente, ad esempio per separazione chimica o per la fuga di un gas come il radon. Su questo si basano alcuni metodi di datazione geologica.
+
+\newpage
+
+\section{Tipi di decadimenti} 
+
+Andiamo adesso ad identificare i possibili tipi di decadimenti. \\
+
+Supponiamo di disporre di una piccola camera di ionizzazione a pressione atmosferica, nella parete della quale sia praticata una finestra in corrispondenza del preparato radioattivo. Tale finestra sia chiusa con un sottilissimo foglio di cellophan.
+
+Vogliamo mostrare come tra le diverse radioazioni emesse da un composto radioattivo ce ne siano alcune poco penetranti e altre molto penetranti.\\
+Per far questo dobbiamo andare a tracciare delle curve di assorbimento delle radiazioni in questione. Queste curve di assorbimento si ottengono mettendo il preparato radioattivo vicino alla finestra della camera di ionizzazione, in modo che parte delle radiazioni emesse entrino nella camera. Si procede poi a misurare la corrente di ionizzazione interponendo spessori via via crescenti di materiale assorbente: l’attività che così si misura è relativa soltanto a quella parte delle radiazioni emesse che riescono ad attraversare lo strato assorbente interposto.\\
+La figura seguente rappresenta a titolo di esempio le curve di assorbimento ottenute dalle radiazioni emesse da un preparato contenente $0,3 \mu g$ di radio in cui si è usato come materiale assorbente, rispettivamente, l’alluminio e il piombo, i cui spessori sono stati indicati fornendo la massa di materiale per unità di superficie. 
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{groupplot}[
+    group style={group size=1 by 2, vertical sep=1.6cm},
+    width=9.5cm, height=5.2cm,
+    axis lines=left,
+    axis line style={-latex},
+    ymin=0, ymax=11.5,
+    ytick={2,4,6,8,10}, yticklabels={},
+    ylabel={$\log i$},
+    ylabel style={at={(ticklabel* cs:1)}, anchor=south west, rotate=-90},
+    xlabel style={at={(ticklabel* cs:1)}, anchor=west},
+    scaled x ticks=false,
+    x tick label style={/pgf/number format/1000 sep={}},
+    tick align=outside,
+]
+
+% --- assorbimento in alluminio
+\nextgroupplot[xmin=0, xmax=320, xtick={100,200,300}, xlabel={mg/cm$^2$ Al}]
+\addplot[black, thin, smooth, mark=o, mark size=1.1pt] coordinates {
+    (1,10.8) (4,6.0) (7,4.9) (10,4.45) (14,4.15) (18,3.95)
+    (23,3.8) (30,3.6) (55,3.15) (135,2.45) (265,1.75)
+};
+\node[anchor=north west, font=\itshape\scriptsize, align=left]
+    at (axis cs:45,7.6) {Curva di assorbimento in alluminio\\ delle radiazioni emesse da 0,3 $\mu$g di Radio};
+
+% --- assorbimento in piombo
+\nextgroupplot[xmin=0, xmax=1150, xtick={500,1000}, xlabel={mg/cm$^2$ Pb}]
+\addplot[black, thin, smooth] coordinates {
+    (3,10.8) (6,8.2) (8,6.6) (12,5.6) (25,5.15) (60,4.6) (110,4.05) (165,3.5)
+    (255,2.7) (380,2.45) (500,2.3) (770,2.1) (1030,2.0)
+};
+\addplot[black, only marks, mark=o, mark size=1.1pt] coordinates {
+    (3,10.8) (12,5.6) (60,4.6) (110,4.05) (165,3.5)
+    (255,2.7) (500,2.3) (770,2.1) (1030,2.0)
+};
+\node[anchor=north west, font=\itshape\scriptsize, align=left]
+    at (axis cs:270,7.4) {Curva di assorbimento in piombo};
+
+\end{groupplot}
+\end{tikzpicture}
+\caption{Curve di assorbimento delle radiazioni emesse dal radio.}
+\label{fig:assorbimento}
+\end{figure}
+
+Come si vede, la prima curva mostra in modo assai evidente la presenza di una componente molto poco penetrante, che è completamente arrestata già a $5 - 6$ $mg/cm^2$ di alluminio ($0,02 mm$).
+La seconda curva, proseguita fino a $1 g/cm^2$ di piombo, mostra che la parte restante delle radiazioni è composta a sua volta da due componenti di diversa penetrazione: una più penetrante, che viene assorbita nel piombo secondo una legge esponenziale, e una di penetrazione intermedia, che viene praticamente arrestata da circa $300 mg/cm^2$ ($0,3 mm$) di piombo.
+A queste tre componenti, prese nell’ordine crescente del potere penetrante è stato dato il nome di raggi $\alpha$, $\beta$ e $\gamma$.\\
+
+Prima di analizzarli singolarmente, conviene riassumere come ciascun processo modifica il nucleo e che tipo di spettro in energia produce. 
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{cccc}
+\hline
+ & $\Delta A$ & $\Delta Z$ & spettro \\
+\hline
+$\alpha$ & $-4$ & $-2$ & righe \\
+$\beta^-$ & $0$ & $+1$ & continuo \\
+$\beta^+$, $\varepsilon$ & $0$ & $-1$ & continuo \\
+$\gamma$ & $0$ & $0$ & riga \\
+\hline
+\end{tabular}
+\caption{Variazione di numero di massa e numero atomico nei tre decadimenti.}
+\label{tab:tipi_decadimento}
+\end{table}
+
+L'ultima colonna è quella meno ovvia: la differenza tra uno spettro a righe e uno continuo non dipende dal tipo di interazione in gioco, ma soltanto dal numero di corpi nello stato finale.
+
+\subsection{Decadimento $\alpha$}
+
+Nel decadimento $\alpha$ il nucleo emette una particella $\alpha$, che Rutherford e i suoi collaboratori dimostrarono essere un nucleo di elio ${}^{4}_{2}\mathrm{He}$. 
+
+Il processo è quindi 
+%
+\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{equation}
+    {}^{A}_{Z}\mathrm{X}_N \longrightarrow {}^{A-4}_{Z-2}\mathrm{X}'_{N-2} + {}^{4}_{2}\mathrm{He}_2
+\end{equation}
+\end{tcolorbox}
+dove $\mathrm{X}$ e $\mathrm{X}'$ indicano i simboli chimici del nucleo iniziale e di quello finale. Si noti che il numero di protoni e quello di neutroni si conservano \emph{separatamente}. 
+
+Il motivo per cui viene emesso proprio un nucleo di elio è che si tratta di un sistema estremamente legato: di conseguenza l'energia cinetica liberata nel decadimento è massima.
+
+Trattandosi di un decadimento a due corpi, l'energia della particella $\alpha$ emessa è fissata: lo spettro è quindi a righe, con un'unica energia per ogni stato finale popolato. \\
+
+Storicamente le proprietà di questa radiazione furono ricavate dallo studio della deflessione in campo magnetico. I raggi $\alpha$ risultano deflessi \emph{debolmente} e in verso opposto rispetto ai $\beta$, quindi sono carichi positivamente; le misure di deflessione in campo elettrico e magnetico permisero poi di ricavarne la carica specifica $q/m$ e la velocità $v$. 
+
+Rutherford trovò un valore di $q/m$ pari circa alla metà di quello del nucleo di idrogeno, compatibile con una particella di carica $2e$ e massa $4m$, e una velocità dell'ordine di un ventesimo della velocità della luce. La conferma definitiva arrivò nel 1909 con l'esperimento di Rutherford e Royds.
+
+\subsection{Decadimento $\beta$}
+
+Nel decadimento $\beta$ il nucleo corregge un eccesso di protoni o di neutroni convertendo direttamente un protone in un neutrone o viceversa. Il processo può avvenire in tre modi diversi, ciascuno dei quali coinvolge un'altra particella carica affinché la carica elettrica si conservi
+%
+\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{equation}
+\begin{aligned}
+    n & \longrightarrow p + e^- + \bar{\nu}_e && \text{decadimento } \beta^- \\
+    p & \longrightarrow n + e^+ + \nu_e && \text{decadimento } \beta^+ \\
+    p + e^- & \longrightarrow n + \nu_e && \text{cattura elettronica } (\varepsilon)
+\end{aligned}
+\end{equation}
+\end{tcolorbox}
+Il primo processo comporta la creazione e l'emissione di un elettrone ordinario, il secondo quella di un positrone, mentre nel terzo un elettrone atomico che si avvicina troppo al nucleo viene catturato, permettendo la conversione di un protone in un neutrone. 
+
+In tutti e tre i casi viene emessa anche un'altra particella, il neutrino\mkeyword{neutrino}. La sua esistenza fu ipotizzata da Pauli nel 1930 proprio per salvare la conservazione dell'energia: se il decadimento $\beta$ fosse un processo a due corpi, la cinematica fisserebbe univocamente l'energia dell'elettrone emesso, mentre sperimentalmente si osserva uno spettro \emph{continuo}, con energie che vanno da zero fino a un valore massimo. 
+
+L'emissione di una terza particella risolve il problema, perché l'energia disponibile viene ripartita tra elettrone e neutrino in modo variabile da evento a evento. Il neutrino deve inoltre essere neutro, di massa piccolissima e di spin $1/2$, quest'ultimo necessario per conservare il momento angolare\footnote{La prima osservazione diretta è dovuta a Cowan e Reines nel 1956.}. Essendo privo di carica, la sua presenza non altera l'identità degli altri prodotti del decadimento. 
+
+
+Va sottolineata una differenza importante rispetto al caso $\alpha$: nel decadimento $\beta^\pm$ l'elettrone o il positrone \emph{non esistevano} all'interno del nucleo prima del decadimento, ma vengono creati a spese dell'energia del decadimento secondo $m = E/c^2$. Nel decadimento $\alpha$, invece, i nucleoni emessi erano già presenti nel nucleo.\\
+
+Alcuni esempi rappresentativi sono
+%
+\begin{equation*}
+\begin{aligned}
+    {}^{131}_{53}\mathrm{I}_{78} \ &\xrightarrow{\ \beta^- \ } \ {}^{131}_{54}\mathrm{Xe}_{77} && t_{1/2} = 8,0 \ \mathrm{d} \\
+    {}^{25}_{13}\mathrm{Al}_{12} \ &\xrightarrow{\ \beta^+ \ } \ {}^{25}_{12}\mathrm{Mg}_{13} && t_{1/2} = 7,2 \ \mathrm{s} \\
+    {}^{54}_{25}\mathrm{Mn}_{29} \ &\xrightarrow{\ \varepsilon \ } \ {}^{54}_{24}\mathrm{Cr}_{30} && t_{1/2} = 312 \ \mathrm{d}
+\end{aligned}
+\end{equation*}
+In tutti questi processi $Z$ e $N$ cambiano di una unità, mentre il numero di massa $A = Z + N$ resta costante.\\
+
+Sperimentalmente i raggi $\beta$ si distinguono perché vengono deflessi dal campo magnetico molto più facilmente dei raggi $\alpha$, e in verso opposto: si tratta quindi di particelle di carica negativa. Lo studio quantitativo delle deflessioni in campo elettrico e magnetico mostrò che sono elettroni, emessi con velocità assai prossima a quella della luce. 
+
+\subsection{Decadimento $\gamma$}
+
+L'emissione $\gamma$ è l'analogo nucleare delle transizioni atomiche, come quelle ottiche o di raggi X. Uno stato eccitato decade verso uno stato a energia minore, eventualmente il fondamentale, emettendo un fotone di energia pari alla differenza di energia tra i due stati nucleari, a meno di una correzione di solito trascurabile dovuta al rinculo del nucleo emettitore. 
+
+A differenza degli altri due casi $Z$ e $N$ non cambiano: il nuclide resta lo stesso e cambia soltanto il suo stato di eccitazione. 
+
+L'emissione $\gamma$ si osserva in tutti i nuclei che hanno stati eccitati legati (cioè per $A > 5$) e segue tipicamente un decadimento $\alpha$ o $\beta$, dato che questi lasciano spesso il nucleo figlio in uno stato eccitato.\\
+
+Le vite medie per l'emissione $\gamma$ sono di solito molto brevi, generalmente inferiori a $10^{-9}$ s, ma in alcuni casi possono essere molto più lunghe, fino a ore o giorni. Queste transizioni prendono il nome di transizioni isomeriche\mkeyword{transizione isomerica} e gli stati eccitati a lunga vita si dicono stati isomerici o metastabili\mkeyword{stato metastabile}. 
+
+Non esiste un criterio netto per stabilire quando uno stato è isomerico: originariamente la distinzione si basava sulla misurabilità diretta della vita media, mentre oggi si riescono a misurare tempi ben al di sotto di $10^{-9}$ s. Gli stati metastabili si indicano con l'apice $m$, ad esempio ${}^{110m}\mathrm{Ag}$.\\
+
+Un processo che spesso compete con l'emissione $\gamma$ è la conversione interna\mkeyword{conversione interna}, in cui il nucleo si diseccita trasferendo direttamente la propria energia a un elettrone atomico, che viene quindi espulso e osservato in laboratorio come elettrone libero. Si noti che questo processo è molto diverso da un decadimento $\beta$: $Z$ e $N$ non cambiano, anche se l'atomo risulta ionizzato.\\
+
+Dal punto di vista sperimentale, i raggi $\gamma$ sono la componente più penetrante e non vengono deflessi né da campi magnetici né da campi elettrici. Il loro comportamento è del tutto analogo a quello dei raggi X, il che suggeriva già da subito la natura ondulatoria della radiazione. La dimostrazione definitiva arrivò nel 1914, quando Rutherford e Andrade ne misurarono la lunghezza d'onda usando la diffrazione su un cristallo, come era stato fatto nel 1912 da von Laue per i raggi X.
+
+\newpage
+
+\section{Radioattività naturale}
+
+La Terra e gli altri pianeti del sistema solare si sono formati circa $4,5 \cdot 10^9$ anni fa a partire da materiale ricco di ferro, carbonio, ossigeno, silicio e altri elementi di massa media ed elevata. Questi elementi erano stati a loro volta prodotti dall'idrogeno e dall'elio originati nel Big Bang, circa $15 \cdot 10^9$ anni fa: nel tempo intercorso tra il Big Bang e la condensazione del sistema solare l'idrogeno e l'elio sono stati trasformati in elementi più pesanti all'interno delle stelle, nelle nove e nelle supernove. 
+
+La maggior parte degli elementi così formati era radioattiva, ma è ormai decaduta verso nuclei stabili. Alcuni di essi hanno però vite medie lunghe rispetto all'età della Terra, e possiamo quindi osservarne ancora oggi la radioattività: è questa a costituire la parte principale del nostro ambiente radioattivo naturale, ed è probabilmente anche responsabile del riscaldamento interno dei pianeti terrestri.\\
+
+Sebbene esistano elementi radioattivi naturali a lunga vita anche di altro tipo, la maggior parte di quelli osservati oggi ha origine dagli elementi molto pesanti, che non hanno alcun isotopo stabile. Questi nuclidi decadono per emissione $\alpha$ e $\beta$, diminuendo $Z$ e $A$ finché non si raggiunge un nucleo più leggero e stabile. 
+
+Come già osservato, il decadimento $\alpha$ cambia $A$ di quattro unità, mentre il decadimento $\beta$ non lo modifica affatto: esistono quindi quattro catene di decadimento indipendenti, corrispondenti ai numeri di massa $4n$, $4n+1$, $4n+2$ e $4n+3$, con $n$ intero. 
+
+I processi di decadimento tendono a concentrare i nuclei nel membro più longevo della catena, e se la vita media di quel nuclide è almeno dell'ordine dell'età della Terra possiamo osservarne ancora oggi l'attività. 
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lcccc}
+\hline
+ & & Nucleo finale & \multicolumn{2}{c}{Membro più longevo} \\
+\cline{4-5}
+Serie & Tipo & (stabile) & Nucleo & $t_{1/2}$ (y) \\
+\hline
+Torio     & $4n$   & ${}^{208}$Pb & ${}^{232}$Th & $1{,}41 \cdot 10^{10}$ \\
+Nettunio  & $4n+1$ & ${}^{209}$Bi & ${}^{237}$Np & $2{,}14 \cdot 10^{6}$ \\
+Uranio    & $4n+2$ & ${}^{206}$Pb & ${}^{238}$U  & $4{,}47 \cdot 10^{9}$ \\
+Attinio   & $4n+3$ & ${}^{207}$Pb & ${}^{235}$U  & $7{,}04 \cdot 10^{8}$ \\
+\hline
+\end{tabular}
+\caption{Caratteristiche delle serie di disintegrazione degli elementi pesanti.}
+\label{tab:serie_naturali}
+\end{table}
+
+Si noti che il membro più longevo della serie del nettunio ha una vita media troppo breve per essere sopravvissuto alla formazione della Terra: questa serie non si osserva infatti nel materiale naturale.\\
+
+Questi isotopi radioattivi sono presenti in tutto il materiale che ci circonda, in particolare nelle rocce e nei minerali condensatisi insieme alla Terra. 
+
+In generale gli elementi radioattivi sono legati saldamente ai minerali e non sono pericolosi per la salute, ma tutte le serie radioattive naturali comportano l'emissione di un elemento radioattivo gassoso, il radon. Se si forma in profondità nelle rocce questo elemento ha normalmente poche possibilità di migrare in superficie e raggiungere l'aria prima di decadere; quando però le rocce si fratturano il radon può sfuggire\footnote{La presenza di radon è stata osservata in anni recenti come precursore dei terremoti.}. Esiste inoltre la possibilità che fuoriesca dalla superficie dei minerali, in particolare di quelli usati nella costruzione degli edifici.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\linewidth]{foto/serie_torio.png}
+  \caption{Serie del Torio}
+  \label{fig:etichetta}
+\end{figure}
