@@ -218,14 +218,20 @@ dove $f(E)$ è una densità, e il numero di elettroni emessi in un intervallo fi
 \begin{equation*}
     N = \int_{E_{min}}^{E_{max}} \frac{dN}{dE} \, dE
 \end{equation*}
-Come visto sopra, la cinematica da sola non basta a determinare la forma di questa distribuzione: fissa soltanto l'intervallo in cui l'energia può variare. Per ricavarne la forma occorre la \emph{regola d'oro di Fermi}\mkeyword{regola d'oro di Fermi}
+Come visto sopra, la cinematica da sola non basta a determinare la forma di questa distribuzione: fissa soltanto l'intervallo in cui l'energia può variare. \\
+
+Per ricavarne la forma occorre la \emph{regola d'oro di Fermi}\mkeyword{regola d'oro di Fermi}. Consideriamo un sistema in uno stato iniziale $|i\rangle$, autostato dell'hamiltoniana $H_0$, e consideriamo una perturbazione $H'$ piccola rispetto a $H_0$. A causa della presenza di $H'$ lo stato acquista componenti su altri stati $|f\rangle$, e la probabilità di trovarlo in uno di questi cresce.
+
+Al primo ordine in $H'$ si trova che questa probabilità cresce linearmente nel tempo, il che permette di definire una probabilità per unità di tempo costante:
 %
 \begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
 \begin{equation}
-    \Gamma_{i \to f} = \frac{2\pi}{\hbar} \left| \langle f | H | i \rangle \right|^2 \rho(E_f)
+    \Gamma_{i \to f} = \frac{2\pi}{\hbar} \left| \langle f | H' | i \rangle \right|^2 \rho(E_f)
 \end{equation}
 \end{tcolorbox}
-che fornisce la probabilità di transizione $i \to f$ per unità di tempo. Il primo fattore è l'elemento di matrice dell'interazione responsabile del decadimento e contiene tutta la \emph{dinamica} del processo, mentre $\rho(E_f) = dn/dE_f$ è la densità degli stati finali, cioè il numero di stati accessibili per unità di energia, e dipende solo dalla \emph{cinematica}. 
+Questa relazione fornisce la probabilità di transizione $i \to f$ per unità di tempo. 
+
+Il primo fattore è l'elemento di matrice dell'interazione responsabile del decadimento e contiene tutta la \emph{dinamica} del processo, mentre $\rho(E_f) = dn/dE_f$ è la densità degli stati finali, cioè il numero di stati accessibili per unità di energia, e dipende solo dalla \emph{cinematica} e dato che $E_f$ e $Q$ differiscono solo per una costante, vale $\rho(E_f) = \rho(Q) = dn/dQ$. 
 
 L'uso della regola d'oro è giustificato dal fatto che l'interazione responsabile del decadimento è debole rispetto a quella che forma gli stati nucleari: i tempi caratteristici del decadimento $\beta$, dell'ordine del secondo o maggiori, sono enormemente più lunghi del tempo nucleare caratteristico ($\sim 10^{-20}$ s), e l'interazione può quindi essere trattata come una perturbazione.\\
 
@@ -235,6 +241,12 @@ Per ricavare la forma dello spettro assumiamo che l'elemento di matrice non dipe
     e^{i \mathbf{p} \cdot \mathbf{r}/\hbar} = 1 + \frac{i \mathbf{p} \cdot \mathbf{r}}{\hbar} + \cdots \simeq 1
 \end{equation}
 In questa approssimazione l'unica dipendenza dall'energia resta quella dello spazio delle fasi, e tutto il problema si riduce a contare gli stati finali disponibili.\\
+
+Risulta che il numero di stati accessibile è
+%
+\begin{equation}
+    dn = dn_e \ dn_{\nu} \ dn_Y
+\end{equation}
 
 Il numero di stati accessibili all'elettrone con impulso compreso tra $p$ e $p+dp$, in un volume di normalizzazione $V$, è
 %
@@ -246,10 +258,16 @@ dove il fattore $h^3$ è il volume elementare dello spazio delle fasi e rende il
 \begin{equation}
     dn_{\nu} = \frac{4 \pi q^2 \, dq \, V}{h^3}
 \end{equation}
-Il numero di stati finali che hanno simultaneamente un elettrone e un neutrino con gli impulsi voluti è il prodotto dei due
+Mentre l'elio ha un solo stato possibile imponendo la conservazione della quantità di moto del sistema.
 %
 \begin{equation}
-    d^2 n = dn_e \, dn_{\nu} = \frac{(4\pi)^2 V^2 p^2 q^2 \, dp \, dq}{h^6} \propto p^2 q^2 \, dp \, dq
+    dn_{Y} = 1
+\end{equation}
+
+Il numero di stati finali che hanno simultaneamente un elettrone e un neutrino con gli impulsi voluti è
+%
+\begin{equation}
+    dn = dn_e \, dn_{\nu} \ dn_Y = \frac{(4\pi)^2 V^2 p^2 q^2 \, dp \, dq}{h^6} \propto p^2 q^2 \, dp \, dq
 \end{equation}
 Si noti che fino a questo punto non si è ancora usata la conservazione dell'energia: $p$ e $q$ sono stati trattati come indipendenti. Imponendola, e trascurando l'energia di rinculo del nucleo, si ha
 %
@@ -274,16 +292,50 @@ dove lo jacobiano della trasformazione vale
     J = \det \begin{pmatrix} \dfrac{\partial p}{\partial T} & \dfrac{\partial p}{\partial Q} \\[10pt] \dfrac{\partial q}{\partial T} & \dfrac{\partial q}{\partial Q} \end{pmatrix}
     = \det \begin{pmatrix} \dfrac{\sqrt{2m}}{2\sqrt{T}} & 0 \\[10pt] -1 & 1 \end{pmatrix}
     = \frac{\sqrt{2m}}{2 \sqrt{T}}
+\end{equation}Sostituendo nella $d^2 n \propto p^2 q^2 \, dp \, dq$ si ottiene
+%
+\begin{equation}
+    d n \propto p^2 q^2 |J| \, dT \, dQ \propto \sqrt{T} \, (Q-T)^2 \, dT \, dQ
 \end{equation}
-Sostituendo in $d^2n \propto p^2 q^2 \, dp \, dq$ si ottiene infine la forma dello spettro
+Da cui si ottiene
+%
+\begin{equation}
+    \frac{d n}{dT \, dQ} \propto \sqrt{T} \, (Q-T)^2
+    \label{eq:densita_stati_beta}
+\end{equation}
+
+A questo punto possiamo tornare alla regola d'oro e inserire la \eqref{eq:densita_stati_beta}. Il tasso di decadimento in cui l'elettrone viene emesso con energia cinetica compresa tra $T$ e $T+dT$ è 
+%
+\begin{equation}
+    d\Gamma = \frac{2\pi}{\hbar} |M_{fi}|^2 \, \frac{d n}{dT \, dQ} \, dT
+\end{equation}
+e, poiché nell'approssimazione permessa $|M_{fi}|^2$ non dipende da $T$, tutta la dipendenza dall'energia dell'elettrone proviene dalla densità di stati.\\
+
+Vediamo adesso perché è proprio $d\Gamma/dT$ la quantità che si confronta con l'esperimento. La regola d'oro, integrata su tutte le energie, fornisce il tasso di decadimento totale
+%
+\begin{equation}
+    \Gamma = \int_0^{Q} d\Gamma = \lambda
+\end{equation}
+cioè la probabilità di decadimento per unità di tempo introdotta all'inizio: $d\Gamma$ è quindi la \emph{parte} di questa probabilità che compete ai decadimenti in cui l'elettrone esce con energia compresa tra $T$ e $T + dT$. 
+
+Se la sorgente contiene $N_0$ nuclei, il numero di elettroni che il rivelatore conta in un tempo $\Delta t$ dentro una finestra di energia $\Delta T$ è allora
+%
+\begin{equation*}
+    \Delta n_{e^-} = N_0 \, \Delta t \int_{\Delta T} \frac{d\Gamma}{dT} \, dT
+\end{equation*}
+Un esperimento non misura quindi mai $\Gamma$ direttamente, ma conta gli elettroni raccolti in ciascun intervallo di energia: a meno del fattore $N_0 \Delta t$, che è una costante dell'apparato e non dipende da $T$, l'istogramma dei conteggi riproduce proprio $d\Gamma/dT$. Definiamo allora lo spettro come
 %
 \begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
 \begin{equation}
-    N(T) \equiv \frac{dn}{dQ} \propto \sqrt{T} \, (Q - T)^2
+    N(T) \equiv \frac{d\Gamma}{dT} \propto \sqrt{T} \, (Q - T)^2
     \label{eq:spettro_beta}
 \end{equation}
 \end{tcolorbox}
-Questa funzione si annulla in $T = 0$ e in $T = Q$ e ha un massimo intermedio: è la ``pancia'' caratteristica dello spettro $\beta$. 
+dove la costante di proporzionalità contiene $|M_{fi}|^2$ e tutti i fattori numerici. 
+
+\newpage
+
+La funzione \eqref{eq:spettro_beta} si annulla in $T = 0$, per via del fattore $\sqrt{T}$, e in $T = Q$, per via del fattore $(Q-T)^2$.
 
 \begin{figure}[htbp]
 \centering
@@ -302,18 +354,15 @@ Questa funzione si annulla in $T = 0$ e in $T = Q$ e ha un massimo intermedio: �
 \draw[dashed, gray] (axis cs:1,0) -- (axis cs:1,0.45);
 \end{axis}
 \end{tikzpicture}
-\caption{Spettro in energia degli elettroni emessi nel decadimento $\beta$.}
+%\caption{Spettro in energia degli elettroni emessi nel decadimento $\beta$.}
 \label{fig:spettro_beta}
 \end{figure}
 
-Se non si trascura il carattere relativistico dell'elettrone il conto è identico, ma al posto di $T = p^2/2m$ si usa $E^2 = p^2 + m^2$, da cui $E \, dE = p \, dp$. In questo caso si trova
-%
-\begin{equation}
-    N(p) \propto p^2 (Q - T)^2 \qquad \text{e} \qquad N(T) \propto (T^2 + 2Tm)^{1/2} (Q-T)^2 (T + m)
-\end{equation}
-che si annullano anch'esse agli estremi e hanno lo stesso andamento qualitativo.\\
+ I due zeri hanno un'interpretazione semplice in termini di spazio delle fasi: in $T = 0$ l'elettrone è emesso con impulso nullo e non c'è nessuno stato disponibile per lui, mentre in $T = Q$ è il neutrino a portarsi via impulso nullo. 
 
-La \eqref{eq:spettro_beta} suggerisce un modo molto efficace di confrontare teoria ed esperimento. Riscrivendola come
+\subsection*{Massa del neutrino}
+
+ La \eqref{eq:spettro_beta} suggerisce un modo molto efficace di confrontare teoria ed esperimento. Riscrivendola come
 %
 \begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
 \begin{equation}
@@ -344,21 +393,7 @@ L'interesse principale sta però nella regione vicina all'estremo. Se il neutrin
 \node[anchor=north east, font=\small] at (axis cs:0.72,0.22) {$m_{\nu} \neq 0$};
 \end{axis}
 \end{tikzpicture}
-\caption{Diagramma di Kurie, con e senza massa del neutrino.}
+%\caption{Diagramma di Kurie, con e senza massa del neutrino.}
 \label{fig:kurie}
 \end{figure}
-
-Lo spettro misurato non coincide però esattamente con la \eqref{eq:spettro_beta}, perché il calcolo fatto trascura due effetti. 
-
-Il primo è l'interazione coulombiana tra la particella $\beta$ e il nucleo figlio, che attrae gli elettroni e respinge i positroni: si osservano quindi più elettroni di bassa energia e meno positroni di bassa energia di quanti ne preveda il conto. Si tiene conto di questo effetto introducendo un fattore moltiplicativo, la funzione di Fermi $F(Z',p)$\mkeyword{funzione di Fermi}, dove $Z'$ è il numero atomico del nucleo figlio. 
-
-Il secondo è la dipendenza dell'elemento di matrice dagli impulsi, che abbiamo trascurato con l'approssimazione permessa. In alcuni casi $M_{fi}$ si annulla in questa approssimazione e bisogna tenere i termini successivi dello sviluppo delle onde piane: si parla allora di decadimenti \emph{proibiti}\mkeyword{decadimento proibito}, che non sono realmente vietati ma solo meno probabili, e quindi caratterizzati da vite medie più lunghe. 
-
-Lo spettro $\beta$ completo contiene quindi tre fattori
-%
-\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
-\begin{equation}
-    N(p) \propto \underbrace{p^2 (Q - T)^2}_{\text{fattore statistico}} \cdot \underbrace{F(Z',p)}_{\text{campo coulombiano}} \cdot \underbrace{|M_{fi}|^2 S(p,q)}_{\text{elemento di matrice}}
-\end{equation}
-\end{tcolorbox}
 
