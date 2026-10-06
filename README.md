@@ -22,6 +22,7 @@ Gli appunti sono divisi in due parti.
 | Capitolo | Argomenti |
 |---|---|
 | 1. Decadimenti | Decadimento radioattivo, catene di decadimento, tipi di decadimenti, radioattività naturale |
+| 2. Massa ed energia di legame | Sistemi legati, Masse atomiche e nucleari, Modello a goccia, Parabole di massa, Condizioni per il decadimento $\alpha$ |
 
 ### Esercitazioni
 
