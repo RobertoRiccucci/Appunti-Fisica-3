@@ -32,6 +32,7 @@ Negli appunti non sono presenti esercizi svolti a parte, ma sono riportate tutte
 |---|---|
 | I. Datazione | Datazione con U–Pb, datazione con ¹⁴C |
 | II. Energia nei decadimenti | Decadimento a 2 corpi, decadimento a 3 corpi |
+|III. Vita media di un protone| Attività del corpo umano, Conteggio dei decadimenti, Super-Kamiokande|
 
 > Il lavoro è in corso: nuovi capitoli verranno aggiunti durante l'anno.
 
