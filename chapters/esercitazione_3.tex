@@ -1,0 +1,184 @@
+\chapter{Vita media di un protone}
+
+In base alle conoscenze attuali di fisica delle particelle il protone libero è una particella stabile. Ciò vuol dire che esso non decade in altre particelle.\\
+Questo è dovuto alla conservazione del numero barionico\footnote{Il numero barionico è un numero quantico additivo che si conserva in tutti i processi finora osservati.} nei processi elementari. Infatti il barione\footnote{I barioni sono le particelle composte da tre quark. Il protone è il barione più leggero: se decadesse conservando $B$ dovrebbe produrre almeno un barione nello stato finale, che però sarebbe più pesante, per cui il $Q$-valore risulterebbe negativo e il decadimento energeticamente vietato.} più leggero è proprio il protone.\\
+Tuttavia, alcuni modelli teorici di grande unificazione (GUT), come il modello di Georgi--Glashow, prevedono processi di non conservazione del numero barionico, tra cui il decadimento del protone. Analizzando il decadimento protonico sarebbe quindi possibile ricavare informazioni sulle teorie di grande unificazione.
+
+Per questo motivo nel mondo sono attivi diversi esperimenti che hanno come obiettivo quello di misurare la vita media del protone. Tale evento, però, se esiste è estremamente difficile da osservare e richiede apparati molto grandi e complessi.\\
+
+Di seguito si riportano alcuni ragionamenti che permettono di porre un limite inferiore alla vita media ($\tau_p$) del protone. 
+
+\section{Attività del corpo umano}
+
+Il primo argomento non richiede alcun apparato sperimentale ed è basato su una sola osservazione: noi siamo vivi. I protoni del nostro corpo, infatti, se decadessero rilascerebbero energia nel corpo stesso, e se lo facessero troppo rapidamente la dose accumulata nel corso di una vita sarebbe letale. Il fatto che una persona possa vivere cento anni pone quindi un limite inferiore a $\tau_p$.\\
+
+Nel corpo umano troviamo atomi, come $^{40}\mathrm{K}$ e $^{14}\mathrm{C}$, i cui nuclei sono soggetti a decadimenti: è possibile stimare che in media l'attività del corpo umano sia dell'ordine di $A = 5 \cdot 10^3 \div 10^4$ Bq. A questa radioattività naturale si aggiungerebbe, se il protone fosse instabile, quella dovuta al suo decadimento. 
+
+Quando l'energia così assorbita diventa pericolosa per il corpo? Dipende dalla dose\mkeyword{dose} ($D$), definita come
+%
+\begin{equation}
+    D = \frac{E_{ass}}{M} \quad , \quad [D] = \text{Gy} = 1 \ \text{J}/\text{kg}
+\end{equation}
+dove $E_{ass}$ è l'energia assorbita dal corpo mentre $M$ è la sua massa. Una dose di circa $1$ Gy a tutto il corpo corrisponde alla soglia letale.\\
+
+Supponendo che un uomo viva circa $100$ anni e che $D_{max}$ sia la dose massima che il corpo può assorbire, si dovrà avere 
+%
+\begin{equation}
+    D_{max} > D(100 \ y)
+    \label{eq:disuguaglianza_dose}
+\end{equation}
+Prendendo la dose come una funzione del tempo e considerando solo i decadimenti dei protoni, si ha 
+%
+\begin{equation}
+    D(t) = \frac{E_{dec} \cdot N_{dec}(t)}{M}
+\end{equation}
+dove $E_{dec}$ è l'energia rilasciata da un protone in un decadimento, la quale corrisponderà a una frazione dell'energia totale del protone
+%
+\begin{equation*}
+    E_{dec} = f \cdot m_p c^2 \quad , \quad f \in (0,1]
+\end{equation*}
+Mentre $N_{dec}$ è il numero medio di protoni decaduti all'istante $t$, che sappiamo essere 
+%
+\begin{equation*}
+    N_{dec}(t) = N_p \left(1 - e^{-t/\tau_p}\right)
+\end{equation*}
+dove $N_p$ è il numero di protoni nel corpo. Indicando con $\gamma_p$ la frazione di nucleoni che sono protoni, che vale $0,5 \div 0,55$, e trascurando la massa degli elettroni, il numero di nucleoni è $N_{\text{nucleoni}} = M/m_u$, da cui
+%
+\begin{equation*}
+    N_p = \gamma_p \, N_{\text{nucleoni}} = \gamma_p \frac{M}{m_u} \quad , \quad m_u = 1,66 \cdot 10^{-27} \ \text{kg}
+\end{equation*}
+Inoltre, sapendo che la vita media di un protone è molto maggiore di $100$ anni, possiamo approssimare $1 - e^{-t/\tau_p} \approx t/\tau_p$, cosa che porta a scrivere il numero medio di protoni decaduti come 
+%
+\begin{equation*}
+    N_{dec}(t) = \gamma_p \frac{M}{m_u}\cdot \frac{t}{\tau_p}
+\end{equation*}
+
+Sostituendo tutto nella funzione dose si ha 
+%
+\begin{equation*}
+    D(t,\tau_p, f) = \frac{1}{M} \cdot \gamma_p \frac{M}{m_u} \cdot \frac{t}{\tau_p} \cdot f m_p c^2 = \frac{\gamma_p \cdot f m_p c^2}{ m_u} \cdot \frac{t}{\tau_p} = 5 \cdot 10^{16} \cdot f \cdot \frac{t}{\tau_p} \ \text{Gy}
+\end{equation*}
+Si noti che la massa del corpo si semplifica: il risultato \emph{non dipende} dalla massa della persona considerata, ma solo dalla composizione in nucleoni della materia di cui è fatta. Il limite che otterremo vale quindi per chiunque.\\
+
+Andiamo adesso a sfruttare la disuguaglianza \eqref{eq:disuguaglianza_dose}. Ponendo $D_{max} = 1$ Gy si ottiene
+%
+\begin{equation*}
+    D_{max} > D(100 \ y, \tau_p, f) \implies \tau_p > 5f \cdot10^{18} \ y
+\end{equation*}
+
+Resta da stimare $f$. Nel canale di decadimento dominante previsto dalle GUT, $p \to e^+ + \pi^0$, il positrone annichila con un elettrone del mezzo e il pione decade in due fotoni: tutti i prodotti depositano quindi la loro energia nel corpo, e praticamente tutta l'energia di massa del protone viene assorbita. Solo i canali che producono neutrini sottraggono energia al bilancio. Possiamo quindi assumere $f \sim 1$ e concludere, 
+
+\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{equation}
+    \tau_p > 10^{18} \ y
+\end{equation}
+\end{tcolorbox}
+
+È notevole che un limite di questa forza si ottenga senza alcun apparato sperimentale, semplicemente osservando che siamo vivi, tuttavia esistono esperimenti che permettono di andare a porre un limite molto più forte sul valore di $\tau_p$.
+
+\section{Conteggio diretto dei decadimenti}
+
+Andiamo adesso ad allestire un vero e proprio esperimento per porre un limite ancora più stringente sul valore della vita media del protone. \\
+
+Supponiamo di avere $N_p = 8 \cdot 10^{32}$ protoni e di osservare i decadimenti di questi per un tempo pari a $T = 5 \ y$ e che la sensibilità dello strumento, cioè la probabilità di vedere quando un protone decade, sia $\varepsilon = 40 \%$. Supponiamo inoltre che \emph{non ci sia fondo}\mkeyword{fondo}. Si dice fondo l'insieme degli eventi che il rivelatore registra e che assomigliano a un decadimento del protone, pur essendo prodotti da altri processi: le interazioni dei neutrini atmosferici, i muoni cosmici e la radioattività naturale dei materiali di cui è fatto l'apparato. Dire che il fondo è nullo significa che nel tempo di osservazione ci si aspetta zero eventi di questo tipo, e quindi che qualunque conteggio osservato sarebbe necessariamente un decadimento di un protone\footnote{È un'idealizzazione: negli esperimenti reali il fondo è piccolo ma non nullo, ed è dominato dai neutrini atmosferici, che attraversano qualunque schermatura. Gli altri contributi si riducono collocando il rivelatore in profondità sotto roccia e selezionando materiali a bassa radioattività.}.\\
+
+A seguito dell'esperimento si hanno \emph{zero} conteggi. 
+
+Ricordando che il decadimento è un processo poissoniano, la probabilità di vedere $k$ conteggi in un tempo $T$ risulta essere 
+%
+\begin{equation*}
+    \mathcal{P}(k|\mu) = \frac{\mu^k e^{-\mu}}{k!}
+\end{equation*}
+Ponendo $k = 0$ si ottiene 
+%
+\begin{equation*}
+    \mathcal{P}(0|\mu) = e^{-\mu}
+\end{equation*}
+Dove 
+%
+\begin{align*}
+    \mu_{teorico} = N_p(1 - e^{-T/\tau}) \approx N_p \frac{T}{\tau_p}\\
+    \implies \mu = \varepsilon \mu_{teorico} = N_p \varepsilon \frac{T}{\tau_p}
+\end{align*}
+La quantità $\mu$ è quindi il numero medio di conteggi che ci aspetteremmo di osservare, e dipende dal valore di $\tau_p$, che è l'incognita del problema. L'esperimento ha invece fornito un risultato preciso: zero conteggi. 
+
+Andiamo a vedere quali valori di $\tau_p$ sono compatibili con questa osservazione. 
+
+Fissiamo una soglia di probabilità e dichiariamo esclusi tutti i valori di $\tau_p$ che renderebbero la nostra osservazione più improbabile di quella soglia. Scegliendo il $90\%$, convenzionale in fisica delle particelle, escludiamo tutti i valori per cui la probabilità di non osservare nulla sarebbe inferiore al $10\%$. 
+
+Chiamando $\mu_{90}$ il valore limite si ha quindi
+%
+\begin{equation*}
+    \mathcal{P}(0|\mu_{90}) = e^{-\mu_{90}} = 0,1 \qquad \Longrightarrow \qquad \mu_{90} = \ln 10 \simeq 2,3
+\end{equation*}
+Equivalentemente: se il numero medio atteso fosse $\mu_{90}$, avremmo avuto il $90\%$ di probabilità di osservare \emph{almeno} un conteggio, dato che $\mathcal{P}_{oss} = 1 - e^{-\mu}$. Non avendone osservato nessuno, concludiamo
+%
+\begin{equation*}
+    \mu < \mu_{90} \qquad \Longrightarrow \qquad N_p \, \varepsilon \, \frac{T}{\tau_p} < 2,3
+\end{equation*}
+e, siccome $\mu$ è decrescente in $\tau_p$, la disuguaglianza si rovescia dando un limite \emph{inferiore} sulla vita media
+
+\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{equation}
+    \tau_p > \frac{N_p \, \varepsilon \, T}{2,3} \qquad (90\% \ \text{CL})
+    \label{eq:limite_poissoniano}
+\end{equation}
+\end{tcolorbox}
+Sostituendo i valori del nostro esperimento si ottiene
+%
+\begin{equation*}
+    \tau_p > \frac{8 \cdot 10^{32} \cdot 0,4 \cdot 5 \ y}{2,3} \simeq 7 \cdot 10^{32} \ y
+\end{equation*}
+cioè quattordici ordini di grandezza in più rispetto al limite ricavato dalla dose assorbita dal corpo umano.\\
+
+\section{Super-Kamiokande}
+
+L'esperimento che ad oggi fornisce i limiti più stringenti è Super-Kamiokande\mkeyword{Super-Kamiokande}, situato in Giappone a circa $1000$ m di profondità sotto il monte Ikenoyama. Si tratta di un cilindro di $39$ m di diametro e $41$ m di altezza riempito con $50$ kton di acqua purissima, osservata da oltre $11\,000$ fotomoltiplicatori montati sulle pareti. 
+
+La scelta dell'acqua risponde a tre esigenze contemporaneamente: è economica, cosa necessaria viste le masse in gioco, contiene moltissimi protoni, ed è trasparente, il che permette di rivelare la luce Cherenkov emessa dalle particelle cariche prodotte nel decadimento. Ogni particella carica relativistica genera un cono di luce che i fotomoltiplicatori registrano come un anello: dalla forma e dall'intensità degli anelli si ricostruiscono il tipo, l'energia e la direzione delle particelle. 
+
+I protoni disponibili sono di due tipi. Quelli dei nuclei di idrogeno sono \emph{liberi} e a riposo, mentre quelli legati nell'ossigeno si muovono con il moto di Fermi all'interno del nucleo e i prodotti del loro decadimento possono riurtare contro gli altri nucleoni prima di uscire. I primi danno quindi un segnale molto più pulito.\\
+
+Il canale di decadimento principale cercato è
+%
+\begin{equation*}
+    p \longrightarrow e^+ + \pi^0 \qquad \text{con} \qquad \pi^0 \to \gamma \gamma
+\end{equation*}
+che produce tre anelli Cherenkov, uno del positrone e due dei fotoni. La firma che distingue questo evento dal fondo è puramente cinematica, e discende dal fatto che il protone decade sostanzialmente a riposo: la massa invariante ricostruita di tutti i prodotti deve valere circa $m_p$, e l'impulso totale deve essere circa nullo, cioè le particelle devono uscire ``schiena contro schiena''. Richiedendo $800 < M_{tot} < 1050 \ \mathrm{MeV}/c^2$ e $P_{tot} < 250 \ \mathrm{MeV}/c$ si eliminano quasi tutte le interazioni dei neutrini atmosferici, che non rispettano questi vincoli.\\
+
+I risultati dell'analisi su tutti i dati raccolti tra il $1996$ e il $2018$\footnote{Super-Kamiokande Collaboration, A. Takenaka \emph{et al.}, \emph{Search for proton decay via $p \to e^+\pi^0$ and $p \to \mu^+\pi^0$ with an enlarged fiducial volume in Super-Kamiokande I-IV}, Phys. Rev. D \textbf{102}, 112011 (2020).} sono riassunti nella tabella seguente. 
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lc}
+\hline
+Esposizione & $450$ kton$\cdot$anno \\
+Efficienza di rivelazione & $\simeq 40 \%$ \\
+Fondo atteso & $0,59$ eventi \\
+Candidati osservati & $0$ \\
+\hline
+\end{tabular}
+\caption{Risultati della ricerca del decadimento $p \to e^+ \pi^0$ in Super-Kamiokande.}
+\label{tab:superk}
+\end{table}
+
+Si noti che il fondo atteso è inferiore all'unità: dopo vent'anni di presa dati l'ipotesi di fondo nullo fatta nella sezione precedente è ancora una buona approssimazione, ed è esattamente ciò che la profondità del rivelatore e la selezione cinematica servono a garantire. 
+
+Possiamo allora applicare direttamente la \eqref{eq:limite_poissoniano}. Un kton d'acqua contiene circa $3,3 \cdot 10^{32}$ protoni, per cui l'esposizione corrisponde a $N_p T \simeq 1,5 \cdot 10^{35}$ protoni$\cdot$anno, da cui
+%
+\begin{equation*}
+    \tau_p > \frac{N_p \, \varepsilon \, T}{2,3} \simeq \frac{1,5 \cdot 10^{35} \cdot 0,4}{2,3} \simeq 3 \cdot 10^{34} \ y
+\end{equation*}
+in ottimo accordo con il limite pubblicato dalla collaborazione
+
+\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{equation}
+    \frac{\tau_p}{B(p \to e^+\pi^0)} > 2,4 \cdot 10^{34} \ y \qquad (90\% \ \text{CL})
+\end{equation}
+\end{tcolorbox}
+
+Due osservazioni per concludere. 
+
+La prima riguarda la forma del risultato: quello che si misura non è la vita media totale, ma la vita media \emph{parziale} $\tau_p/B$ relativa a quel canale, dove $B$ è la frazione di diramazione. È la stessa distinzione incontrata parlando dei branching ratio nei decadimenti nucleari, ed è inevitabile: un esperimento può escludere solo i decadimenti che è in grado di riconoscere. 
+
+La seconda è che un limite di questa entità ha già conseguenze teoriche. Il modello di Georgi--Glashow prevedeva $\tau_p \sim 10^{31}$ anni, tre ordini di grandezza al di sotto: la mancata osservazione del decadimento lo ha di fatto escluso, e le teorie di grande unificazione ancora in gioco sono quelle che prevedono vite medie più lunghe. Non aver visto nulla, in questo caso, è stata un'informazione preziosa.
