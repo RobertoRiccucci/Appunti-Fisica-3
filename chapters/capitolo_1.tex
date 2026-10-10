@@ -126,6 +126,175 @@ Il rapporto $\lambda_1/\lambda$ prende il nome di frazione di decadimento\mkeywo
 
 \newpage
 
+\section{Interpretazione quantistica del decadimento}
+
+I livelli energetici ottenuti risolvendo l'equazione di Schrödinger per Hamiltoniane con potenziali indipendenti dal tempo condividono una proprietà: sono stati stazionari. 
+Un sistema quantistico che si trova inizialmente in un determinato stato stazionario vi rimarrà indefinitamente e non subirà transizioni verso (ovvero, non decadrà in) altri stati. \\
+È possibile fare in modo che un sistema quantistico si trovi talvolta in uno stato e talvolta in un altro creando una combinazione di due o più stati, come ad esempio $\psi = c_1\psi_1 + c_2\psi_2$, che presenta una probabilità $|c_1|^2$ di essere trovato nello stato 1 e $|c_2|^2$ di essere trovato nello stato 2. Nel caso di potenziali indipendenti dal tempo, i coefficienti $c_1$ e $c_2$ sono indipendenti dal tempo; ciò non è coerente con le osservazioni relative agli stati instabili (soggetti a decadimento), per i quali la probabilità di trovare il sistema in un determinato stato diminuisce nel corso del tempo.\\
+
+Adottiamo quindi il seguente approccio: si assume che il potenziale sia della forma $\hat{V} + \hat{V}'$, dove $\hat{V}$ è il potenziale nucleare che dà gli stati stazionari e $\hat{V}'$ è un potenziale aggiuntivo molto debole che può causare transizioni tra gli stati stazionari. \\
+Trascurando per il momento $\hat{V}'$, risolviamo l'equazione di Schrödinger per l'Hamiltoniana contenente solo il potenziale $\hat{V}$ e otteniamo le funzioni d'onda nucleari stazionarie. Utilizziamo quindi tali funzioni d'onda per calcolare la probabilità di transizione tra gli "stati stazionari" sotto l'influenza di $V'$. Questa probabilità di transizione corrisponde alla costante di decadimento $\lambda$, fornita dalla Regola d'oro di Fermi, la quale dà la probabilità per unità di tempo che un sistema, preparato nello stato stazionario $|i\rangle$ dell’hamiltoniana imperturbata $\hat{H}_0$, venga trovato nello stato $|f\rangle$, per effetto di una piccola perturbazione $\hat{V}'$ aggiunta a $\hat{H}_0$\footnote{Per approfondire la Regola d'oro di Fermi si consigli di guardare la parte sul decadimento $\beta$ dell'esercitazione \ref{Esercitazione2}}.
+%
+\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{equation}
+    \lambda = \frac{2\pi}{\hbar}|V_{fi}'|^2 \rho(E_f) \quad , \quad V_{fi}' = \int \psi_f^* V' \psi_i \ dv
+\end{equation}
+\end{tcolorbox}
+La probabilità di transizione è influenzata anche dalla densità degli stati finali\mkeyword{densità degli stati finali} $\rho(E_c)$: all'interno di un intervallo di energia $dE_c$, il numero di stati finali accessibili al sistema è $dn_c = \rho(E_c) dE_c$. La probabilità di transizione sarà elevata se vi è un gran numero di stati finali accessibili per il decadimento.
+
+Supponiamo di considerare un generico autostato dell'Hamiltoniana contenente solo la componente $\hat{V}$, sappiamo che l'evoluzione di questo stato può essere scritto come 
+%
+\begin{equation*}
+    \psi_a(\mathbf{r}, t) = \psi_a(\mathbf{r}, 0) e^{-i E_a t/\hbar}
+\end{equation*}
+Dove $E_a$ è l'energia dell'autostato. La probabilità di trovare il sistema nello stato $a$ è $|\psi_a(\mathbf{r}, t)|^2$, che è indipendente dal tempo per uno stato stazionario.
+
+Per essere coerenti con la legge del decadimento radioattivo, vorremmo che la probabilità di trovare il nostro sistema in decadimento nello stato a diminuisse con il tempo come $e^{-t/\tau_a}$:
+%
+\begin{equation*}
+    |\psi_a(t)|^2 = |\psi_a(0)|^2 e^{-t/\tau_a}
+\end{equation*}
+dove $\tau_a = 1/\lambda_a$ è la vita media dello stato la cui costante di decadimento è $\lambda_a$.\\ 
+Allora possiamo riscrivere la funzione d'onda come 
+%
+\begin{equation}
+    \psi_a(\mathbf{r}, t) = \psi_a(\mathbf{r}, 0) e^{-i E_a t/\hbar} e^{-t/2\tau_a}
+\end{equation}
+Il prezzo da pagare per includere il termine esponenziale reale in $\psi_a$ è la perdita della possibilità di determinare esattamente l'energia dello stato: non siamo più in presenza di uno stato stazionario.
+
+\subsection{Distribuzione dell'energia}
+
+Avendo perso la stazionarietà, lo stato non ha più un'energia definita. Conviene però essere precisi su cosa questo significhi, perché nel problema ci sono \emph{due} hamiltoniane e non vanno confuse.
+
+Lo stato $|\psi_a\rangle$ è autostato dell'hamiltoniana imperturbata $\hat{H}_0 = \hat{T} + \hat{V}$, con autovalore netto $E_a$: è uno dei livelli che si ottengono risolvendo il problema nucleare senza $\hat{V}'$. L'evoluzione reale del sistema è però governata dall'hamiltoniana completa $\hat{H} = \hat{H}_0 + \hat{V}'$, e rispetto a \emph{questa} $|\psi_a\rangle$ non è un autostato. È per questo che decade, ed è per questo che la sua energia non è un numero preciso.\\
+
+Le due quantità di cui parleremo sono allora le seguenti. 
+
+Lo stato al tempo $t$, che indichiamo con $|\Psi(t)\rangle$, è ciò in cui $|\psi_a\rangle$ si trasforma evolvendo con $\hat{H}$, cioè
+%
+\begin{equation*}
+    |\Psi(0)\rangle = |\psi_a\rangle \qquad , \qquad |\Psi(t)\rangle = e^{-i\hat{H}t/\hbar} |\psi_a\rangle
+\end{equation*}
+
+La distribuzione in energia $P(E)$ è invece definita così: $P(E)\,dE$ è la probabilità che, misurando l'energia del sistema preparato nello stato $|\psi_a\rangle$, si ottenga un risultato compreso fra $E$ e $E + dE$. Operativamente è l'istogramma che si ottiene misurando l'energia dei prodotti di molti decadimenti identici.\\
+
+Per ricavarla, sviluppiamo $|\psi_a\rangle$ nella base degli autostati $|\psi_E\rangle$ dell'hamiltoniana \emph{completa}, che sono gli stati con energia davvero definita. Questi formano un continuo, perché descrivono il nucleo figlio insieme alla radiazione emessa, libera di uscire con qualunque impulso, e li normalizziamo come $\langle \psi_{E'} | \psi_E\rangle = \delta(E-E')$. Si ha quindi
+%
+\begin{equation}
+    |\psi_a\rangle = \int dE \; \psi(E) \, |\psi_E\rangle \qquad , \qquad \psi(E) = \langle \psi_E | \psi_a \rangle
+    \label{eq:sviluppo_energia}
+\end{equation}
+e la quantità che cerchiamo è $P(E) = |\psi(E)|^2$. Siccome ogni $|\psi_E\rangle$ è autostato di $\hat{H}$, l'evoluzione temporale è immediata e coinvolge solo le fasi
+%
+\begin{equation}
+    |\Psi(t)\rangle = \int dE \; \psi(E) \, e^{-iEt/\hbar} \, |\psi_E\rangle
+    \label{eq:evoluzione}
+\end{equation}
+
+Il problema è che $\psi(E)$ non si può calcolare proiettando, perché non conosciamo gli autostati di $\hat{H}$: trovarli equivarrebbe a risolvere esattamente il problema del decadimento. Quello che conosciamo è il comportamento \emph{temporale} dello stato, cioè la legge di decadimento, e serve dunque un oggetto che leghi le due informazioni.
+
+\subsubsection*{L'ampiezza di sopravvivenza}
+
+Definiamo ampiezza di sopravvivenza\mkeyword{ampiezza di sopravvivenza} la quantità
+%
+\begin{equation}
+    a(t) = \langle \psi_a | \Psi(t) \rangle
+\end{equation}
+cioè l'ampiezza che il sistema, partito dallo stato $a$, si trovi ancora in quello stato al tempo $t$. Il suo modulo quadro $|a(t)|^2$ è la probabilità di sopravvivenza, ed è proprio la quantità che la legge del decadimento radioattivo descrive.
+
+Calcoliamola usando la \eqref{eq:sviluppo_energia} per il bra e la \eqref{eq:evoluzione} per il ket
+%
+\begin{equation}
+    a(t) = \int dE' \int dE \; \psi^*(E') \, \psi(E) \, e^{-iEt/\hbar} \underbrace{\langle \psi_{E'}|\psi_E\rangle}_{\delta(E-E')} = \int dE \, |\psi(E)|^2 e^{-iEt/\hbar}
+\end{equation}
+cioè
+
+\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{equation}
+    a(t) = \int dE \; P(E) \, e^{-iEt/\hbar}
+    \label{eq:fourier_sopravvivenza}
+\end{equation}
+\end{tcolorbox}
+L'ampiezza di sopravvivenza e la distribuzione in energia sono dunque una coppia di Fourier: conoscere l'una equivale a conoscere l'altra. Questo risolve il problema, perché $a(t)$ la conosciamo.
+
+Si noti che per $t = 0$ la \eqref{eq:fourier_sopravvivenza} dà $\int P(E)\,dE = \langle \psi_a | \psi_a\rangle = 1$, cioè la normalizzazione viene automaticamente.
+
+\subsubsection*{Il calcolo}
+
+Inseriamo la legge di decadimento. La probabilità di sopravvivenza decade come $e^{-t/\tau_a}$, quindi l'ampiezza, che ne è la radice, decade con metà del ritmo; a questo si aggiunge la fase di uno stato di energia $E_a$:
+%
+\begin{equation}
+    a(t) = e^{-iE_a t/\hbar} \, e^{-|t|/2\tau_a}
+\end{equation}
+Il valore assoluto non è una scelta arbitraria: essendo $P(E)$ reale, dalla \eqref{eq:fourier_sopravvivenza} segue $a(-t) = a^*(t)$, per cui il comportamento a tempi negativi è determinato da quello a tempi positivi.
+
+Invertendo la trasformata e ponendo $\Delta = E - E_a$
+%
+\begin{equation}
+    2\pi\hbar \, P(E) = \int_{-\infty}^{+\infty} a(t) \, e^{iEt/\hbar} dt = \int_{-\infty}^{0} e^{i\Delta t/\hbar + t/2\tau_a} dt + \int_{0}^{+\infty} e^{i\Delta t/\hbar - t/2\tau_a} dt
+\end{equation}
+Entrambi gli integrali sono esponenziali semplici e, sostituendo $t \to -t$ nel primo,
+%
+\begin{equation}
+    2\pi\hbar \, P(E) = \frac{1}{\dfrac{1}{2\tau_a} + \dfrac{i\Delta}{\hbar}} + \frac{1}{\dfrac{1}{2\tau_a} - \dfrac{i\Delta}{\hbar}} = \frac{2 \cdot \dfrac{1}{2\tau_a}}{\dfrac{1}{4\tau_a^2} + \dfrac{\Delta^2}{\hbar^2}} = \frac{\hbar^2 / \tau_a}{\dfrac{\hbar^2}{4\tau_a^2} + \Delta^2}
+\end{equation}
+Introducendo la larghezza dello stato\mkeyword{larghezza} $\Gamma_a = \hbar / \tau_a$ e dividendo per $2\pi\hbar$ si ottiene il risultato
+
+\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{equation}
+    P(E) = \frac{\Gamma_a / 2\pi}{(E - E_a)^2 + \Gamma_a^2/4}
+    \label{eq:lorentziana}
+\end{equation}
+\end{tcolorbox}
+Questa distribuzione prende il nome di lorentziana\mkeyword{lorentziana}, o distribuzione di Breit-Wigner.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=10cm, height=5.6cm,
+    axis lines=left, axis line style={-latex},
+    xlabel={$E$}, ylabel={$P(E)$},
+    xlabel style={at={(ticklabel* cs:1)}, anchor=west},
+    ylabel style={at={(ticklabel* cs:1)}, anchor=south west, rotate=-90},
+    xmin=-4.3, xmax=4.3, ymin=0, ymax=4.8,
+    xtick={0}, xticklabels={$E_a$}, ytick=\empty,
+    clip=false,
+]
+\addplot[black, thick, domain=-4:4, samples=300] {1/(x^2+0.25)};
+\draw[dashed, gray] (axis cs:-0.5,2) -- (axis cs:0.5,2);
+\draw[dashed, gray] (axis cs:-0.5,0) -- (axis cs:-0.5,2);
+\draw[dashed, gray] (axis cs:0.5,0)  -- (axis cs:0.5,2);
+\draw[dashed, gray] (axis cs:0,0) -- (axis cs:0,4);
+\draw[latex-latex] (axis cs:-0.5,2) -- (axis cs:0.5,2);
+\node[anchor=south, font=\small] at (axis cs:0,2.08) {$\Gamma_a$};
+\end{axis}
+\end{tikzpicture}
+\caption{Distribuzione in energia di uno stato instabile di larghezza $\Gamma_a$.}
+\label{fig:lorentziana}
+\end{figure}
+
+Il nome di $\Gamma_a$ si giustifica subito. Il massimo si trova in $E = E_a$, mentre la metà del massimo corrisponde a
+%
+\begin{equation*}
+    (E-E_a)^2 + \frac{\Gamma_a^2}{4} = \frac{\Gamma_a^2}{2} \qquad \Longrightarrow \qquad E - E_a = \pm \frac{\Gamma_a}{2}
+\end{equation*}
+per cui $\Gamma_a$ è esattamente la larghezza a metà altezza della curva.
+
+\subsubsection*{Interpretazione}
+
+Il risultato ottenuto riguarda uno stato ben preciso: $|\psi_a\rangle$, cioè un autostato dell'hamiltoniana \emph{imperturbata}. Rispetto a $\hat{H}$ completa quello stato non esiste come livello a sé, e viene allora naturale chiedersi perché valga la pena studiarlo con tanta cura.
+
+La ragione è che tutta la fisica nucleare è scritta nel linguaggio degli autostati di $\hat{H}_0$, per due motivi.
+
+Il primo è che sono gli unici calcolabili. Il problema $(\hat{T} + \hat{V})\psi = E\psi$ è trattabile e dà livelli discreti; l'hamiltoniana completa include invece l'accoppiamento a un continuo di particelle uscenti e non si risolve in forma chiusa.
+
+Il secondo, e più importante, è che senza di essi la parola ``decadimento'' non avrebbe significato. Gli autostati di $\hat{H}$ sono per definizione stazionari: in quella base non accade nulla, mai, e si muovono soltanto delle fasi. Lo si vede anche nel conto appena fatto, dato che la \eqref{eq:evoluzione} mostra che i moduli $|\psi(E)|^2$ sono costanti nel tempo e dunque $P(E)$ \emph{non dipende da $t$}. Dire che il nucleo si trovava nello stato $a$ e dopo un tempo $\tau$ è passato allo stato $b$ è un'affermazione sui coefficienti dello sviluppo nella base di $\hat{H}_0$, non un fatto sulla base esatta. Quello che decade non è l'energia, che si conserva, ma l'ampiezza di sopravvivenza: le componenti $e^{-iEt/\hbar}$ si sfasano progressivamente e la loro interferenza, inizialmente costruttiva, si distrugge.\\
+
+Gli autostati di $\hat{H}_0$ sono dunque il vocabolario indispensabile con cui descriviamo il fenomeno, pur non essendo stati veri. La lorentziana \eqref{eq:lorentziana} serve allora a quantificare \emph{il prezzo} di questa approssimazione: la larghezza $\Gamma_a$ misura di quanto il livello reale si discosta dal livello netto del modello.
+
+\newpage
+
 \section{Catene di decadimento}
 
 Una situazione comune si ha quando il prodotto di un decadimento radioattivo risulta essere a sua volta radioattivo. 
