@@ -23,6 +23,8 @@ Gli appunti sono divisi in due parti.
 |---|---|
 | 1. Decadimenti | Decadimento radioattivo, Interpretazione quantistica del decadimento, catene di decadimento, tipi di decadimenti, radioattività naturale |
 | 2. Massa ed energia di legame | Sistemi legati, Masse atomiche e nucleari, Modello a goccia, Parabole di massa, Condizioni per il decadimento $\alpha$ |
+|3. Portata delle interazioni| Potenziale di Yukawa, Mediatore massivo, Equazioni di Maxwell per fotone massivo|
+|4. Effetto tunnel e decadimento $\alpha$| Legge di Geiger-Nuttall, Perché viene emessa proprio la particella $\alpha$|
 
 ### Esercitazioni
 

@@ -1,0 +1,190 @@
+\chapter{Effetto tunnel e decadimento $\alpha$}
+
+Fino a questo punto la costante di decadimento $\lambda$ è stata trattata in due modi diversi. Nel primo capitolo l'abbiamo \emph{postulata}: ogni nucleo ha una probabilità di decadere per unità di tempo costante, e da quell'ipotesi segue l'intera legge esponenziale. Nella sezione sull'interpretazione quantistica l'abbiamo \emph{espressa} attraverso la regola d'oro di Fermi, $\lambda = \frac{2\pi}{\hbar}|V'_{fi}|^2\rho(E_f)$.\\
+Quest'ultima espressione, tuttavia, è valida solo quando trattiamo processi perturbativi, cioè processi in cui $V'$ è piccolo rispetto alle altre grandezze in gioco. Nel decadimento $\beta$ la separazione è naturale: l’interazione forte costruisce i livelli, quella debole li fa decadere, e fra le due ci sono venti ordini di grandezza.\\
+Nel decadimento $\alpha$ questa separazione non esiste. La stessa forza che tiene la particella dentro la buca, cioè la combinazione di forte e coulombiana, è anche quella che la spinge fuori: non c’è nessun termine aggiuntivo da isolare. Volendo forzare la scrittura, il $V'$ che accoppia lo stato legato a quello libero sarebbe dell’ordine del potenziale nucleare stesso, decine di $MeV$: non una perturbazione. \\
+La particella è già presente nel nucleo e deve attraversare una barriera coulombiana che classicamente glielo proibisce. Il problema non è perturbativo ed è governato dall'effetto tunnel.\\
+
+Vedremo anzitutto il dato sperimentale, la legge di Geiger-Nuttall, in cui un intervallo di energie che copre meno di un fattore due corrisponde a tempi di dimezzamento distribuiti su ventiquattro ordini di grandezza. Una dipendenza così violenta non può che essere esponenziale, e lo scopo finale del capitolo è mostrare che quell'esponenziale è la probabilità di attraversare per effetto tunnel la barriera coulombiana.
+
+
+\section{La legge di Geiger-Nuttall}
+
+Osservando sistematicamente gli emettitori $\alpha$ naturali si trova una regolarità sorprendente, riassunta nella tabella seguente.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{cclccc}
+\hline
+$Z$ & $A$ & Nuclide & $Q$ [MeV] & $1/\sqrt{Q}$ & $T_{1/2}$ \\
+\hline
+92 & 238 & U  & $4,27$ & $0,484$ & $4,47 \cdot 10^9$ y \\
+92 & 234 & U  & $4,86$ & $0,454$ & $2,46 \cdot 10^5$ y \\
+90 & 230 & Th & $4,77$ & $0,458$ & $7,54 \cdot 10^4$ y \\
+88 & 226 & Ra & $4,87$ & $0,453$ & $1,6 \cdot 10^3$ y \\
+86 & 222 & Rn & $5,59$ & $0,423$ & $3,8$ d \\
+84 & 218 & Po & $6,11$ & $0,405$ & $3,10$ min \\
+\hline
+\end{tabular}
+\caption{Energia liberata e tempo di dimezzamento per alcuni emettitori $\alpha$.}
+\label{tab:geiger_nuttall}
+\end{table}
+
+\newpage
+
+Diagrammando $\log_{10}(T_{1/2}/\mathrm{s})$ in funzione di $1/\sqrt{Q}$ i punti si dispongono su una retta, cioè vale la legge di Geiger-Nuttall\mkeyword{legge di Geiger-Nuttall}
+
+\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{equation}
+    \ln T_{1/2} = \frac{a}{\sqrt{Q}} + b
+    \label{eq:geiger_nuttall}
+\end{equation}
+\end{tcolorbox}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=9.5cm, height=6.4cm,
+    axis lines=left, axis line style={-latex},
+    xlabel={$1/\sqrt{Q_\alpha}$ \ [MeV$^{-1/2}$]},
+    ylabel={$\log_{10}(T_{1/2}/\mathrm{s})$},
+    xlabel style={font=\small}, ylabel style={font=\small},
+    tick label style={font=\small},
+    xmin=0.39, xmax=0.50, ymin=0, ymax=20,
+    xtick={0.40,0.42,0.44,0.46,0.48,0.50},
+    ytick={0,5,10,15,20},
+    clip=false,
+]
+\addplot[gray, thin, domain=0.395:0.495, samples=2] {188*x - 74};
+\addplot[only marks, mark=*, mark size=2pt, black] coordinates {
+  (0.484,17.15) (0.454,12.90) (0.458,12.40)
+  (0.453,10.70) (0.423,5.52) (0.405,2.27)
+};
+\node[anchor=west, font=\scriptsize] at (axis cs:0.486,17.15) {$^{238}$U};
+\node[anchor=east, font=\scriptsize] at (axis cs:0.452,13.6) {$^{234}$U};
+\node[anchor=west, font=\scriptsize] at (axis cs:0.460,12.1) {$^{230}$Th};
+\node[anchor=east, font=\scriptsize] at (axis cs:0.451,10.3) {$^{226}$Ra};
+\node[anchor=west, font=\scriptsize] at (axis cs:0.425,5.0) {$^{222}$Rn};
+\node[anchor=west, font=\scriptsize] at (axis cs:0.407,1.8) {$^{218}$Po};
+\end{axis}
+\end{tikzpicture}
+\caption{Legge di Geiger-Nuttall per la serie dell'uranio.}
+\label{fig:geiger_nuttall}
+\end{figure}
+
+Il punto notevole è la \emph{sensibilità}: l'energia liberata copre il modesto intervallo $4 \ \mathrm{MeV} < Q < 7 \ \mathrm{MeV}$, meno di un fattore due, mentre i tempi di dimezzamento vanno da $3 \cdot 10^{-7}$ s a $10^{10}$ anni, cioè ventiquattro ordini di grandezza. Una piccola variazione di energia ha come conseguenza una variazione enorme nella vita media, e una dipendenza così violenta suggerisce immediatamente un comportamento esponenziale.
+
+\section{Perché viene emessa proprio una particella \texorpdfstring{$\alpha$}{alfa}}
+
+Prima di fare i conti conviene capire la teoria che sta dietro, e in particolare perché fra tutti i frammenti possibili il nucleo scelga proprio l'$\alpha$.
+
+Consideriamo l'esempio $^{32}\mathrm{S} \to {}^{16}\mathrm{O} + {}^{16}\mathrm{O}$, sapendo che $B(^{32}\mathrm{S}) \simeq 270$ MeV. L'energia di separazione è
+%
+\begin{equation*}
+    B_{\mathrm{sep}} = 2B(^{16}\mathrm{O}) - B(^{32}\mathrm{S}) \simeq 16 \ \mathrm{MeV}
+\end{equation*}
+cioè molto più piccola dell'energia di legame totale. Questo è il punto da tenere a mente: l'energia che decide se un decadimento è permesso è una \emph{piccola differenza fra numeri grandi}, e può facilmente cambiare segno.
+
+Per il $^{232}\mathrm{U}$ si ottengono i valori della tabella \ref{tab:separazione}, dove un valore negativo significa che l'energia viene liberata e il decadimento è quindi energeticamente permesso.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lc|lc}
+\hline
+Frammento & $B_{\mathrm{sep}}$ [MeV] & Frammento & $B_{\mathrm{sep}}$ [MeV] \\
+\hline
+$n$ & $7,26$ & $^{4}$He & $-5,41$ \\
+$p$ & $6,12$ & $^{5}$He & $2,59$ \\
+$^{2}$H & $10,70$ & $^{6}$He & $6,19$ \\
+$^{3}$H & $10,24$ & $^{6}$Li & $3,79$ \\
+$^{3}$He & $9,92$ & $^{7}$Li & $1,94$ \\
+\hline
+\end{tabular}
+\caption{Energia necessaria per separare vari frammenti dal $^{232}\mathrm{U}$.}
+\label{tab:separazione}
+\end{table}
+
+L'unico valore negativo è quello dell'$^{4}\mathrm{He}$: fra tutti i frammenti leggeri, l'$\alpha$ è l'unico la cui emissione è energeticamente possibile. Il motivo è che si tratta di un nucleo eccezionalmente legato, con $B = 28,3$ MeV e $B/A = 7,07$ MeV nonostante $A = 4$, grazie al fatto di avere $Z = N = 2$ con tutti i nucleoni appaiati. È lo stesso effetto che nel capitolo precedente ha richiesto il termine di pairing nella formula semiempirica.
+
+\subsection{La barriera coulombiana}
+
+Il decadimento è reso possibile dalla repulsione coulombiana, che nei nuclei pesanti è talmente forte da poter espellere spontaneamente un frammento carico. Il potenziale visto dalla particella $\alpha$ è quello della figura \ref{fig:barriera}: una buca attrattiva fino al raggio di contatto $a$, e oltre quel raggio la sola repulsione coulombiana $2Ze^2/r$.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=11cm, height=6.6cm,
+    axis lines=middle, axis line style={-latex},
+    xlabel={$r$}, ylabel={$V(r)$},
+    xlabel style={at={(ticklabel* cs:1)}, anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)}, anchor=south east},
+    xmin=0, xmax=78, ymin=-46, ymax=40,
+    xtick={9,52}, xticklabels={$a$,$b$},
+    ytick={5,30}, yticklabels={$Q$,$V(a)$},
+    clip=false,
+]
+\draw[black, very thick] (axis cs:0,-40) -- (axis cs:9,-40);
+\draw[black, very thick] (axis cs:9,-40) -- (axis cs:9,28.8);
+\addplot[black, very thick, domain=9:76, samples=200] {259.2/x};
+\draw[black, thick] (axis cs:0,5) -- (axis cs:60,5);
+\draw[latex-latex, gray] (axis cs:9,13) -- (axis cs:52,13);
+\node[anchor=south, font=\small, gray] at (axis cs:30,13.3) {tunnel};
+\draw[dashed, gray] (axis cs:9,0) -- (axis cs:9,-40);
+\draw[dashed, gray] (axis cs:52,0) -- (axis cs:52,5);
+\draw[dashed, gray] (axis cs:0,28.8) -- (axis cs:9,28.8);
+\node[anchor=east, font=\small] at (axis cs:-1,-40) {$-V_0$};
+\node[anchor=west, font=\small] at (axis cs:62,8.5) {$2Ze^2/r$};
+\end{axis}
+\end{tikzpicture}
+\caption{Barriera coulombiana vista dalla particella $\alpha$ nel decadimento del $^{232}\mathrm{U}$.}
+\label{fig:barriera}
+\end{figure}
+
+Stimiamo i due raggi per il decadimento $^{232}_{92}\mathrm{U} \to {}^{228}_{90}\mathrm{Th} + \alpha$. Il raggio di contatto è la somma dei due raggi nucleari
+%
+\begin{equation*}
+    a = r_0 (228)^{1/3} + R_\alpha \simeq 7,7 \ \mathrm{fm} + 1,3 \ \mathrm{fm} = 9 \ \mathrm{fm}
+\end{equation*}
+e l'energia coulombiana in quel punto vale, usando $e^2/\hbar c = 1/137$ e $\hbar c \simeq 200$ MeV\,fm,
+%
+\begin{equation*}
+    V(a) = \frac{2 \cdot 90 \, e^2}{a} = 180 \cdot \frac{1}{137}\cdot\frac{200 \ \mathrm{MeV \, fm}}{9 \ \mathrm{fm}} \simeq 30 \ \mathrm{MeV}
+\end{equation*}
+Il raggio $b$ è invece quello a cui la barriera scende al valore dell'energia disponibile, $V(b) = Q \simeq 5$ MeV, da cui
+%
+\begin{equation*}
+    b = \frac{2\cdot 90 \, e^2}{Q} = \frac{180}{5}\cdot\frac{200}{137} \ \mathrm{fm} \simeq 52 \ \mathrm{fm}
+\end{equation*}
+
+Il risultato è che la particella $\alpha$ esce con $5$ MeV da una barriera alta $30$ MeV. \emph{Classicamente il decadimento è impossibile}: nella regione fra $a$ e $b$ l'energia cinetica sarebbe negativa, e la particella non può trovarsi lì.
+
+\subsection{Stima della costante di decadimento}
+
+Il modello consiste nell'immaginare la particella $\alpha$ come già formata all'interno del nucleo, dove rimbalza avanti e indietro contro le pareti della buca. A ogni urto contro la barriera ha una piccola probabilità $P$ di attraversarla, per cui
+%
+\begin{equation}
+    \lambda = \nu \cdot P
+\end{equation}
+dove $\nu$ è il numero di urti al secondo.
+
+La frequenza degli urti si stima subito. Supponendo che dentro la buca la particella abbia un'energia cinetica $T \simeq 10$ MeV e usando $m_\alpha c^2 \simeq 4000$ MeV,
+%
+\begin{equation*}
+    \frac{v}{c} = \sqrt{\frac{2T}{m_\alpha c^2}} \simeq \sqrt{\frac{20}{4000}} \simeq \frac{1}{14}
+\end{equation*}
+e percorrendo un tratto dell'ordine di $10$ fm fra un urto e l'altro
+%
+\begin{equation}
+    \nu = \frac{v}{2a} \sim \frac{c}{20 \cdot 10 \ \mathrm{fm}} \simeq 1,5 \cdot 10^{21} \ \mathrm{s}^{-1}
+\end{equation}
+
+Resta da calcolare $P$, cioè la probabilità di attraversare la barriera, e qui entra in gioco tutto il capitolo. Nella regione classicamente proibita la particella si comporta come un'\emph{onda evanescente}, esattamente come il campo elettrico oltre l'interfaccia nella riflessione totale: la sua ampiezza decade esponenzialmente, e la probabilità di uscire dipende esponenzialmente dalla larghezza della barriera, cioè dalla distanza fra $a$ e $b$.
+
+Che il meccanismo sia questo si vede già dagli ordini di grandezza. Per il $^{238}\mathrm{U}$, con $T_{1/2} = 4,47 \cdot 10^9$ anni, si ha $\lambda = \ln 2 / T_{1/2} \simeq 5 \cdot 10^{-18} \ \mathrm{s}^{-1}$, da cui
+%
+\begin{equation*}
+    P = \frac{\lambda}{\nu} \sim 10^{-39}
+\end{equation*}
+La particella $\alpha$ urta la barriera $10^{21}$ volte al secondo per miliardi di anni, e a ogni tentativo ha una probabilità su $10^{39}$ di passare. Soltanto una dipendenza esponenziale può produrre numeri del genere, ed è proprio questa dipendenza a spiegare la legge di Geiger-Nuttall \eqref{eq:geiger_nuttall}: una piccola variazione di $Q$ sposta $b$, cambia la larghezza della barriera e modifica di molti ordini di grandezza la vita media.
