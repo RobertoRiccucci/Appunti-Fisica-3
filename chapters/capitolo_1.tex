@@ -52,14 +52,14 @@ Ognuna delle particelle elementari che costituiscono l'insieme ha, in ogni istan
 
 Supponiamo di considerare $N$ nuclei radioattivi, ciascuno con costante di decadimento $\lambda$, allora, per come abbiamo definito la costante di decadimento, in un istante $t + dt$ vale
 
-\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
 \begin{equation}
     N(t + dt) = N(t) - N(t) \cdot \lambda \ dt \implies \frac{dN}{dt} = - \lambda \ N
 \end{equation}
 \end{tcolorbox}
 Quindi risolvendo questa equazione differenziale con il metodo di separazione delle variabili si ottiene 
 
-\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
 \begin{equation}
     N(t) = N(0) e^{-\lambda t}
 \end{equation}
@@ -71,7 +71,7 @@ Quindi risolvendo questa equazione differenziale con il metodo di separazione de
 \end{equation}
 Questo significa che la vita media non è altro che l'inverso della costante di decadimento 
 
-\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
 \begin{equation}
     \tau = \frac{1}{\lambda}
 \end{equation}
@@ -81,7 +81,7 @@ Questo significa che la vita media non è altro che l'inverso della costante di 
 
 Un'altra quantità utile, in quanto permette di ricavare $\lambda$ attraverso dati sperimentali facilmente acquisibili, è l'attività\mkeyword{attività}, definita come 
 
-\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
 \begin{equation}
     \mathcal{A}(t) = \left|\frac{dN}{dt}\right|
 \end{equation}
@@ -117,7 +117,7 @@ Le costanti $\lambda_i$ determinano le probabilità relative, infatti se volessi
 \end{equation}
 Da cui, sostituendo la \eqref{eq:decadimento_molti_canali} e integrando da $0$ a $t$, si ottiene 
 
-\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
 \begin{equation}
     N_1(t) = \left(\frac{\lambda_1}{\lambda}\right) N_0 \ (1 - e^{-\lambda t})
 \end{equation}
@@ -135,7 +135,7 @@ Un sistema quantistico che si trova inizialmente in un determinato stato stazion
 Adottiamo quindi il seguente approccio: si assume che il potenziale sia della forma $\hat{V} + \hat{V}'$, dove $\hat{V}$ è il potenziale nucleare che dà gli stati stazionari e $\hat{V}'$ è un potenziale aggiuntivo molto debole che può causare transizioni tra gli stati stazionari. \\
 Trascurando per il momento $\hat{V}'$, risolviamo l'equazione di Schrödinger per l'Hamiltoniana contenente solo il potenziale $\hat{V}$ e otteniamo le funzioni d'onda nucleari stazionarie. Utilizziamo quindi tali funzioni d'onda per calcolare la probabilità di transizione tra gli "stati stazionari" sotto l'influenza di $V'$. Questa probabilità di transizione corrisponde alla costante di decadimento $\lambda$, fornita dalla Regola d'oro di Fermi, la quale dà la probabilità per unità di tempo che un sistema, preparato nello stato stazionario $|i\rangle$ dell’hamiltoniana imperturbata $\hat{H}_0$, venga trovato nello stato $|f\rangle$, per effetto di una piccola perturbazione $\hat{V}'$ aggiunta a $\hat{H}_0$\footnote{Per approfondire la Regola d'oro di Fermi si consiglia di guardare la parte sul decadimento $\beta$ dell'esercitazione \ref{Esercitazione2}}.
 %
-\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
 \begin{equation}
     \lambda = \frac{2\pi}{\hbar}|V_{fi}'|^2 \rho(E_f) \quad , \quad V_{fi}' = \int \psi_f^* V' \psi_i \ dv
 \end{equation}
@@ -209,7 +209,7 @@ Calcoliamola usando la \eqref{eq:sviluppo_energia} per il bra e la \eqref{eq:evo
 \end{equation}
 cioè
 
-\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
 \begin{equation}
     a(t) = \int dE \; P(E) \, e^{-iEt/\hbar}
     \label{eq:fourier_sopravvivenza}
@@ -240,7 +240,7 @@ Entrambi gli integrali sono esponenziali semplici e, sostituendo $t \to -t$ nel 
 \end{equation}
 Introducendo la larghezza dello stato\mkeyword{larghezza} $\Gamma_a = \hbar / \tau_a$ e dividendo per $2\pi\hbar$ si ottiene il risultato
 
-\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
 \begin{equation}
     P(E) = \frac{\Gamma_a / 2\pi}{(E - E_a)^2 + \Gamma_a^2/4}
     \label{eq:lorentziana}
@@ -316,7 +316,7 @@ Mentre per le generazioni successive, oltre al decadimento dobbiamo tenere conto
 \end{equation}
 Allora possiamo andare a identificare la catena di decadimenti come il seguente sistema di equazioni differenziali 
 
-\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
 \begin{equation}
 \begin{aligned}
 \frac{d N_1(t)}{d t} & =-\lambda_1 N_1(t) \\
@@ -331,7 +331,7 @@ Queste equazioni prendono il nome di equazioni di Bateman\mkeyword{equazioni di 
 \end{equation}
 Supponiamo adesso che il ``nipote'' sia un elemento stabile e che quindi la catena di decadimento si fermi a $A_3$. Per quanto detto sopra e usando la formula di Bateman\footnote{In realtà per questo caso la formula di Bateman non è necessaria, basterebbe risolvere il sistema formato dalle prime due equazioni differenziali} si ottiene che 
 
-\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
 \begin{equation}
 \begin{aligned}
 N_1(t) & = N_0 e^{-\lambda_1 t} \\
@@ -360,7 +360,7 @@ Il termine $e^{-\lambda_2 t}$ descriveva quindi solo il transitorio iniziale, in
 \end{equation}
 Moltiplicando per $\lambda_2$ si trova una relazione tra le attività dei due nuclei 
 
-\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
 \begin{equation}
     \lambda_2 N_2 \simeq \lambda_1 N_1
 \end{equation}
@@ -468,7 +468,7 @@ Nel decadimento $\alpha$ il nucleo emette una particella $\alpha$, che Rutherfor
 
 Il processo è quindi 
 %
-\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
 \begin{equation}
     {}^{A}_{Z}\mathrm{X}_N \longrightarrow {}^{A-4}_{Z-2}\mathrm{X}'_{N-2} + {}^{4}_{2}\mathrm{He}_2
 \end{equation}
@@ -487,7 +487,7 @@ Rutherford trovò un valore di $q/m$ pari circa alla metà di quello del nucleo 
 
 Nel decadimento $\beta$ il nucleo corregge un eccesso di protoni o di neutroni convertendo direttamente un protone in un neutrone o viceversa. Il processo può avvenire in tre modi diversi, ciascuno dei quali coinvolge un'altra particella carica affinché la carica elettrica si conservi
 %
-\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
 \begin{equation}
 \begin{aligned}
     n & \longrightarrow p + e^- + \bar{\nu}_e && \text{decadimento } \beta^- \\

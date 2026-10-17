@@ -16,7 +16,7 @@
     "scope": "latex,tex",
     "prefix": "EVI",
     "body": [
-      "\\begin{tcolorbox}[colback=yellow!10!white, colframe=orange!70!black, boxrule=0.8pt]"
+      "\\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]"
     ],
     "description": "Evidenziatore"
   },
