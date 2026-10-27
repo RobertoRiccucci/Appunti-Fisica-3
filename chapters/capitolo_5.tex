@@ -1,0 +1,304 @@
+\chapter{Reazioni nucleari}
+
+Se particelle dotate di energia, provenienti da un reattore o da un acceleratore (o persino da una sorgente radioattiva), vengono indirizzate verso un campione di materia, può verificarsi una reazione nucleare. Le prime reazioni nucleari di questo tipo furono realizzate nel laboratorio di Rutherford, utilizzando particelle $\alpha$ provenienti da una sorgente radioattiva. In alcuni di questi esperimenti pionieristici, le particelle $\alpha$ si limitarono a rimbalzare elasticamente sui nuclei bersaglio; questo fenomeno, noto da allora come diffusione di Rutherford (o scattering di Rutherford), fornì la prima prova dell'esistenza dei nuclei atomici.
+
+Il primo acceleratore di particelle in grado di indurre reazioni nucleari fu costruito da Cockcroft e Walton, i quali nel 1930 osservarono la reazione
+\begin{equation*}
+    p + \ ^{7}\text{Li} \to \ ^{4}\text{He} + \alpha
+\end{equation*}
+
+In questo capitolo andremo a discutere i vari tipi di reazioni nucleari e le loro proprietà. 
+
+\section{Tipi di reazioni nucleari}
+
+Una tipica reazione nucleare può essere scritta come 
+\begin{equation}
+    a + X \to Y + b 
+\end{equation}
+dove $a$ è il proiettile accelerato, $X$ è il bersaglio (solitamente stazionario nel laboratorio) e $Y$ e $b$ sono entrambi prodotti. Solitamente $Y$ è un prodotto pesante che si ferma nel target e non è osservato direttamente, mentre $b$ è una particella leggera che può essere vista e misurata. 
+
+\'E possibile caratterizzare molti tipi di reazioni nucleari:
+\begin{itemize}
+    \item \emph{scattering process} è il processo in cui la particella incidente e uscente sono la stessa e quindi $X$ e $Y$ sono lo stesso nucleo.
+    \item \emph{elastic process} è il processo tramite cui $Y$ e $b$ sono in uno stato non eccitato.
+    \item \emph{inelastic process} è il processo tramite cui $Y$ e $b$ sono in uno stato eccitato.
+    \item \emph{knockout reaction} si verifica quando oltre a $b$ è espulso anche un altro nucleone come prodotto. 
+    \item \emph{tranfer reaction} si ha quando uno o due nucleoni sono trasferiti tra il proiettile ed il bersaglio. 
+\end{itemize}
+
+Abbiamo a disposizione tecniche per misurare con elevata precisione le energie delle particelle in uscita e, come vedremo tra poco, siamo in grado di determinare la direzione di emissione della particella uscente e di osservarne la distribuzione angolare (solitamente rispetto all'asse del fascio incidente), contando il numero di particelle emesse a vari angoli.
+
+\section{Cross section di reazione}
+
+In linea di massima, la sezione d'urto è una misura della probabilità relativa che la reazione si verifichi. 
+
+Se abbiamo un rivelatore posizionato per registrare la particella $b$ emessa in una direzione $(\theta, \phi)$ rispetto alla direzione di un facio di particelle proiettile $a$, il rivelatore definisce un piccolo angolo solido $d \Omega$ sulla zona bersaglio. 
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>={Latex[length=3.2mm,width=2mm]}, scale=0.55]
+
+    \def\ang{15}      % angolo del cono rispetto all'asse del fascio
+    \def\half{4}      % semiapertura del cono
+    \def\L{13}        % distanza del rivelatore
+
+    % ---- fascio incidente ----
+    \foreach \y in {0.72,0,-0.72}{
+      \draw[->, thick] (-5.2,\y) -- (-0.2,\y);
+    }
+    \node at (-3.0,-1.5) {$I_a$};
+
+    % ---- bersaglio ----
+    \draw[thick] (-0.17,-5.9) -- (-0.17,5.7);
+    \draw[thick] ( 0.17,-5.9) -- ( 0.17,5.7);
+
+    % ---- asse del fascio ----
+    \draw[dashed] (0,0) -- (8.2,0);
+
+    % ---- cono ----
+    \draw[thick] (0,0) -- ({\ang+\half}:{\L/cos(\half)});
+    \draw[thick] (0,0) -- ({\ang-\half}:{\L/cos(\half)});
+    \draw[thick] (0,0) -- ({\ang}:{\L+2.3});
+
+    % ---- apertura del rivelatore ----
+    \begin{scope}[shift={(\ang:\L)}, rotate=\ang]
+      \draw[thick, pattern=dots] (0,0) ellipse [x radius=0.33, y radius={\L*tan(\half)}];
+    \end{scope}
+    \node[anchor=north west] at (13.15,2.75) {$d\Omega$};
+
+    % ---- angolo ----
+    \draw[thick] (2.6,0) arc (0:\ang:2.6);
+    \node[anchor=west] at (3.25,0.42) {$\theta,\phi$};
+
+    \end{tikzpicture}
+    \caption{Geometria di una misura di sezione d'urto differenziale.}
+    \label{fig:sezione_differenziale}
+\end{figure}
+
+Sia $I_a$ la corrente di particelle incidenti $a$ per unità di tempo e sia $N$ il numero di nuclei che il bersaglio mostra per unità di area. Se le particelle $b$ in uscita per unità di tempo sono $R_b$ , allora la sezione d'urto\mkeyword{sezione d'urto} della reazione è
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+\label{eq:sezione_urto}
+    \sigma = \frac{R_b}{I_a N}
+\end{equation}
+\end{tcolorbox}
+
+Andando a definire $\phi = I_a/A$ e ponendo $N_t$ il numero di nuclei bersaglio nel target, allora una definizione analoga è 
+\begin{equation}
+    \sigma = \frac{R_b}{\phi N_t}
+\end{equation}
+
+Si nota che la dimesione di $\sigma$ è quella di un'area, per questo andiamo a definire l'unità di misura barn\mkeyword{barn} ($\text{b}$) come 
+\begin{equation*}
+    1\ \text{b} = 10^{-28} \ \text{m}^2 = 10^{-24} \ \text{cm}^2 = 100 \ \text{fm} ^2
+\end{equation*}
+
+Il rivelatore occupa però soltanto un piccolo angolo solido $d\Omega$, e quindi non registra \emph{tutte} le particelle uscenti: ne conta solo una piccola frazione $dR_b$, da cui si deduce corrispondentemente solo una frazione $d\sigma$ della sezione d'urto. A questo si aggiunge il fatto che in generale le particelle emesse non sono distribuite uniformemente in tutte le direzioni, ma hanno una distribuzione angolare che dipende da $\theta$ ed eventualmente anche da $\phi$.\\
+
+Indicando con $r(\theta,\phi)$ questa funzione di distribuzione angolare si ha
+%
+\begin{equation}
+    dR_b = r(\theta,\phi)\,\frac{d\Omega}{4\pi}
+    \label{eq:distribuzione_angolare}
+\end{equation}
+dove il $4\pi$ è introdotto affinché $d\Omega/4\pi$ sia una frazione pura. Sostituendo nella \eqref{eq:sezione_urto} si ottiene allora
+
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \frac{d\sigma}{d\Omega} = \frac{r(\theta,\phi)}{4\pi I_a N}
+    \label{eq:sezione_differenziale_def}
+\end{equation}
+\end{tcolorbox}
+La quantità $d\sigma/d\Omega$ prende il nome di sezione d'urto differenziale\mkeyword{sezione d'urto differenziale}, e la sua misura fornisce informazioni importanti sulla distribuzione angolare dei prodotti di reazione. L'unità di misura della sezione d'urto differenziale è il barn su steradiante.\\
+
+La sezione d'urto di reazione $\sigma$ si ottiene integrando $d\sigma/d\Omega$ su tutti gli angoli; ricordando che $d\Omega = \sin\theta \, d\theta \, d\phi$ si ha
+%
+\begin{equation}
+    \sigma = \int \frac{d\sigma}{d\Omega} \, d\Omega = \int_0^{\pi} \sin\theta \, d\theta \int_0^{2\pi} d\phi \; \frac{d\sigma}{d\Omega}
+    \label{eq:sigma_integrata}
+\end{equation}
+
+Si osservi che se $d\sigma/d\Omega$ è costante, cioè indipendente dall'angolo, l'integrale dà $\sigma = 4\pi \, (d\sigma/d\Omega)$. È questo che giustifica l'inserimento della costante $4\pi$ nella \eqref{eq:sezione_differenziale_def}: in quel caso infatti $r(\theta,\phi)$ si riduce alla costante $R_b$ e la \eqref{eq:sezione_differenziale_def} torna a coincidere con la \eqref{eq:sezione_urto}.
+
+\subsection{Assornimento dei neutroni}
+
+Supponiamo di essere nel caso in cui le particelle proiettile $a$ sono dei neutroni.
+
+Nell'attraversare uno spessore $dx$ di materiale, i neutroni incontrano $n^* dx$ atomi per unità di superficie del fascio, o equivalentemente del materiale, dove $n^*$ è il numero di atomi per unità di volume.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>={Latex[length=2.2mm,width=1.4mm]},
+                        every node/.style={font=\small}]
+
+    \def\dx{1.7}     % spessore della fetta
+    \def\H{2.2}      % semialtezza del materiale
+    \def\Ry{0.95}    % raggio del fascio
+    \def\Rx{0.24}    % scorcio prospettico
+
+    % ---- fetta di materiale ----
+    \fill[black!4] (0,-\H) rectangle (\dx,\H);
+    \draw[semithick] (0,-\H) rectangle (\dx,\H);
+
+    % ---- cilindro di volume A dx ----
+    \draw (0,\Ry) -- (\dx,\Ry);
+    \draw (0,-\Ry) -- (\dx,-\Ry);
+    \draw (\dx,0) ellipse [x radius=\Rx, y radius=\Ry];
+    \draw (0,0) ellipse [x radius=\Rx, y radius=\Ry];
+    \node[anchor=south east] at (-0.28,0.98) {$A$};
+
+    % ---- diffusori ----
+    \foreach \p in {(0.35,1.62),(1.22,1.88),(0.52,0.58),(1.30,0.40),
+                    (0.28,-0.52),(1.05,-0.80),(0.44,-1.72),(1.34,-1.42),(0.88,1.18)}
+      {\fill \p circle (0.055);}
+    \fill (0.80,0) circle (0.055);
+    \node[anchor=south] at (\dx/2,\H+0.08) {$n^*$};
+
+    % ---- fascio entrante ----
+    \foreach \y in {0.5,-0.5}{\draw[->, semithick] (-3.3,\y) -- (-0.1,\y);}
+    \draw[semithick] (-3.3,0) -- (0.80,0);
+    \node at (-1.9,-1.25) {$I(x)$};
+
+    % ---- fascio uscente ----
+    \foreach \y in {0.5,-0.5}{\draw[->, semithick] (\dx+0.1,\y) -- (\dx+3.0,\y);}
+    \node at (\dx+1.6,-1.25) {$I(x+dx)$};
+
+    % ---- particella diffusa ----
+    \draw[->, semithick] (0.80,0) -- (\dx+2.6,2.35);
+    \node[anchor=north west, font=\footnotesize] at (2.95,1.26) {esce dal fascio};
+
+    % ---- asse ----
+    \draw (-0.9,-\H-0.75) -- (\dx+0.9,-\H-0.75);
+    \draw (0,-\H-0.63) -- (0,-\H-0.87);
+    \draw (\dx,-\H-0.63) -- (\dx,-\H-0.87);
+    \node[anchor=north] at (0,-\H-0.95) {$x$};
+    \node[anchor=north] at (\dx,-\H-0.95) {$x+dx$};
+
+    \end{tikzpicture}
+    \caption{Attenuazione di un fascio attraverso uno spessore infinitesimo di materiale. Il cilindro di sezione $A$ e altezza $dx$ contiene $n^*A\,dx$ centri diffusori; una particella che ne incontra uno viene rimossa dal fascio, sia che venga assorbita sia che venga semplicemente deviata.}
+    \label{fig:attenuazione}
+\end{figure}
+
+Se supponiamo che ciascun nucleo nella ragione di nostro interesse abbia un'area $a$, allora la frazione di fascio bloccata dalla striscia di spessore $dx$ è $a n^* dx$, questo vuol dire 
+\begin{equation}
+    I(x + dx) = I(x) - I(x) \ a n^* dx \implies I(x) = I_0 e^{- an^* x}
+\end{equation}
+
+Per un bersaglio vero questo conto, però, non si può fare, perché non sappiamo che forma abbia “l’ostacolo”: l’interazione è quantistica, il nucleo non ha un bordo netto, e la probabilità di interagire non è una questione di sovrapposizione di sagome. Quello che si fa è rovesciare la logica. Si misura il tasso di rimozione $R$ e si definisce
+\begin{equation}
+    \sigma \equiv \frac{R}{I_a N}
+\end{equation}
+cioè: $\sigma$ è l’area che un dischetto opaco dovrebbe avere per produrre il tasso di rimozione che è stato effettivamente osservato. Non è un’area misurata, è un’area equivalente. È esattamente quello che significa l’aggettivo “efficace” quando si dice “sezione d’urto efficace”.
+
+Sostituendo $\sigma$ al posto di $a$ nella relazione precedente, otteniamo 
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    I(x) = I_0 e^{- \sigma n^* x}
+\end{equation}
+\end{tcolorbox}
+
+Come fatto con i decadimenti, anche in questo caso si può calcolare il cammino libero medio $\lambda$\mkeyword{cammino libero medio}
+\begin{equation}
+    \langle x \rangle = \frac{\int_0^{\infty} x e^{-\sigma n^* x} dx}{\int_0^{\infty} e^{-\sigma n^* x} dx} = \frac{1}{n^* \sigma}
+\end{equation} 
+Quindi
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \lambda = \frac{1}{n^* \sigma}
+\end{equation}
+\end{tcolorbox}
+
+\subsection{Caso deterministico a simmetria cilindrica}
+
+Fin qui la sezione d'urto è stata definita operativamente, come rapporto fra quantità misurate, e della sua interpretazione come area non abbiamo fatto uso. Esiste però un caso particolare in cui quell'interpretazione diventa letterale e $d\sigma/d\Omega$ si può calcolare per via puramente geometrica. Le ipotesi sono due.\\
+
+La prima è che il moto sia classico e deterministico: fissati il potenziale e la velocità iniziale $v_0$, la traiettoria è completamente determinata dal parametro d'impatto\mkeyword{parametro d'impatto} $b$, cioè dalla distanza fra la direzione di arrivo e l'asse che passa per il centro diffusore. Lanciando lo stesso proiettile nelle stesse condizioni si ottiene sempre lo stesso risultato, e questo significa che esiste una funzione
+%
+\begin{equation}
+    \theta = \theta(b)
+    \label{eq:mappa_b_theta}
+\end{equation}
+che supporremo invertibile. \\
+La seconda ipotesi è che il potenziale sia centrale, per cui il problema ha simmetria cilindrica attorno all'asse del fascio: l'angolo azimutale con cui la particella arriva non influisce su quanto viene deflessa, e di conseguenza $d\sigma/d\Omega$ dipende solo da $\theta$ e non da $\phi$.\\
+
+Sotto queste ipotesi "la sezione d'urto per diffondere entro $d\Omega$" ha un significato geometrico diretto: è l'\emph{area del fascio incidente occupata dalle particelle che finiranno in quel cono}. Non è più un'area equivalente ma proprio la superficie che occorre colpire per ottenere quella deflessione.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>={Latex[length=2.2mm,width=1.4mm]},
+                        every node/.style={font=\small}]
+
+    \def\b{0.90}\def\bb{1.35}
+    \def\T{50}\def\R{4.4}
+    \pgfmathsetmacro{\cx}{\R*cos(\T)}      % centro dell'anello di arrivo
+    \pgfmathsetmacro{\ry}{\R*sin(\T)}      % raggio dell'anello di arrivo
+
+    % ---- anello di arrivo ----
+    \fill[black!12, even odd rule] (\cx,0) ellipse [x radius=0.50, y radius={\ry+0.18}]
+                                   (\cx,0) ellipse [x radius=0.42, y radius={\ry-0.18}];
+    \draw[thin] (\cx,0) ellipse [x radius=0.50, y radius={\ry+0.18}];
+    \draw[thin] (\cx,0) ellipse [x radius=0.42, y radius={\ry-0.18}];
+    \node[anchor=north, font=\footnotesize] at (\cx,{-\ry-0.30}) {$2\pi\sin\theta\,d\theta$};
+
+    % ---- asse ----
+    \draw[dashed,->] (-6.9,0) -- (6.2,0) node[below] {$z$};
+    \fill (0,0) circle (0.07);
+
+    % ---- corona circolare di partenza ----
+    \fill[black!12, even odd rule] (-4.9,0) ellipse [x radius=0.26, y radius=\bb]
+                                   (-4.9,0) ellipse [x radius=0.26, y radius=\b];
+    \draw[thin] (-4.9,0) ellipse [x radius=0.26, y radius=\bb];
+    \draw[thin] (-4.9,0) ellipse [x radius=0.26, y radius=\b];
+    \node[anchor=north, font=\footnotesize] at (-4.9,{-\bb-0.22}) {$d\sigma = 2\pi b\,db$};
+
+    % ---- traiettorie ----
+    \draw[semithick] (-6.9,\b)  .. controls (-1.0,\b)  and (1.55,{\b+1.15})  .. (\cx,{\ry-0.18});
+    \draw[semithick] (-6.9,\bb) .. controls (-1.0,\bb) and (1.55,{\bb+1.15}) .. (\cx,{\ry+0.18});
+
+    % ---- raggio R ----
+    \draw[thin] (0,0) -- (\T:\R);
+    \node[anchor=north west] at (\T:2.1) {$R$};
+
+    % ---- elemento di rivelatore ----
+    \begin{scope}[rotate around={{\T-90}:(\cx,\ry)}]
+      \fill[white] (\cx-0.32,\ry-0.32) rectangle (\cx+0.32,\ry+0.32);
+      \draw[semithick] (\cx-0.32,\ry-0.32) rectangle (\cx+0.32,\ry+0.32);
+    \end{scope}
+    \node[anchor=south west] at ({\cx+0.52},{\ry+0.40}) {$dA$};
+
+    % ---- quote b e db ----
+    \draw[<->] (-5.85,0) -- (-5.85,\b);    \node[anchor=east] at (-5.92,0.46) {$b$};
+    \draw[<->] (-5.85,\b) -- (-5.85,\bb);  \node[anchor=east] at (-5.92,{(\b+\bb)/2}) {$db$};
+
+    % ---- angolo ----
+    \draw (1.45,0) arc (0:\T:1.45);
+    \node[anchor=west] at ({\T/2}:1.66) {$\theta$};
+
+    % ---- formula ----
+    \node[anchor=west] at (4.6,2.35) {$d\Omega = \dfrac{dA}{R^2}$};
+
+    \end{tikzpicture}
+    \caption{Diffusione classica da un potenziale centrale. Le particelle che entrano nella corona circolare di raggio $b$ e spessore $db$, di area $d\sigma = 2\pi b\,db$, escono tutte attraverso l'anello di raggio $R\sin\theta$ posto a distanza $R$ dal bersaglio, che sottende l'angolo solido $d\Omega = 2\pi\sin\theta\,d\theta$.}
+    \label{fig:scattering_classico}
+\end{figure}
+
+Consideriamo allora tutte le particelle che arrivano con parametro d'impatto compreso fra $b$ e $b+db$. Per la simmetria cilindrica esse subiscono la stessa deflessione qualunque sia il loro $\phi$, e nel piano occupano una corona circolare di raggio $b$ e spessore $db$, la cui area è
+%
+\begin{equation}
+    d\sigma = 2\pi b \, db
+    \label{eq:corona}
+\end{equation}
+Queste stesse particelle escono, per la \eqref{eq:mappa_b_theta}, nel cono compreso fra $\theta$ e $\theta+d\theta$, che sulla sfera unitaria individua una fascia di circonferenza $2\pi\sin\theta$ e larghezza $d\theta$, cioè sottende l'angolo solido
+%
+\begin{equation}
+    d\Omega = 2\pi \sin\theta \, d\theta
+    \label{eq:fascia}
+\end{equation}
+Dividendo la \eqref{eq:corona} per la \eqref{eq:fascia} i fattori $2\pi$ si semplificano e si ottiene
+
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \frac{d\sigma}{d\Omega} = \frac{b}{\sin\theta}\left|\frac{db}{d\theta}\right|
+    \label{eq:sezione_classica}
+\end{equation}
+\end{tcolorbox}
