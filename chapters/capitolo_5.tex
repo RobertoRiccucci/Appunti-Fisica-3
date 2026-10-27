@@ -23,7 +23,7 @@ dove $a$ è il proiettile accelerato, $X$ è il bersaglio (solitamente stazionar
     \item \emph{elastic process} è il processo tramite cui $Y$ e $b$ sono in uno stato non eccitato.
     \item \emph{inelastic process} è il processo tramite cui $Y$ e $b$ sono in uno stato eccitato.
     \item \emph{knockout reaction} si verifica quando oltre a $b$ è espulso anche un altro nucleone come prodotto. 
-    \item \emph{tranfer reaction} si ha quando uno o due nucleoni sono trasferiti tra il proiettile ed il bersaglio. 
+    \item \emph{transfer reaction} si ha quando uno o due nucleoni sono trasferiti tra il proiettile ed il bersaglio. 
 \end{itemize}
 
 Abbiamo a disposizione tecniche per misurare con elevata precisione le energie delle particelle in uscita e, come vedremo tra poco, siamo in grado di determinare la direzione di emissione della particella uscente e di osservarne la distribuzione angolare (solitamente rispetto all'asse del fascio incidente), contando il numero di particelle emesse a vari angoli.
@@ -32,7 +32,7 @@ Abbiamo a disposizione tecniche per misurare con elevata precisione le energie d
 
 In linea di massima, la sezione d'urto è una misura della probabilità relativa che la reazione si verifichi. 
 
-Se abbiamo un rivelatore posizionato per registrare la particella $b$ emessa in una direzione $(\theta, \phi)$ rispetto alla direzione di un facio di particelle proiettile $a$, il rivelatore definisce un piccolo angolo solido $d \Omega$ sulla zona bersaglio. 
+Se abbiamo un rivelatore posizionato per registrare la particella $b$ emessa in una direzione $(\theta, \phi)$ rispetto alla direzione di un fascio di particelle proiettile $a$, il rivelatore definisce un piccolo angolo solido $d \Omega$ sulla zona bersaglio. 
 
 \begin{figure}[htbp]
     \centering
@@ -75,7 +75,7 @@ Se abbiamo un rivelatore posizionato per registrare la particella $b$ emessa in 
     \label{fig:sezione_differenziale}
 \end{figure}
 
-Sia $I_a$ la corrente di particelle incidenti $a$ per unità di tempo e sia $N$ il numero di nuclei che il bersaglio mostra per unità di area. Se le particelle $b$ in uscita per unità di tempo sono $R_b$ , allora la sezione d'urto\mkeyword{sezione d'urto} della reazione è
+Sia $I_a$ la corrente di particelle incidenti $a$ per unità di tempo e sia $N$ il numero di nuclei che il bersaglio mostra per unità di area. Se le particelle $b$ in uscita per unità di tempo sono $R_b$, allora la sezione d'urto\mkeyword{sezione d'urto} della reazione è
 \begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
 \begin{equation}
 \label{eq:sezione_urto}
@@ -88,7 +88,7 @@ Andando a definire $\phi = I_a/A$ e ponendo $N_t$ il numero di nuclei bersaglio 
     \sigma = \frac{R_b}{\phi N_t}
 \end{equation}
 
-Si nota che la dimesione di $\sigma$ è quella di un'area, per questo andiamo a definire l'unità di misura barn\mkeyword{barn} ($\text{b}$) come 
+Si nota che la dimensione di $\sigma$ è quella di un'area, per questo andiamo a definire l'unità di misura barn\mkeyword{barn} ($\text{b}$) come 
 \begin{equation*}
     1\ \text{b} = 10^{-28} \ \text{m}^2 = 10^{-24} \ \text{cm}^2 = 100 \ \text{fm} ^2
 \end{equation*}
@@ -120,7 +120,7 @@ La sezione d'urto di reazione $\sigma$ si ottiene integrando $d\sigma/d\Omega$ s
 
 Si osservi che se $d\sigma/d\Omega$ è costante, cioè indipendente dall'angolo, l'integrale dà $\sigma = 4\pi \, (d\sigma/d\Omega)$. È questo che giustifica l'inserimento della costante $4\pi$ nella \eqref{eq:sezione_differenziale_def}: in quel caso infatti $r(\theta,\phi)$ si riduce alla costante $R_b$ e la \eqref{eq:sezione_differenziale_def} torna a coincidere con la \eqref{eq:sezione_urto}.
 
-\subsection{Assornimento dei neutroni}
+\subsection{Assorbimento dei neutroni}
 
 Supponiamo di essere nel caso in cui le particelle proiettile $a$ sono dei neutroni.
 
@@ -179,7 +179,7 @@ Nell'attraversare uno spessore $dx$ di materiale, i neutroni incontrano $n^* dx$
     \label{fig:attenuazione}
 \end{figure}
 
-Se supponiamo che ciascun nucleo nella ragione di nostro interesse abbia un'area $a$, allora la frazione di fascio bloccata dalla striscia di spessore $dx$ è $a n^* dx$, questo vuol dire 
+Se supponiamo che ciascun nucleo nella regione di nostro interesse abbia un'area $a$, allora la frazione di fascio bloccata dalla striscia di spessore $dx$ è $a n^* dx$, questo vuol dire 
 \begin{equation}
     I(x + dx) = I(x) - I(x) \ a n^* dx \implies I(x) = I_0 e^{- an^* x}
 \end{equation}
@@ -302,3 +302,108 @@ Dividendo la \eqref{eq:corona} per la \eqref{eq:fascia} i fattori $2\pi$ si semp
     \label{eq:sezione_classica}
 \end{equation}
 \end{tcolorbox}
+
+\newpage
+
+\subsection*{Scattering di Rutherford}
+
+Un esempio di caso deterministico a geometria cilindrica si ha nello scattering di Rutherford. 
+
+Supponiamo di lanciare una particella proiettile $a$ con velocità $v_0$ e carica $ze$ verso una carica centrale $Ze$ con parametro di impatto $b$. 
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>={Latex[length=2.2mm,width=1.4mm]},
+                        every node/.style={font=\small}]
+
+    % iperbole con  b = 1,287   d = 1,200   theta = 50 gradi
+    % x(t) = -0.6 - 0.71 e^t + 0.4564 e^-t        y(t) = 1.287 + 0.5438 e^-t
+
+    % ---- nucleo ----
+    \fill (0,0) circle (0.32);
+
+    % ---- traiettoria con parametro d'impatto b ----
+    \draw[semithick, domain=-1.8:2.2, samples=140, variable=\t, smooth]
+       plot ({-0.6 - 0.71*exp(\t) + 0.4564*exp(-\t)}, {1.287 + 0.5438*exp(-\t)});
+
+    % ---- traiettoria frontale (b = 0) ----
+    \draw[semithick] (-7.1,0.09) -- (-1.29,0.09) arc (90:-90:0.09) -- (-7.1,-0.09);
+    \draw[->, semithick] (-4.9,0.09) -- (-4.45,0.09);
+    \draw[->, semithick] (-4.45,-0.09) -- (-4.9,-0.09);
+
+    % ---- velocita' iniziale ----
+    \draw[->, semithick] (-5.35,1.372) -- (-4.75,1.376);
+    \node[anchor=south] at (-5.05,1.42) {$v$};
+
+    % ---- punto di massimo avvicinamento ----
+    \fill (-0.854,1.831) circle (0.065);
+    \draw[->, semithick] (-0.854,1.831) -- (-0.129,2.169);
+    \node[anchor=south east] at (-0.90,1.90) {$v_{\min}$};
+
+    % ---- r_min ----
+    \draw[thin] (-0.135,0.290) -- (-0.80,1.715);
+    \node[anchor=west] at (-0.46,0.78) {$r_{\min}$};
+
+    % ---- semirette e angolo di deflessione ----
+    \draw[dashed, thin] (0.32,0) -- (3.15,0);
+    \draw[dashed, thin] (50:0.32) -- (50:3.65);
+    \draw (1.35,0) arc (0:50:1.35);
+    \node[anchor=west] at (25:1.52) {$\theta$};
+
+    % ---- quota b ----
+    \draw[<->] (-6.6,0) -- (-6.6,1.351);
+    \node[anchor=east] at (-6.68,0.68) {$b$};
+
+    % ---- quota d ----
+    \draw[<->] (-1.20,-0.70) -- (0,-0.70);
+    \node[anchor=north] at (-0.60,-0.76) {$d$};
+    \draw[dotted] (-1.20,-0.14) -- (-1.20,-0.66);
+    \draw[dotted] (0,-0.38) -- (0,-0.66);
+
+    \end{tikzpicture}
+    \caption{Scattering di Rutherford. Una particella di carica $ze$ lanciata con velocità $v$ e parametro d'impatto $b$ contro una carica centrale $Ze$ percorre un'iperbole, raggiungendo la distanza minima $r_{\min}$ dove la velocità vale $v_{\min}$, ed emerge deflessa di un angolo $\theta$. Nel caso frontale $b = 0$ la particella si arresta a distanza $d$ dal centro e torna indietro.}
+    \label{fig:rutherford}
+\end{figure}
+
+Possiamo passare da coordinate cilindriche a coordinate cartesiane, e viceversa, tramite la relazione 
+\begin{align}
+    x &= r \cos(\alpha)\\
+    y &= r \sin(\alpha)
+\end{align}
+
+Dove si ha che $\alpha(t = -\infty) = \pi$ , $\alpha (t = + \infty) = \theta$. 
+
+Se vogliamo trovare la sezione d'urto differenziale in questo caso, sfruttando la \eqref{eq:sezione_classica}, dobbiamo trovare una relazione esplicita tra $b$ e $\theta$. 
+
+In questo caso l'unico potenziale in gioco è quello elettrostatico e quindi si ha 
+\begin{equation}
+    V(r) = \frac{zZe^2}{r}
+\end{equation}
+Iniziamo sfruttando la relazione
+\begin{equation}
+    m v_0 \sin(\theta) = \int_{-\infty}^{+ \infty} F_y (t) dt = \int_{-\infty}^{+ \infty} - \frac{dV}{dy} dt
+\end{equation}
+cambiamo variabile di derivazione tramite $r dr = y dy$
+\begin{equation*}
+    m v_0 \sin(\theta) = - \int_{-\infty}^{+ \infty} \frac{dV}{dr} \frac{y}{r} dt = - \int_{-\infty}^{+ \infty} \frac{dV}{dr} \sin(\alpha) dt
+\end{equation*}
+Vogliamo cambiare la variabile di integrazione in modo da integrare su $\alpha$ e non sul tempo (è facile convincersi che c'è una corrispondenza biunivoca tra l'angolo $\alpha$ e il tempo $t$). Per far questo usiamo la conservazione del momento angolare. 
+\begin{equation*}
+    L = mv_0 b = - I \dot{\alpha} = - m r^2 \dot{\alpha} \implies dt = - \frac{r^2}{v_0 b} d\alpha
+\end{equation*}
+Quindi 
+\begin{align*}
+    m v_0 \sin(\theta) = \int_{\pi}^{\theta} \frac{dV}{dr} \sin(\theta) \frac{r^2}{v_0 b} d\alpha = - \frac{zZ e^2}{v_0 b} \int_{\pi}^{\theta} \sin(\alpha) d\alpha = \frac{mzZe^2}{p b} (1 + \cos(\theta))
+\end{align*}
+Dove nell'ultimo passaggio siamo passati dalla velocità $v_0$ alla quantità di moto $p$. Esplicitando $b$
+\begin{equation}
+    b = \frac{m zZ e^2}{p^2} \frac{1 + \cos(\theta)}{\sin(\theta)} = \frac{m zZ e^2}{p^2} \frac{\cos(\theta/2)}{\sin(\theta/2)} 
+\end{equation}
+
+A questo punto sostituendo nella \eqref{eq:sezione_classica} si ottiene la sezione d'urto differenziale 
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \frac{d\sigma}{d\Omega} = \frac{b}{\sin(\theta)} \left|\frac{db}{d\theta}\right| = \left(\frac{m zZ e^2}{2 p^2}\right)^{2} \frac{1}{\sin^4(\theta/2)}
+\end{equation}
+\end{tcolorbox}
+Questa sezione d'urto prende il nome di sezione d'urto di Rutherford\mkeyword{sezione d'urto di Rutherford}. Si noti in particolare la dipendenza da $\sin^{-4}(\theta/2)$, che è una caratteristica peculiare.
