@@ -407,3 +407,330 @@ A questo punto sostituendo nella \eqref{eq:sezione_classica} si ottiene la sezio
 \end{equation}
 \end{tcolorbox}
 Questa sezione d'urto prende il nome di sezione d'urto di Rutherford\mkeyword{sezione d'urto di Rutherford}. Si noti in particolare la dipendenza da $\sin^{-4}(\theta/2)$, che è una caratteristica peculiare.
+
+\subsection*{Distribuzione isotropa}
+
+Un ulteriore esempio è quello in cui la sezione d’urto differenziale, che normalizzata alla sezione d’urto totale dà la densità di probabilità che una particella diffusa esca nella direzione $(\theta,\varphi)$, è isotropa, cioè 
+\begin{equation}
+\label{eq:isotropa}
+    \frac{d\sigma}{d\Omega} = \text{costante} = L^2
+\end{equation}
+
+Prima di iniziare è utile osservare che, nella maggior parte dei casi, la \eqref{eq:sezione_classica} può essere scritta come 
+\begin{equation}
+    \frac{d\sigma}{d\Omega}  = f(\theta) = - \frac{b}{\sin(\theta)} \frac{db}{d\theta}
+\end{equation}
+Questo perché siamo in geometria cilindrica e quindi non si ha dipendenza dal paramentro azimutale $\varphi$ e perché solitamente $db/d\theta < 0$ in quanto più la particella si allontana dal centro e meno viene deviata. Dalla relazione in questa forma si ottiene  
+\begin{equation}
+    b \ db = - f(\theta) \sin(\theta) \ d\theta \implies b^2(\theta) = 2 \int_{\theta}^{\pi} f(t) \sin(t) \ dt
+\end{equation}
+
+Supponendo di essere nel caso \eqref{eq:isotropa}, cioè supponendo di avere $f(\theta) = L^2$, si trova
+\begin{align*}
+    b^2(\theta) = 2L^2 \int_{\theta}^{\pi} \sin(t) \ dt = 2L^2 (1 + \cos(\theta)) = 4 L^2 \cos^2(\theta/2)
+\end{align*}
+Quindi 
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    b(\theta) = 2L \cos(\theta/2)
+\end{equation}
+\end{tcolorbox}
+Si nota, allora, che $b$ è limitato, \emph{cosa che porta ad essere limitato anche il potenziale}. Inoltre si vede che $\sigma = \pi b_{\text{max}}^2 = 4\pi L^2$.  
+
+\subsection*{Potenziale centrale $V(r) \propto r^{-2}$}
+
+Supponiamo di essere nel caso di un potenziale centrale $V(r)$. Come negli altri esempi, cerchiamo una relazione tra $b$ e $\theta$, tuttavia questa volta lo facciamo sfruttando la grandezza $\phi$, definita come l'angolo in cui la particella è nel punto più vicino al centro. 
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>={Latex[length=2.2mm,width=1.4mm]},
+                        every node/.style={font=\small}]
+
+    % iperbole con b = 1,287 , theta = 50 gradi , phi = 65 gradi
+    % punto di minimo avvicinamento: (-0,854 ; 1,831) , direzione absidale a 115 gradi
+
+    % ---- centro di forza ----
+    \fill (0,0) circle (0.075);
+
+    % ---- asse: direzione incidente prolungata ----
+    \draw[dashed, thin] (-7.1,0) -- (4.2,0);
+
+    % ---- asintoto uscente ----
+    \draw[dashed, thin] (0,0) -- (50:4.2);
+
+    % ---- traiettoria ----
+    \draw[semithick, domain=-1.8:2.2, samples=140, variable=\t, smooth]
+       plot ({-0.6 - 0.71*exp(\t) + 0.4564*exp(-\t)}, {1.287 + 0.5438*exp(-\t)});
+    \draw[->, semithick] (2.043,4.577) -- (2.27,4.83);
+
+    % ---- velocita' incidente ----
+    \draw[->, semithick] (-5.35,1.372) -- (-4.75,1.376);
+    \node[anchor=south] at (-5.05,1.42) {$v$};
+
+    % ---- punto di minimo avvicinamento e raggio ----
+    \fill (-0.854,1.831) circle (0.065);
+    \draw[thin] (0,0) -- (-0.854,1.831);
+    \node[anchor=east] at (-0.66,1.27) {$r_{\min}$};
+
+    % ---- quota b ----
+    \draw[<->] (-6.5,0) -- (-6.5,1.351);
+    \node[anchor=east] at (-6.58,0.68) {$b$};
+
+    % ---- angoli ----
+    \draw (180:0.88) arc (180:115:0.88);
+    \node at (147:1.14) {$\phi$};
+    \draw (115:0.88) arc (115:50:0.88);
+    \node at (82:1.14) {$\phi$};
+    \draw (0:1.78) arc (0:50:1.78);
+    \node[anchor=west] at (25:1.98) {$\theta$};
+
+    \end{tikzpicture}
+    \caption{Diffusione da un potenziale centrale. La traiettoria è simmetrica rispetto alla retta che congiunge il centro di forza al punto di minimo avvicinamento, per cui l'angolo $\phi$ spazzato nel tratto di avvicinamento è uguale a quello spazzato nel tratto di allontanamento. I tre angoli completano l'angolo piatto, da cui $\theta = \pi - 2\phi$.}
+    \label{fig:potenziale_centrale}
+\end{figure}
+
+Se la particella viene sparata con una velocità $v$ e un parametro di impatto $b$, dalla conservazione dell'energia risulta
+\begin{equation}
+\label{eq:conservazione_energia_scat}
+    E = \frac{1}{2} m v^2 = \frac{1}{2} m \dot{r}^2 + \frac{L^2}{2mr^2} + V(r) \implies \frac{dr}{dt} = v \sqrt{1 - \frac{b^2}{r^2} - \frac{V(r)}{E}}
+\end{equation}
+Dove è stata usata la relazione $L = mvb$. Usiamo, nuovamente, la conservazione del momento angolare
+\begin{equation*}
+    L = mvb = mr^2 \dot{\phi} \implies \frac{d\phi}{dt} = \frac{vb}{r^2}
+\end{equation*}
+Sfruttando la \eqref{eq:conservazione_energia_scat} possiamo fare un cambio di variabile e ottenere
+\begin{equation}
+    \frac{d\phi}{dr} = \frac{b}{r^2 \sqrt{1 - \frac{b^2}{r^2} - \frac{V(r)}{E}}}
+\end{equation}
+Allora integrando si ha
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \phi(b,E) = \int_{r_{\text{min}}}^\infty \frac{b}{r^2\sqrt{1 - \frac{b^2}{r^2} - \frac{V(r)}{E}}} dr
+\end{equation}
+\end{tcolorbox}
+
+Il ragionamento fatto fino ad adesso vale per \emph{qualsiasi} potenziale centrale. Se adesso consideriamo un potenziale centrale del tipo $V(r) = k/r^2$, si ottiene 
+\begin{equation}
+    \phi(b,E) = \int_{r_{\text{min}}}^\infty \frac{b}{r^2\sqrt{1 - \frac{b^2 + k/E}{r^2}}} dr = \frac{\pi b}{2 \sqrt{b^2 + \frac{k}{E}}}
+\end{equation}
+A questo punto possiamo trovare $\theta(b,E)$ usando la relazione 
+\begin{equation}
+    \theta(b,E) = \pi - 2 \phi(b,E)
+\end{equation}
+Sostituendo si ha 
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \theta(b,E) = \pi\left( 1 - \frac{b}{\sqrt{b^2 + k/E}} \right)
+\end{equation}
+\end{tcolorbox}
+
+Inoltre 
+\begin{equation}
+    \frac{d\sigma}{d \Omega} = \frac{k}{\pi E} \frac{1 - \theta/\pi}{\sin(\theta)\left[ 1 - \left( 1 - \theta/\pi \right)^2 \right]^2}
+\end{equation}
+
+\subsection*{Piccole deviazioni}
+
+Consideriamo adesso il caso in cui la particella subisce solamente una \emph{piccola} deviazione a causa della presenza di un potenziale centrale. 
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>={Latex[length=2.2mm,width=1.4mm]},
+                        every node/.style={font=\small}, scale=0.85]
+
+    \def\b{1.6}
+
+    % ---- retta per il centro di forza ----
+    \draw[thin] (-7.6,0) -- (1.6,0);
+    \fill (0,0) circle (0.08);
+
+    % ---- traiettoria imperturbata (asse z) ----
+    \draw[dashed, thin] (-8.1,\b) -- (6.9,\b);
+    \draw[->, thin] (6.9,\b) -- (7.5,\b) node[above left=-1pt] {$z$};
+
+    % ---- traiettoria vera ----
+    \draw[semithick, domain=-8.1:5.5, samples=160, variable=\z, smooth]
+      plot ({\z},{1.6 - 0.075*(\z + sqrt(2.56+\z*\z))});
+    \draw[semithick] (5.5,0.758) -- (8.3,0.346);
+    \draw[->, semithick] (8.3,0.346) -- (8.55,0.309);
+
+    % ---- angolo di deflessione ----
+    \draw[dashed, thin] (5.5,0.758) -- (8.45,0.758);
+    \draw (7.45,0.758) arc (0:-8.36:1.95);
+    \node[anchor=west] at (7.55,0.60) {$\theta$};
+
+    % ---- posizione della particella ----
+    \fill (-3,\b) circle (0.07);
+    \draw[->, semithick] (0,0) -- (-2.92,1.558);
+    \node[anchor=south west] at (-1.85,0.72) {$\vec r$};
+    \draw[dotted] (-3,\b) -- (-3,-0.62);
+    \draw[dotted] (0,0) -- (0,-0.62);
+    \draw[<->] (-3,-0.52) -- (0,-0.52);
+    \node[anchor=north] at (-1.5,-0.58) {$z = vt$};
+
+    % ---- quota b ----
+    \draw[<->] (-7,0) -- (-7,\b);
+    \node[anchor=east] at (-7.08,0.8) {$b$};
+
+    % ---- triangolo degli impulsi ----
+    \draw[->, semithick] (-7.3,2.95) -- (-4.3,2.95);
+    \node[anchor=south] at (-5.8,3.00) {$\vec p$};
+    \draw[->, semithick] (-4.3,2.95) -- (-4.3,2.51);
+    \node[anchor=west] at (-4.22,2.73) {$\Delta p_\perp$};
+    \draw[->, semithick] (-7.3,2.95) -- (-4.3,2.51);
+    \node[anchor=north] at (-5.7,2.57) {$\vec p\,'$};
+    \draw (-5.9,2.95) arc (0:-8.36:1.40);
+    \node[anchor=west, font=\footnotesize] at (-5.82,2.84) {$\theta$};
+
+    \end{tikzpicture}
+    \caption{Diffusione a piccoli angoli. }
+    \label{fig:piccole_deviazioni}
+\end{figure}
+
+Se siamo nel caso in cui $\theta$ è piccolo, allora possiamo approssimare scrivendo 
+\begin{align*}
+    x &\approx b\\
+    z &= vt\\
+    r &\approx \sqrt{b^2 + v^2 t^2}
+\end{align*}
+
+Possiamo stimare la variazione di traiettoria considerando la varaizione delle componenti della quantità di moto 
+\begin{equation*}
+    \Delta p_{\perp} = \int_{-\infty}^{\infty} F_{\perp} dt   = \frac{1}{v}\int_{-\infty}^{\infty} F_{\perp}(b,z) dz  
+\end{equation*}
+Da cui 
+\begin{equation}
+    \theta = \frac{\Delta p_\perp}{p} = \frac{1}{mv^2} \int_{-\infty}^{\infty} F_{\perp}(b,z) dz
+\end{equation}
+Se consideriamo un potenziale nella forma $V(r) = k/r^n$ e, usando la relazione $F = - \nabla V$, si ottiene $F_n = nk/r^{n+1}$. Sostituendo
+\begin{equation*}
+    \theta = \frac{1}{mv^2} \int_{-\infty}^{\infty} \frac{nk}{r^{n+1}} \frac{b}{r} dz = \frac{nkb}{mv^2} \int_{-\infty}^{\infty} \frac{dz}{(b^2 + z^2)^{\frac{n + 2}{2}}}
+\end{equation*} 
+Quindi, raccogliendo un $b^2$ a denominatore e facendo un cambio di variabile si ha 
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \theta = \frac{nk \ I_n}{2E} \frac{1}{b^n} \quad ,\quad I_n = \sqrt{\pi}\frac{\Gamma\left(\frac{n+1}{2}\right)}{\Gamma\left(\frac{n+2}{2}\right)}
+\end{equation}
+\end{tcolorbox}
+
+Il caso coulombiano corrisponde a $n = 1$. Dalla definizione di $I_n$, ricordando che $\Gamma(1) = 1$ e $\Gamma(3/2) = \sqrt{\pi}/2$, si ottiene
+%
+\begin{equation*}
+    I_1 = \sqrt{\pi}\,\frac{\Gamma(1)}{\Gamma(3/2)} = \sqrt{\pi}\cdot\frac{2}{\sqrt{\pi}} = 2
+\end{equation*}
+e quindi
+
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \theta = \frac{k}{E\,b} = \frac{2k}{mv^2 b}
+    \label{eq:piccole_coulomb}
+\end{equation}
+\end{tcolorbox}
+La deflessione va dunque come $1/b$, cioè decresce lentamente con il parametro d'impatto: è la manifestazione, in questa approssimazione, del lungo raggio d'azione dell'interazione coulombiana.\\
+
+Applichiamo ora la \eqref{eq:piccole_coulomb} al caso di un potenziale gravitazionale, che ha la stessa forma funzionale di quello coulombiano,
+\begin{equation*}
+    V(r) = \frac{GMm}{r} \qquad \Longrightarrow \qquad k = GMm
+\end{equation*}
+dove $M$ è la massa del corpo che devia e $m$ quella della particella incidente. Sostituendo si ottiene
+
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \theta = \frac{2GM}{b \, v^2}
+    \label{eq:deflessione_gravitazionale}
+\end{equation}
+\end{tcolorbox}
+Si osservi che la massa $m$ della particella incidente si semplifica: la deflessione dipende soltanto dalla massa $M$ che la produce, dal parametro d'impatto e dalla velocità con cui la particella transita. È la stessa indipendenza dalla massa di prova che caratterizza tutti i problemi gravitazionali.\\
+
+Vale infine la pena sottolineare che i risultati di questa sottosezione sono stati ricavati senza alcun riferimento alla scala di lunghezza del problema, e sono quindi applicabili a situazioni enormemente diverse fra loro: dalla deflessione di una particella $\alpha$ da parte di un nucleo, con $b$ dell'ordine del fermi, a quella di un raggio di luce da parte di una galassia, con $b$ dell'ordine di migliaia di parsec.
+
+\subsection*{Deflessione di un raggio di luce e lensing gravitazionale debole}
+
+La \eqref{eq:deflessione_gravitazionale} non contiene la massa della particella incidente, e questo suggerisce di applicarla anche a un raggio di luce ponendo semplicemente $v = c$. Il risultato che si ottiene in questo modo è però sbagliato di un fattore due: il calcolo corretto richiede la relatività generale, perché alla deflessione contribuisce in parti uguali la curvatura dello spazio, che il conto newtoniano non può vedere. 
+\newpage
+Il valore giusto è
+
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \hat\alpha = \frac{4GM}{b \, c^2}
+    \label{eq:deflessione_luce}
+\end{equation}
+\end{tcolorbox}
+cioè esattamente il doppio di quanto darebbe la \eqref{eq:deflessione_gravitazionale} con $v = c$.\\
+
+Il fatto che $\hat\alpha$ dipenda soltanto dalla massa deflettente e dal parametro d'impatto può essere rovesciato: misurando la deflessione dei raggi luminosi che passano accanto a un ammasso di galassie si può risalire alla sua massa. Il fenomeno prende il nome di \emph{weak gravitational lensing}\mkeyword{lensing gravitazionale}.\\
+
+L'ammasso ha una distribuzione di densità $\rho(R,z)$ che supponiamo a simmetria cilindrica attorno all'asse di osservazione. Poiché la sua estensione lungo la linea di vista è trascurabile rispetto alle distanze in gioco, si può schiacciare tutta la massa su un piano, sostituendo alla densità di volume la densità superficiale
+%
+\begin{equation}
+    \Sigma(R) = \int_{-\infty}^{+\infty} \rho(R,z) \, dz
+    \label{eq:densita_superficiale}
+\end{equation}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>={Latex[length=2.2mm,width=1.4mm]},
+                        every node/.style={font=\small}, scale=0.85]
+
+    \def\bb{2.2}
+
+    % ---- ammasso esteso ----
+    \fill[black!8]  (0,0) ellipse [x radius=1.35, y radius=1.75];
+    \fill[black!16] (0,0) ellipse [x radius=0.88, y radius=1.14];
+    \fill[black!28] (0,0) ellipse [x radius=0.46, y radius=0.60];
+    \draw[dashed, thin] (-5.0,0) -- (2.1,0);
+    \node[anchor=north, font=\footnotesize] at (0,-2.88) {$\rho(R,z)$};
+
+    \draw[semithick, domain=-5.0:2.0, samples=120, variable=\z, smooth]
+      plot ({\z},{2.2 - 0.07*(\z + sqrt(1.5+\z*\z))});
+    \draw[->, semithick] (2.0,1.896) -- (2.26,1.862);
+
+    \draw[<->] (-4.0,0) -- (-4.0,\bb);
+    \node[anchor=east] at (-4.08,1.1) {$b$};
+
+    % ---- freccia ----
+    \draw[->, semithick] (2.95,0) -- (4.15,0);
+    \node[anchor=south, font=\footnotesize] at (3.55,0.12) {si schiaccia};
+
+    % ---- lente sottile ----
+    \def\X{9.0}
+    \fill[black!16] (\X,0) ellipse [x radius=0.12, y radius=1.75];
+    \draw[semithick] (\X,-2.7) -- (\X,2.7);
+    \draw[dashed, thin] (4.6,0) -- (\X+2.9,0);
+    \node[anchor=north, font=\footnotesize] at (\X,-2.88) {$\Sigma(R)$};
+
+    \draw[semithick] (4.6,\bb) -- (\X,\bb);
+    \draw[semithick] (\X,\bb) -- (\X+2.8,{\bb-2.8*0.13});
+    \draw[->, semithick] (\X+2.8,{\bb-2.8*0.13}) -- (\X+3.05,{\bb-3.05*0.13});
+    \draw[dashed, thin] (\X,\bb) -- (\X+2.75,\bb);
+    \draw (\X+2.3,\bb) arc (0:-7.4:2.3);
+    \node[anchor=north west] at (\X+2.18,{\bb-0.42}) {$\hat\alpha$};
+    \fill (\X,\bb) circle (0.07);
+
+    \draw[<->] (5.5,0) -- (5.5,\bb);
+    \node[anchor=east] at (5.42,1.1) {$b$};
+
+    \end{tikzpicture}
+    \caption{Approssimazione di lente sottile. La massa dell'ammasso, distribuita secondo $\rho(R,z)$, viene proiettata su un piano con densità superficiale $\Sigma(R)$.}
+    \label{fig:lensing}
+\end{figure}
+
+Per la simmetria cilindrica, un raggio che passa a distanza $b$ dall'asse è deflesso soltanto dalla massa contenuta nel cilindro di raggio $b$, esattamente come accade per il teorema di Gauss. Tale massa vale
+%
+\begin{equation*}
+    M(R<b) = \int_0^b 2\pi R \, \Sigma(R) \, dR \qquad \Longrightarrow \qquad \frac{dM}{db} = 2\pi b \, \Sigma(b)
+\end{equation*}
+D'altra parte la \eqref{eq:deflessione_luce}, scritta per la massa racchiusa, fornisce una seconda espressione per la stessa derivata,
+%
+\begin{equation*}
+    \hat\alpha(b) = \frac{4GM(R<b)}{b\,c^2} \quad \Longrightarrow \quad M(R<b) = \frac{b \, \hat\alpha(b) \, c^2}{4G} \quad \Longrightarrow \quad \frac{dM}{db} = \frac{c^2}{4G}\frac{d}{db}\Big[b \, \hat\alpha(b)\Big]
+\end{equation*}
+Uguagliando le due espressioni si ottiene
+
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \Sigma(b) = \frac{c^2}{8\pi G}\,\frac{1}{b}\,\frac{d}{db}\Big[b \, \hat\alpha(b)\Big]
+    \label{eq:sigma_lensing}
+\end{equation}
+\end{tcolorbox}
+La \eqref{eq:sigma_lensing} è il risultato che rende il metodo utile: misurando la deflessione $\hat\alpha(b)$ in funzione del parametro d'impatto, cosa che si fa osservando la distorsione delle immagini delle galassie di sfondo, si ricostruisce la densità superficiale di massa e quindi la massa totale dell'ammasso. Si noti che in nessun punto del ragionamento si è supposto che la materia emetta luce: il metodo pesa tutta la massa presente, luminosa o no, ed è per questo uno degli strumenti con cui si studia la materia oscura.
