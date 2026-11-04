@@ -1,0 +1,139 @@
+\chapter{Raggio nucleare}
+
+Come per il caso del raggio atomico, anche il raggio nucleare\mkeyword{raggio nucleare} non ha una definzione precisa e natuale e per questo, come per il raggio atomico, sarà necessario introdurre una definizione operativa. 
+
+Come vedremo tra poco, la densità dei nucleoni e il potenziale nucleare hanno una dipendenza spaziale simile: relativamente costanti su distanze piccole oltre le quali cadono drasticamente a zero. \\
+\'E quindi intuitivo descrivere la forma nucleare con due parametri: il raggio medio\mkeyword{raggio medio}, in corrispondenza del quale la densità è pari alla metà del suo valore centrale, e lo \emph{skin thickness}\mkeyword{skin thickness}, cioè l'intervallo di spazio in cui la densità scende da un valore prossimo al suo massimo (il $90\%$) a uno prossimo al suo minimo (il $10\%$).
+
+I problemi che incontriamo derivano dalla difficoltà di stabilire con precisione cosa descriva esattamente la distribuzione; il raggio che misuriamo dipende dal tipo di esperimento condotto per determinare la forma del nucleo. In alcuni esperimenti, come nel caso dello scattering di elettroni ad alta energia, misuriamo l'interazione Coulombiana di una particella carica con i nucleoni. Questi esperimenti determinerebbero quindi la \emph{distribuzione della carica nucleare} (principalmente la distribuzione dei protoni, ma che coinvolge in una certa misura anche la distribuzione dei neutroni, a causa della loro struttura interna).
+
+Prima di affrontare il problema conviene ricordare da dove siamo partiti. Nei capitoli precedenti il raggio nucleare è comparso due volte, sempre in modo indiretto: nel termine coulombiano della formula semiempirica di massa, dove entra attraverso $a_C = \frac{3}{5}\frac{\alpha\hbar c}{r_0}$, e nella teoria di Gamow del decadimento $\alpha$, dove fissa il punto di partenza della barriera. Entrambe le vie portano a
+\begin{equation}
+    R = r_0 A^{1/3} \qquad , \qquad r_0 \simeq 1{,}25 \ \mathrm{fm}
+    \label{eq:raggio_A13}
+\end{equation}
+Si tratta però di stime \emph{dedotte} da modelli, non di misure dirette. Quello che ci proponiamo ora è di misurare il raggio nucleare, e più in generale la distribuzione di carica, bombardando il nucleo e osservando cosa viene diffuso.
+
+\section{Distrubuzione della carica nucleare}
+
+Un metodo utile per determinare la grandezza e la forma di un oggetto è esaminare la radiazione da esso diffusa. 
+
+Per vedere l'oggetto e i suoi dettagli, la lunghezza d'onda della radiazione deve essere più piccola delle dimensioni dell'oggetto, altrimenti l'effetto della diffrazione oscurerebbe parzialmente o completamente l'immagine. \\
+Per i nuclei, il cui diametro è di circa $10 \ \text{fm}$, richiediamo che $\lambda \leq  10 \ \text{fm}$ e quindi, dalla relazione\footnote{Dove abbiamo supposto che $p \approx E/c$ in quanto $pc = \sqrt{E^2 - m^2c^4}$ con $mc^2 \approx 0.5 \ \text{MeV} \ll E$.}
+\begin{equation}
+    \lambda = \frac{2\pi \hbar}{p} \approx \frac{2\pi \hbar c}{E}
+\end{equation}
+troviamo che gli elettroni usati per la radiazione devono avere un'energia maggiore di $100 \ \text{MeV}$. 
+
+Fasci di elettroni con energia compresa tra $100 \ \text{MeV}$ e $1 \ \text{GeV}$ possono essere prodotti con un acceleratore ad alta energia e possono essere analizzati con precisione da uno spettrometro per selezionare solo gli elettroni che sono stati diffusi elasticamente dal bersaglio nucleare selezionato.
+
+Adesso, però, dobbiamo rendere il probema quantitativo. La funzione d'onda di un elettrone può essere esperra come un'onda piana di impulso ben definito,
+\begin{equation}
+    \psi_e \propto e^{i(\mathbf{k}\cdot\mathbf{r} - Et/\hbar)} \qquad , \qquad k = \frac{p}{\hbar}
+    \label{eq:onda_piana}
+\end{equation}
+Rigorosamente un elettrone del fascio è un pacchetto d'onda, ma essendo il fascio monocromatico in impulso tale pacchetto è così stretto in $k$, e di conseguenza così esteso nello spazio, da essere indistinguibile da un'onda piana nella regione del bersaglio.\\
+
+A questo punto il problema è formalmente identico a quello di un'onda che incide su un reticolo di diffusori, e lo affronteremo nello stesso modo: calcoleremo l'ampiezza diffusa da un centro puntiforme, poi da due, poi da una distribuzione continua di carica.
+
+\subsection*{Scattering su bersagli puntiformi}
+
+Iniziamo con il caso più semplice, quello della diffusione di una radiazione su bersagli puntiformi.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>={Latex[length=2.2mm,width=1.4mm]},
+                        every node/.style={font=\small}]
+
+    \def\T{30}        % angolo di diffusione
+    \def\dd{1.1}      % semidistanza fra i diffusori
+
+    % ---- fronti d'onda incidenti ----
+    \foreach \x in {-4.9,-4.2,-3.5,-2.8}{\draw[semithick] (\x,-2.5) -- (\x,2.5);}
+
+    % ---- asse z lungo la direzione di propagazione ----
+    \draw[thin,->] (-5.5,0) -- (3.9,0) node[above left=-1pt] {$z$};
+
+    % ---- linea dei diffusori ----
+    \draw[dashed, thin] (0,-2.6) -- (0,2.6);
+
+    % ---- diffusori ----
+    \fill (0,\dd) circle (0.085);
+    \fill (0,-\dd) circle (0.085);
+    \node[anchor=east] at (-0.14,{\dd+0.22}) {$1$};
+    \node[anchor=east] at (-0.14,{-\dd-0.22}) {$2$};
+
+    % ---- onde sferiche uscenti ----
+    \foreach \R in {0.25,0.40,0.55}{
+      \draw[thin] ([shift={(-58:\R)}]0,\dd)  arc (-58:58:\R);
+      \draw[thin] ([shift={(-58:\R)}]0,-\dd) arc (-58:58:\R);
+    }
+
+    % ---- raggi diffusi ----
+    \draw[semithick] (0,\dd)  -- ++(\T:3.2);
+    \draw[->, semithick] (0,\dd) ++(\T:3.2) -- ++(\T:0.28);
+    \draw[semithick] (0,-\dd) -- ++(\T:3.2);
+    \draw[->, semithick] (0,-\dd) ++(\T:3.2) -- ++(\T:0.28);
+    \node[anchor=south east] at ($(0,\dd)+(\T:2.5)$) {$\vec k$};
+
+    % ---- distanza fra i diffusori ----
+    \draw[<->] (-0.8,-\dd) -- (-0.8,\dd);
+    \node[anchor=east] at (-0.88,0.32) {$d$};
+
+    % ---- angolo di diffusione ----
+    \draw[dashed, thin] (0,\dd) -- (1.6,\dd);
+    \draw (1.15,\dd) arc (0:\T:1.15);
+    \node[anchor=west] at ($(0,\dd)+({\T/2}:1.33)$) {$\theta$};
+
+    % ---- differenza di cammino ----
+    \draw[dotted] (0,\dd) -- (0.953,-0.55);
+    \fill (0.953,-0.55) circle (0.05);
+    \draw[dotted] (0,-\dd) -- (0.31,-1.637);
+    \draw[dotted] (0.953,-0.55) -- (1.263,-1.087);
+    \draw[<->] (0.31,-1.637) -- (1.263,-1.087);
+    \node[anchor=north, font=\footnotesize] at (0.88,-1.47) {$d\sin\theta$};
+
+    \end{tikzpicture}
+    \caption{Diffusione da due centri separati da una distanza $d$ trasversa al fascio.}
+    \label{fig:due_diffusori}
+\end{figure}
+
+Prima di iniziare ad analizzare lo scattering vero e proprio, però, è conveniete trovare una relazione tra la sezione d'urto dfferenziale e l'ampiezza di scattering $A(\theta, \phi)$. \\
+Lontano dal centro di scattering, la funzione d'onda si può scrivere come 
+\begin{equation}
+\psi(\mathbf{r}) \simeq \underbrace{e^{i k z}}_{\text {onda incidente }}+\underbrace{A(\theta, \phi) \frac{e^{i k r}}{r}}_{\text {onda diffusa }}
+\end{equation}
+Si nota che ci sono due contributi: il primo, $e^{ikz}$, rappresenta un'onda piana incidente che si propaga lungo $z$, mentre il secondo, $A(\theta, \phi) e^{ikr}/r$, un'onda uscente sferica, che descrive le particelle diffuse nelle diverse direzioni. La funzione $A(\theta, \phi)$ determina quanto è intensa l'onda diffusa in una certa direzione.
+
+Per lo scattering dobbiamo sapere quante particelle attraversano una superficie per unità di tempo e questa proprietà è descritta dalla densità di corrente di probabilità 
+\begin{equation}
+    \mathbf{j} = \frac{\hbar}{m}\operatorname{Im}(\psi^* \nabla \psi )
+\end{equation}
+Calcoliamo separatamente la corrente incidente e quella diffusa. 
+
+Per l'onda incidente si ha $\psi_i = e^{ikz}$ e $\nabla \psi_i = ik\hat{\mathbf{z}} e^{ikz}$, quindi 
+\begin{equation}
+\label{eq:corrente_incidente}
+    \mathbf{j}_i = \frac{\hbar}{m} \operatorname{Im}(e^{ikz} i k \hat{\mathbf{z}}e^{ikz}) = \frac{\hbar k}{m} \hat{\mathbf{z}}
+\end{equation}
+
+Per l'onda diffusa si ha $\psi_s = A(\theta, \phi) e^{ikr}/r$ e $\partial_r \psi_s \approx ik A(\theta, \phi) e^{ikr}/r$, quindi 
+\begin{equation}
+\label{eq:corrente_diffratta}
+    j_s,r = \frac{\hbar}{m} \operatorname{Im}\left( \psi_s^* \frac{\partial \psi_s}{\partial r} \right) = \frac{\hbar k}{m} \frac{|A(\theta,\phi)|^2}{r^2}
+\end{equation}
+
+Per definizione, la sezione d'urto differenziale è il rapporto tra il numero di particelle diffuse per unità di tempo nell'angolo solito $d\Omega$ e il flusso incidente per unità di superficie. \\
+Il numero di particelle diffuse al secondo attraverso una superficie $dS$ è proporzionale al prodotto tra $j_{s,r}$ e la supeficie stessa, mentre il flusso incidente è proporzionale a $j_i$, da cui si ottiene 
+\begin{equation}
+    d\sigma = \frac{j_{s,r} dS}{j_i} = \frac{j_{s,r} r^2 d\Omega}{j_i} \implies \frac{d\sigma}{d\Omega} = \frac{j_{s,r} r^2}{j_i}
+\end{equation}
+Dove abbiamo usato la relazione $dS = r^2 d\Omega$ in quanto supponiamo di considerare una superficie sferica. Sostituendo nell'equazione sopra le equazioni \eqref{eq:corrente_incidente} e \eqref{eq:corrente_diffratta} si ottiene 
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \frac{d\sigma}{d\Omega} = |A(\theta, \phi)|^2
+\end{equation}
+\end{tcolorbox}
+
+Adesso possiamo iniziare la vera e propria analisi dello scattering. 
+
