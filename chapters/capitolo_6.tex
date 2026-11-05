@@ -36,66 +36,63 @@ Rigorosamente un elettrone del fascio è un pacchetto d'onda, ma essendo il fasc
 
 A questo punto il problema è formalmente identico a quello di un'onda che incide su un reticolo di diffusori, e lo affronteremo nello stesso modo: calcoleremo l'ampiezza diffusa da un centro puntiforme, poi da due, poi da una distribuzione continua di carica.
 
-\subsection*{Scattering su bersagli puntiformi}
+\subsection{Scattering su bersagli puntiformi}
 
 Iniziamo con il caso più semplice, quello della diffusione di una radiazione su bersagli puntiformi.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \begin{tikzpicture}[>={Latex[length=2.2mm,width=1.4mm]},
-                        every node/.style={font=\small}]
-
-    \def\T{30}        % angolo di diffusione
-    \def\dd{1.1}      % semidistanza fra i diffusori
-
-    % ---- fronti d'onda incidenti ----
-    \foreach \x in {-4.9,-4.2,-3.5,-2.8}{\draw[semithick] (\x,-2.5) -- (\x,2.5);}
-
-    % ---- asse z lungo la direzione di propagazione ----
-    \draw[thin,->] (-5.5,0) -- (3.9,0) node[above left=-1pt] {$z$};
-
-    % ---- linea dei diffusori ----
-    \draw[dashed, thin] (0,-2.6) -- (0,2.6);
-
-    % ---- diffusori ----
-    \fill (0,\dd) circle (0.085);
-    \fill (0,-\dd) circle (0.085);
-    \node[anchor=east] at (-0.14,{\dd+0.22}) {$1$};
-    \node[anchor=east] at (-0.14,{-\dd-0.22}) {$2$};
-
-    % ---- onde sferiche uscenti ----
-    \foreach \R in {0.25,0.40,0.55}{
-      \draw[thin] ([shift={(-58:\R)}]0,\dd)  arc (-58:58:\R);
-      \draw[thin] ([shift={(-58:\R)}]0,-\dd) arc (-58:58:\R);
+    \begin{tikzpicture}[>={Stealth[length=2mm]},scale=0.95,
+      every node/.style={font=\small}]
+    
+    % ---------- onda piana incidente ----------
+    \foreach \x in {-2.8,-2.4,-2.0}{
+      \draw[thin] (\x,-0.55) -- (\x,2.35);
     }
-
-    % ---- raggi diffusi ----
-    \draw[semithick] (0,\dd)  -- ++(\T:3.2);
-    \draw[->, semithick] (0,\dd) ++(\T:3.2) -- ++(\T:0.28);
-    \draw[semithick] (0,-\dd) -- ++(\T:3.2);
-    \draw[->, semithick] (0,-\dd) ++(\T:3.2) -- ++(\T:0.28);
-    \node[anchor=south east] at ($(0,\dd)+(\T:2.5)$) {$\vec k$};
-
-    % ---- distanza fra i diffusori ----
-    \draw[<->] (-0.8,-\dd) -- (-0.8,\dd);
-    \node[anchor=east] at (-0.88,0.32) {$d$};
-
-    % ---- angolo di diffusione ----
-    \draw[dashed, thin] (0,\dd) -- (1.6,\dd);
-    \draw (1.15,\dd) arc (0:\T:1.15);
-    \node[anchor=west] at ($(0,\dd)+({\T/2}:1.33)$) {$\theta$};
-
-    % ---- differenza di cammino ----
-    \draw[dotted] (0,\dd) -- (0.953,-0.55);
-    \fill (0.953,-0.55) circle (0.05);
-    \draw[dotted] (0,-\dd) -- (0.31,-1.637);
-    \draw[dotted] (0.953,-0.55) -- (1.263,-1.087);
-    \draw[<->] (0.31,-1.637) -- (1.263,-1.087);
-    \node[anchor=north, font=\footnotesize] at (0.88,-1.47) {$d\sin\theta$};
-
+    \draw[->,thick] (-2.70,2.75) -- (-1.70,2.75) node[midway,above] {$\mathbf{k}_0$};
+    \node[align=center] at (-2.4,-1.05) {onda piana\\incidente};
+    
+    % ---------- asse z ----------
+    \draw[dashed] (-3.0,0) -- (7.3,0) node[right] {$z$};
+    
+    % ---------- origine ----------
+    \fill (0,0) circle (1.6pt);
+    \node[below left] at (0,0) {$O$};
+    
+    % ---------- diffusori ----------
+    \coordinate (P1) at (0.45,1.60);
+    \coordinate (P2) at (1.75,1.10);
+    \coordinate (D)  at (6.12,2.47);
+    
+    \draw[->] (0,0) -- (P1) node[pos=0.62,above left,inner sep=1pt] {$\mathbf{r}_1$};
+    \draw[->] (0,0) -- (P2) node[pos=0.50,above left,inner sep=1pt] {$\mathbf{r}_2$};
+    \draw[->] (P1) -- (P2) node[pos=0.50,above right,inner sep=1pt] {$\mathbf{d}$};
+    
+    \fill (P1) circle (2.2pt) node[above,inner sep=2.5pt] {$1$};
+    \fill (P2) circle (2.2pt) node[below right,inner sep=1.5pt] {$2$};
+    
+    % ---------- angolo theta ----------
+    \draw[thin] (1.15,0) arc (0:22:1.15);
+    \node at (11:1.42) {$\theta$};
+    
+    % ---------- distanze al rivelatore ----------
+    \draw (P1) -- (D) node[pos=0.45,above,inner sep=2.5pt] {$\left|\mathbf{R}-\mathbf{r}_1\right|$};
+    \draw (P2) -- (D) node[pos=0.15,above,inner sep=2.5pt] {$\left|\mathbf{R}-\mathbf{r}_2\right|$};
+    \draw[dashed] (0,0) -- (D) node[pos=0.78,below,inner sep=3pt] {$R$};
+    
+    % versore n
+    \draw[->,thick] (2.90,1.17) -- (3.70,1.50) node[pos=0.5,below,inner sep=2.5pt] {$\hat{\mathbf{n}}$};
+    
+    % ---------- rivelatore ----------
+    \draw[line width=1.6pt] (6.28,2.08) -- (5.96,2.86);
+    \node[above] at (6.05,2.95) {rivelatore};
+    
+    % ---------- nota ----------
+    \node at (4.45,0.55) {$R\gg r_1,\,r_2$};
+    
     \end{tikzpicture}
-    \caption{Diffusione da due centri separati da una distanza $d$ trasversa al fascio.}
-    \label{fig:due_diffusori}
+    \caption{Scattering di due corpi puntiformi.}
+    \label{fig:scena_due}
 \end{figure}
 
 Prima di iniziare ad analizzare lo scattering vero e proprio, però, è conveniete trovare una relazione tra la sezione d'urto dfferenziale e l'ampiezza di scattering $A(\theta, \phi)$. \\
@@ -114,13 +111,13 @@ Calcoliamo separatamente la corrente incidente e quella diffusa.
 Per l'onda incidente si ha $\psi_i = e^{ikz}$ e $\nabla \psi_i = ik\hat{\mathbf{z}} e^{ikz}$, quindi 
 \begin{equation}
 \label{eq:corrente_incidente}
-    \mathbf{j}_i = \frac{\hbar}{m} \operatorname{Im}(e^{ikz} i k \hat{\mathbf{z}}e^{ikz}) = \frac{\hbar k}{m} \hat{\mathbf{z}}
+    \mathbf{j}_i = \frac{\hbar}{m} \operatorname{Im}(e^{-ikz} i k \hat{\mathbf{z}}e^{ikz}) = \frac{\hbar k}{m} \hat{\mathbf{z}}
 \end{equation}
 
 Per l'onda diffusa si ha $\psi_s = A(\theta, \phi) e^{ikr}/r$ e $\partial_r \psi_s \approx ik A(\theta, \phi) e^{ikr}/r$, quindi 
 \begin{equation}
 \label{eq:corrente_diffratta}
-    j_s,r = \frac{\hbar}{m} \operatorname{Im}\left( \psi_s^* \frac{\partial \psi_s}{\partial r} \right) = \frac{\hbar k}{m} \frac{|A(\theta,\phi)|^2}{r^2}
+    j_{s,r} = \frac{\hbar}{m} \operatorname{Im}\left( \psi_s^* \frac{\partial \psi_s}{\partial r} \right) = \frac{\hbar k}{m} \frac{|A(\theta,\phi)|^2}{r^2}
 \end{equation}
 
 Per definizione, la sezione d'urto differenziale è il rapporto tra il numero di particelle diffuse per unità di tempo nell'angolo solito $d\Omega$ e il flusso incidente per unità di superficie. \\
@@ -137,3 +134,122 @@ Dove abbiamo usato la relazione $dS = r^2 d\Omega$ in quanto supponiamo di consi
 
 Adesso possiamo iniziare la vera e propria analisi dello scattering. 
 
+L'onda incidente è piana, cioè il fascio è monocromatico in impulso. I due diffusori sono \emph{identici}, e questo garantisce che diffondano con la stessa ampiezza, che indicheremo con $f(\theta,\phi)$ per distinguerla dall'ampiezza $A(\theta,\phi)$ del bersaglio complessivo. Supponiamo inoltre che la diffusione sia \emph{elastica}, per cui $|\mathbf{k}| = |\mathbf{k}_0| = k$, e che avvenga per \emph{singolo urto}, cioè che l'onda diffusa da un centro non venga a sua volta diffusa dall'altro: è quest'ultima ipotesi a rendere il problema lineare e risolubile esattamente.\\
+
+I due centri si trovano nelle posizioni $\mathbf{r}_1$ e $\mathbf{r}_2$ e il rivelatore è posto in $\mathbf{R}$, lontano dalla zona di interazione, nella direzione $\hat{\mathbf{n}} = \mathbf{R}/R$. Chiamiamo $\mathbf{k} = k\,\hat{\mathbf{n}}$ il vettore d'onda uscente.
+
+I due diffusori non emettono in fase, e per due motivi distinti. Il primo è che l'onda incidente non li investe nello stesso istante: arrivando in $\mathbf{r}_j$ essa ha accumulato la fase
+%
+\begin{equation}
+    \psi_{\text{inc}}(\mathbf{r}_j) = e^{i\mathbf{k}_0\cdot\mathbf{r}_j}
+    \label{eq:fase_incidente}
+\end{equation}
+Il secondo è che i due centri non distano ugualmente dal rivelatore. Il contributo del diffusore $j$ nel punto $\mathbf{R}$ è dunque
+%
+\begin{equation}
+    \psi_j(\mathbf{R}) = e^{i\mathbf{k}_0\cdot\mathbf{r}_j}\; f(\theta,\phi)\; \frac{e^{ik\left|\mathbf{R}-\mathbf{r}_j\right|}}{\left|\mathbf{R}-\mathbf{r}_j\right|}
+    \label{eq:contributo_j}
+\end{equation}
+
+Poiché $R \gg r_j$ sviluppiamo la distanza diffusore-rivelatore,
+%
+\begin{equation*}
+    \left|\mathbf{R}-\mathbf{r}_j\right| = R\sqrt{1 - \frac{2\,\hat{\mathbf{n}}\cdot\mathbf{r}_j}{R} + \frac{r_j^2}{R^2}} \;\simeq\; R - \hat{\mathbf{n}}\cdot\mathbf{r}_j
+\end{equation*}
+Questo sviluppo va però trattato con due criteri diversi a seconda di dove compare. Nell'\emph{esponente} il termine $\hat{\mathbf{n}}\cdot\mathbf{r}_j$ è moltiplicato per $k$, e il prodotto $k\,r_j$ non è affatto piccolo: la lunghezza d'onda è stata scelta proprio confrontabile con le distanze in gioco, ed è questo il motivo per cui l'esperimento è sensibile alla geometria. Al \emph{denominatore} invece lo stesso termine va confrontato con $R$, e $r_j/R$ è trascurabile. Si ottiene quindi
+%
+\begin{equation}
+    \frac{e^{ik\left|\mathbf{R}-\mathbf{r}_j\right|}}{\left|\mathbf{R}-\mathbf{r}_j\right|} \;\simeq\; \frac{e^{ikR}}{R}\,e^{-i\mathbf{k}\cdot\mathbf{r}_j}
+    \label{eq:campo_lontano}
+\end{equation}
+
+Sostituendo la \eqref{eq:campo_lontano} nella \eqref{eq:contributo_j} le due fasi si combinano in una sola,
+\begin{equation}
+    \psi_j(\mathbf{R}) \simeq f(\theta,\phi)\,\frac{e^{ikR}}{R}\;e^{i\left(\mathbf{k}_0-\mathbf{k}\right)\cdot\mathbf{r}_j} = f(\theta,\phi)\,\frac{e^{ikR}}{R}\;e^{i\mathbf{q}\cdot\mathbf{r}_j}
+    \label{eq:contributo_finale}
+\end{equation}
+dove si è introdotto il trasferimento di impulso\mkeyword{trasferimento di impulso}
+\begin{equation}
+    \mathbf{q} \equiv \mathbf{k}_0 - \mathbf{k}
+    \label{eq:q_def}
+\end{equation}
+
+Essendo l'equazione d'onda lineare, i due contributi si sommano a livello di ampiezza e non di intensità,
+\begin{equation}
+    \psi_{\text{diff}}(\mathbf{R}) = \psi_1 + \psi_2 = \underbrace{f(\theta,\phi)\left(e^{i\mathbf{q}\cdot\mathbf{r}_1} + e^{i\mathbf{q}\cdot\mathbf{r}_2}\right)}_{\textstyle A(\theta,\phi)}\;\frac{e^{ikR}}{R}
+    \label{eq:sovrapposizione}
+\end{equation}
+La quantità raccolta è proprio l'ampiezza totale del bersaglio, cioè il coefficiente dell'onda sferica uscente: il sistema dei due diffusori si comporta, visto da lontano, come un unico centro di ampiezza $A(\theta,\phi)$. Applicando allora il risultato già ottenuto, $d\sigma/d\Omega = |A(\theta,\phi)|^2$, si ha
+\begin{equation}
+    \frac{d\sigma}{d\Omega} = \left|f(\theta,\phi)\right|^2 \left|e^{i\mathbf{q}\cdot\mathbf{r}_1} + e^{i\mathbf{q}\cdot\mathbf{r}_2}\right|^2
+    \label{eq:sezione_due}
+\end{equation}
+
+Raccogliendo $e^{i\mathbf{q}\cdot\mathbf{r}_1}$, che ha modulo unitario e quindi scompare, e ponendo $\mathbf{d} \equiv \mathbf{r}_2 - \mathbf{r}_1$,
+\begin{equation*}
+    \left|1 + e^{i\mathbf{q}\cdot\mathbf{d}}\right|^2 = \left(1+e^{i\mathbf{q}\cdot\mathbf{d}}\right)\left(1+e^{-i\mathbf{q}\cdot\mathbf{d}}\right) = 2 + 2\cos\left(\mathbf{q}\cdot\mathbf{d}\right) = 4\cos^2\!\left(\frac{\mathbf{q}\cdot\mathbf{d}}{2}\right)
+\end{equation*}
+e quindi
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \frac{d\sigma}{d\Omega}\bigg|_{2} = 4\cos^2\!\left(\frac{\mathbf{q}\cdot\mathbf{d}}{2}\right) \ |f(\theta,\phi)|^2
+    \label{eq:interferenza_due}
+\end{equation}
+\end{tcolorbox}
+
+Notando che $|f(\theta,\phi)|^2$ è la sezione d'urto differenziale di un singolo diffusore, possiamo scrivere 
+\begin{equation}
+    \frac{d\sigma}{d\Omega}\bigg|_{2} = 4\cos^2\!\left(\frac{\mathbf{q}\cdot\mathbf{d}}{2}\right) \ \frac{d\sigma}{d\Omega}\bigg|_{1}
+\end{equation}
+
+Il risultato dipende soltanto dalla posizione relativa dei due centri e non dalla scelta dell'origine.
+
+\subsection{Scattering su bersagli continui}
+
+Andiamo adesso a generalizzare quanto trovato nella sezione precedente. 
+
+\'E facile notare che se consideriamo un insieme discreto di cariche la \eqref{eq:sezione_due} diventa 
+\begin{equation}
+    \frac{d\sigma}{d\Omega} = |f(\theta,\phi)|^2 \left| \sum_{i=1}^Z e^{i \mathbf{q}\cdot \mathbf{r}_i} \right|^2
+    \label{eq:somma_discreta}
+\end{equation}
+dove $f(\theta,\phi)$ è l'ampiezza di diffusione di una singola carica $e$.
+
+La distribuzione di questo insieme discreto, però, può essere rappresentata come una somma di delta di Dirac tridimensionali
+\begin{equation}
+    n(\mathbf{r}) = \frac{\sum_{i=1}^Z \delta^3(\mathbf{r} - \mathbf{r}_i)}{Z}
+\end{equation}
+L'introduzione di questa ``densità'' di distribuzione mi permette di passare dalla sommatoria all'integrale, che può essere visto come una generalizzazione ulteriore che mi permette di passare dal caso discreto a quello continuo
+\begin{equation}
+    \sum_{i=1}^Z e^{i \mathbf{q}\cdot \mathbf{r}_i} = Z \int_{V}n(\mathbf{r}) e^{i\mathbf{q}\cdot\mathbf{r}} d^3r
+\end{equation}
+dove il fattore $Z$ compare perché $n$ è normalizzata a uno. Sostituendo nella \eqref{eq:somma_discreta} si ottiene
+\begin{equation}
+    \frac{d\sigma}{d\Omega} = |Z f(\theta,\phi)|^2 \left| \int_{V}n(\mathbf{r}) e^{i\mathbf{q}\cdot\mathbf{r}} d^3r \right|^2
+\end{equation}
+ed essendo l'ampiezza di diffusione proporzionale alla carica del centro, $Z f(\theta,\phi)$ è l'ampiezza di un unico bersaglio puntiforme di carica $Ze$.
+
+Tuttavia nel nostro caso i bersagli puntiformi sono cariche, quindi possiamo considerare la densità $n(\mathbf{r})$, definita sopra, come la densità di carica normalizzata 
+\begin{equation}
+    n(\mathbf{r}) = \frac{\rho(\mathbf{r})}{Ze}
+\end{equation}
+In questo modo 
+\begin{equation}
+    \int_{V}n(\mathbf{r}) e^{i\mathbf{q}\cdot\mathbf{r}} d^3r = \frac{\int_{V}\rho(\mathbf{r}) e^{i\mathbf{q}\cdot\mathbf{r}} d^3r}{Ze} = \frac{\int_{V}\rho(\mathbf{r}) e^{i\mathbf{q}\cdot\mathbf{r}} d^3r}{\int_V \rho(\mathbf{r}) d^3r}
+\end{equation}
+Andiamo a chiamare questa quantità fattore di forma\mkeyword{fattore di forma}
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    F(\mathbf{q}) = \frac{\int_{V}\rho(\mathbf{r}) e^{i\mathbf{q}\cdot\mathbf{r}} d^3r}{\int_V \rho(\mathbf{r}) d^3r}
+\end{equation}
+\end{tcolorbox}
+In questo modo la sezione d'urto differenziale è esprimibile come 
+\begin{equation}
+    \frac{d\sigma}{d\Omega} = |Z f(\theta,\phi)|^2 \left| F(\mathbf{q}) \right|^2
+\end{equation}
+E ricordando che $|Z f(\theta,\phi)|^2$ è la sezione d'urto differenziale di un bersaglio puntiforme di carica $Ze$ si ha
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \frac{d\sigma}{d\Omega} = \frac{d\sigma}{d\Omega}\bigg|_{\text{punt}} \left| F(\mathbf{q}) \right|^2
+\end{equation}  
+\end{tcolorbox}
