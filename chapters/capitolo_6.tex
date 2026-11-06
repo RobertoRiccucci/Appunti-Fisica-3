@@ -253,3 +253,119 @@ E ricordando che $|Z f(\theta,\phi)|^2$ è la sezione d'urto differenziale di un
     \frac{d\sigma}{d\Omega} = \frac{d\sigma}{d\Omega}\bigg|_{\text{punt}} \left| F(\mathbf{q}) \right|^2
 \end{equation}  
 \end{tcolorbox}
+
+\subsection{Il fattore di forma}
+
+Il risultato della sezione precedente separa il problema in due parti indipendenti: $\frac{d\sigma}{d\Omega}\big|_{\text{punt}}$ contiene tutta la dinamica dell'interazione ma nessuna informazione sull'estensione del bersaglio, mentre $F(\mathbf{q})$ contiene tutta la geometria della distribuzione di carica ma nessuna informazione sulla dinamica. Conviene allora studiare separatamente il fattore di forma.
+
+La prima proprietà segue direttamente dalla definizione: per $\mathbf{q} = 0$ tutti i fattori di fase valgono $1$ e si ha
+\begin{equation}
+    F(0) = \frac{\int_V \rho(\mathbf{r})\,d^3r}{\int_V \rho(\mathbf{r})\,d^3r} = 1
+    \label{eq:F_zero}
+\end{equation}
+Il fattore di forma non misura dunque quanta carica è presente ma soltanto come essa è distribuita.\\
+
+Va sottolineato che $F(\mathbf{q})$ è una quantità misurata e non calcolata. L'osservabile dell'esperimento è la sezione d'urto differenziale, e dividendola per la sezione d'urto puntiforme si ottiene
+\begin{equation}
+    \left|F(\mathbf{q})\right|^2 = \frac{\left(d\sigma/d\Omega\right)_{\text{mis}}}{\left(d\sigma/d\Omega\right)_{\text{punt}}}
+    \label{eq:F_misurato}
+\end{equation}
+punto per punto in $\mathbf{q}$, senza che la densità $\rho$ sia mai entrata nel procedimento. Gli esempi che seguono percorrono la strada opposta, calcolando $F$ a partire da una $\rho$ assunta: servono da termine di confronto per la curva sperimentale, perché l'antitrasformata diretta non è praticabile in quanto della \eqref{eq:F_misurato} si misura il modulo quadro, quindi si perde la fase di $F$.
+
+\subsubsection*{Caso a simmetria sferica}
+
+Se la distribuzione di carica è a simmetria sferica, $\rho(\mathbf{r}) = \rho(r)$, l'integrale angolare si può svolgere una volta per tutte. Scegliendo l'asse polare lungo $\mathbf{q}$, in modo che $\mathbf{q}\cdot\mathbf{r} = qr\cos\vartheta$,
+\begin{equation*}
+    \int_V \rho(r)\,e^{i\mathbf{q}\cdot\mathbf{r}}\,d^3r = 2\pi\int_0^{\infty} r^2\rho(r)\int_{-1}^{1} e^{iqr\cos\vartheta}\,d(\cos\vartheta)\,dr = 4\pi\int_0^{\infty} r^2\rho(r)\,\frac{\sin(qr)}{qr}\,dr
+\end{equation*}
+da cui
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    F(q) = \frac{4\pi}{Ze}\int_0^{\infty} r^2\rho(r)\,\frac{\sin(qr)}{qr}\,dr = \frac{4\pi}{Ze}\int_0^{\infty} r^2\rho(r)\,j_0(qr)\,dr
+    \label{eq:F_sferico}
+\end{equation}
+\end{tcolorbox}
+dove $j_0(x) = \sin x / x$ è la funzione di Bessel sferica di ordine zero. Si noti che $F$ dipende ora dal solo modulo $q$ e non più dalla direzione di $\mathbf{q}$: la simmetria sferica della sorgente si trasferisce alla sua trasformata.
+
+Per tradurre $q$ in una quantità misurabile ricordiamo che la diffusione è elastica, $|\mathbf{k}_0| = |\mathbf{k}| = k$, per cui
+\begin{equation}
+    q^2 = \left|\mathbf{k}_0-\mathbf{k}\right|^2 = 2k^2(1-\cos\theta) = 4k^2\sin^2\!\left(\frac{\theta}{2}\right) \implies q = 2k\sin\!\left(\frac{\theta}{2}\right)
+    \label{eq:q_theta}
+\end{equation}
+È questa relazione a collegare la variabile naturale del fattore di forma all'angolo letto dal rivelatore.
+
+
+\subsubsection*{Guscio sferico}
+
+Consideriamo per primo il caso in cui tutta la carica sia distribuita su una superficie sferica di raggio $R$,
+\begin{equation*}
+    \rho(r) = \frac{Ze}{4\pi R^2}\,\delta(r-R)
+\end{equation*}
+La delta rende immediato l'integrale della \eqref{eq:F_sferico} e si ottiene
+\begin{equation}
+    F_G(q) = \frac{\sin(qR)}{qR}
+    \label{eq:F_guscio}
+\end{equation}
+Il fattore di forma oscilla con inviluppo $1/qR$ e si annulla per $qR = n\pi$. Il primo minimo si ha dunque in
+\begin{equation}
+    qR = \pi \implies 2k\sin\!\left(\frac{\theta_{\min}}{2}\right) = \frac{\pi}{R}
+    \label{eq:minimo_guscio}
+\end{equation}
+e misurando l'angolo a cui la sezione d'urto si annulla si risale direttamente a $R$.
+
+\subsubsection*{Sfera uniforme}
+
+Consideriamo ora una carica distribuita uniformemente in un volume sferico,
+\begin{equation*}
+    \rho(r) = \begin{cases} \dfrac{3Ze}{4\pi R^3} & r < R \\[2mm] 0 & r > R \end{cases}
+\end{equation*}
+L'integrale si svolge per parti,
+\begin{equation*}
+    F_S(q) = \frac{3}{qR^3}\int_0^{R} r\sin(qr)\,dr = \frac{3}{qR^3}\left[\frac{\sin(qR)}{q^2} - \frac{R\cos(qR)}{q}\right]
+\end{equation*}
+da cui
+\begin{equation}
+    F_S(q) = \frac{3}{(qR)^3}\Big[\sin(qR) - qR\cos(qR)\Big]
+    \label{eq:F_sfera}
+\end{equation}
+Gli zeri non sono più equispaziati: imponendo $F_S = 0$ si ottiene la condizione $\tan(qR) = qR$, il cui primo zero non banale è
+\begin{equation}
+    qR \simeq 4{,}493
+    \label{eq:minimo_sfera}
+\end{equation}
+Il confronto con la \eqref{eq:minimo_guscio} mostra che il coefficiente che converte la posizione del minimo in un raggio dipende dal modello, e ne dipende in modo non che trascurabile.
+
+\subsubsection*{Significato dei minimi}
+
+La presenza di zeri veri in entrambi gli esempi è una conseguenza del bordo netto. Una distribuzione che si interrompe bruscamente minimi completi, se invece il bordo è sfumato i minimi vengono parzialmente riempiti e l'inviluppo cade più rapidamente, mentre una distribuzione ovunque liscia, come una gaussiana, non presenta alcun minimo e decade in modo monotono.
+
+I nuclei reali sono descritti bene dalla distribuzione di Fermi\mkeyword{distribuzione di Fermi},
+\begin{equation}
+    \rho(r) = \frac{\rho_0}{1+e^{(r-c)/a}}
+    \label{eq:woods_saxon}
+\end{equation}
+nella quale $c$ è il raggio a metà altezza e $a$ regola lo spessore della superficie, i due parametri che avevamo introdotto all'inizio del capitolo come \emph{raggio medio} e \emph{skin thickness}. La posizione dei minimi fissa $c$, il loro riempimento e la caduta dell'inviluppo fissano $a$.
+
+\subsubsection*{Il raggio quadratico medio}
+
+Esiste infine un modo di estrarre un'informazione sulla distribuzione di carica \emph{senza} assumerne la forma. Sviluppando la funzione di Bessel nella \eqref{eq:F_sferico} per $qr \ll 1$,
+\begin{equation*}
+    \frac{\sin(qr)}{qr} = 1 - \frac{1}{6}q^2r^2 + O(q^4r^4)
+\end{equation*}
+si ottiene
+\begin{equation*}
+    F(q) \simeq \frac{4\pi}{Ze}\int_0^{\infty} r^2\rho(r)\,dr - \frac{q^2}{6}\,\frac{4\pi}{Ze}\int_0^{\infty} r^4\rho(r)\,dr = 1 - \frac{1}{6}q^2\langle r^2\rangle
+\end{equation*}
+avendo riconosciuto nel primo termine la normalizzazione \eqref{eq:F_zero} e avendo definito il \emph{raggio quadratico medio}\mkeyword{raggio quadratico medio}
+\begin{equation}
+    \langle r^2\rangle = \frac{\int_V r^2\rho(\mathbf{r})\,d^3r}{\int_V \rho(\mathbf{r})\,d^3r}
+    \label{eq:r2_def}
+\end{equation}
+Isolando $\langle r^2\rangle$ si ottiene la relazione cercata
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \langle r^2\rangle = -6\,\frac{d}{dq^2}F(q)\bigg|_{q\to 0}
+    \label{eq:r2_derivata}
+\end{equation}
+\end{tcolorbox}
+La pendenza iniziale del fattore di forma misurato, graficato in funzione di $q^2$, fornisce dunque direttamente il raggio quadratico medio della distribuzione di carica. Il risultato non dipende da alcuna ipotesi sulla forma di $\rho$: a piccolo $q$ tutti i modelli collassano sullo stesso andamento, e l'unica informazione che sopravvive è $\langle r^2\rangle$. È per questo motivo che $\sqrt{\langle r^2\rangle}$ costituisce la definizione operativa di raggio nucleare che cercavamo all'inizio del capitolo.
