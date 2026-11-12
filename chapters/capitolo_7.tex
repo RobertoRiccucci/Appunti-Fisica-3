@@ -1,0 +1,373 @@
+\chapter{Interazione di particelle cariche con la materia}
+
+Nei capitoli precedenti abbiamo studiato l'urto di una particella su un singolo bersaglio. Definita la sezione d'urto differenziale l'abbiamo collegata al parametro d'impatto, ne abbiamo ricavato la forma e infine, introducendo il fattore di forma, abbiamo dimostrato che lo scattering è uno strumento di misura: permette di analizzare oggetti che non possiamo raggiungere in nessun altro modo.
+
+Cambiamo ora punto di vista. Non ci interessa più il singolo evento, ma l'evoluzione di una particella carica che attraversa un mezzo e che lungo il suo cammino incontra un numero enorme di centri diffusori.
+
+Per far questo è necessario considerare due fattori. Il primo è l'interazione coulombiana con le cariche del mezzo, che sottrae energia alla particella. Il secondo è l'irraggiamento: ad ogni urto la particella viene deflessa e quindi accelerata, e una carica accelerata emette radiazione. Questo fattore è assente dalla trattazione fatta finora, dove l'urto era per ipotesi elastico e il proiettile non perdeva energia.
+
+Per far questo, però, sarà necessario studiare il campo elettrico di una carica in moto, cosa che si può fare grazie al formalismo relativistico. Per questo nella prima sezione del capitolo sarà riportato un riassunto (con solo lo stretto necessario) di questo formalismo. 
+
+\section{Formalismo relativistico}
+
+Raccogliamo qui, senza dimostrazioni, gli strumenti del formalismo covariante che serviranno nel seguito.
+
+\subsection*{Quadrivettori}
+
+Un \mkeyword{quadrivettore}quadrivettore è una quaterna $x^\mu = (x^0, x^1, x^2, x^3)$, e dati due quadrivettori $x^\mu$ e $y^\mu$ si definisce il \mkeyword{prodotto di Minkowski}prodotto di Minkowski, ovvero il prodotto scalare,
+%
+\begin{equation}
+    (x,y) = x^0 y^0 - x^1 y^1 - x^2 y^2 - x^3 y^3
+    \label{eq:minkowski}
+\end{equation}
+I quadrivettori trasformano secondo
+%
+\begin{equation}
+    x'^\mu = \Lambda^\mu_{\ \nu}\, x^\nu \qquad , \qquad \Lambda^\mu_{\ \nu} = \frac{\partial x'^\mu}{\partial x^\nu}
+    \label{eq:lorentz}
+\end{equation}
+dove $\Lambda^\mu_{\ \nu}$ è la matrice di Lorentz. In base al modo in cui trasformano si distinguono vettori \mkeyword{controvarianti}controvarianti e \mkeyword{covarianti}covarianti,
+%
+\begin{equation}
+    x'^\mu = \frac{\partial x'^\mu}{\partial x^\nu}\,x^\nu \qquad , \qquad x'_\mu = \frac{\partial x^\nu}{\partial x'^\mu}\,x_\nu
+    \label{eq:cov_contro}
+\end{equation}
+e la \eqref{eq:lorentz} è la trasformazione dei controvarianti. La distinzione serve a garantire l'invarianza della contrazione, infatti
+%
+\begin{equation*}
+    x'^\mu x'_\mu = \frac{\partial x'^\mu}{\partial x^\alpha}\frac{\partial x^\beta}{\partial x'^\mu}\,x^\alpha x_\beta = \delta^\beta_{\ \alpha}\,x^\alpha x_\beta = x^\beta x_\beta
+\end{equation*}
+
+Essendo una trasformazione del tipo $x'^\mu = x'^\mu(x^\nu)$, per la regola della catena si ha
+%
+\begin{equation*}
+    \frac{\partial}{\partial x^\nu} = \frac{\partial}{\partial x'^\mu}\frac{\partial x'^\mu}{\partial x^\nu} \implies \frac{\partial}{\partial x'^\mu} = \frac{\partial x^\nu}{\partial x'^\mu}\frac{\partial}{\partial x^\nu}
+\end{equation*}
+cioè la derivata rispetto a una coordinata controvariante trasforma come un covariante. Si definisce allora il quadrigradiente\mkeyword{quadrigradiente}
+%
+\begin{equation}
+    \partial_\mu \equiv \frac{\partial}{\partial x^\mu} = \left(\frac{\partial}{\partial ct},\ \boldsymbol{\nabla}\right) \qquad , \qquad \partial^\mu \equiv \frac{\partial}{\partial x_\mu} = \left(\frac{\partial}{\partial ct},\ -\boldsymbol{\nabla}\right)
+    \label{eq:quadrigradiente}
+\end{equation}
+Nel caso generale un tensore trasforma con una matrice di Lorentz per ciascun indice,
+%
+\begin{equation}
+    T'^{\,\mu\nu}_{\ \ \rho\sigma} = \Lambda^\mu_{\ \alpha}\,\Lambda^\nu_{\ \beta}\,\Lambda^{\ \gamma}_{\rho}\,\Lambda^{\ \delta}_{\sigma}\; T^{\alpha\beta}_{\ \ \gamma\delta}
+    \label{eq:tensore_generale}
+\end{equation}
+
+\subsection*{Le equazioni di Maxwell in forma covariante}
+
+Le equazioni di Maxwell nel vuoto sono
+%
+\begin{equation}
+\left\{\begin{array}{l}
+\boldsymbol{\nabla}\cdot\mathbf{E} = 4\pi\rho \\[2pt]
+\boldsymbol{\nabla}\times\mathbf{E} = -\dfrac{1}{c}\dfrac{\partial \mathbf{B}}{\partial t} \\[6pt]
+\boldsymbol{\nabla}\cdot\mathbf{B} = 0 \\[2pt]
+\boldsymbol{\nabla}\times\mathbf{B} = \dfrac{1}{c}\dfrac{\partial \mathbf{E}}{\partial t} + \dfrac{4\pi}{c}\mathbf{J}
+\end{array}\right.
+\label{eq:maxwell}
+\end{equation}
+e vogliamo riscriverle in forma covariante. Definiamo anzitutto la quadricorrente $J^\mu = (c\rho,\,\mathbf{J})$. Ricordando poi che
+%
+\begin{equation*}
+\left\{\begin{array}{l}
+\mathbf{E} = -\boldsymbol{\nabla}\varphi - \dfrac{1}{c}\dfrac{\partial\mathbf{A}}{\partial t} \\[6pt]
+\mathbf{B} = \boldsymbol{\nabla}\times\mathbf{A}
+\end{array}\right.
+\end{equation*}
+possiamo definire il quadripotenziale $A^\mu = (\varphi,\,\mathbf{A})$, in termini del quale
+%
+\begin{equation*}
+    E^i = -\frac{\partial}{\partial x^i}\varphi - \frac{\partial}{\partial x^0}A^i = -\left(\partial^0 A^i - \partial^i A^0\right) \qquad , \qquad B^j = \varepsilon^{jik}\,\partial^i A^k
+\end{equation*}
+Entrambi i campi sono dunque costruiti con la stessa combinazione, e questo suggerisce di definire il \mkeyword{tensore elettromagnetico}tensore elettromagnetico
+%
+\begin{equation}
+    F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu
+    \label{eq:tensore_em}
+\end{equation}
+Si nota che $F^{00} = F^{ii} = 0$, che $F^{0i} = \partial^0A^i - \partial^iA^0 = -E^i$ e che $F^{ij} = \partial^iA^j - \partial^jA^i = -\varepsilon^{ijk}B_k$, per cui
+%
+\begin{equation}
+    F^{\mu\nu} = \begin{pmatrix}
+    0 & -E_x & -E_y & -E_z \\
+    E_x & 0 & -B_z & B_y \\
+    E_y & B_z & 0 & -B_x \\
+    E_z & -B_y & B_x & 0
+    \end{pmatrix}
+    \label{eq:matrice_F}
+\end{equation}
+Definiamo infine il \mkeyword{tensore duale}tensore duale
+%
+\begin{equation}
+    \mathcal{F}^{\mu\nu} = \frac{1}{2}\,\varepsilon^{\mu\nu\rho\sigma}F_{\rho\sigma}
+    \label{eq:duale}
+\end{equation}
+A questo punto le quattro equazioni \eqref{eq:maxwell} si riassumono in due,
+%
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \partial_\mu F^{\mu\nu} = \frac{4\pi}{c}J^\nu \qquad , \qquad \partial_\mu \mathcal{F}^{\mu\nu} = 0
+    \label{eq:maxwell_covariante}
+\end{equation}
+\end{tcolorbox}
+Dai due tensori si costruiscono inoltre i due invarianti
+%
+\begin{equation}
+    F^{\mu\nu}F_{\mu\nu} \propto E^2 - B^2 \qquad , \qquad F^{\mu\nu}\mathcal{F}_{\mu\nu} \propto \mathbf{E}\cdot\mathbf{B}
+    \label{eq:invarianti}
+\end{equation}
+
+\subsection*{Trasformazione dei campi}
+
+Essendo $F^{\mu\nu}$ un tensore di rango due, per la \eqref{eq:tensore_generale} esso trasforma come
+%
+\begin{equation}
+    F'^{\,\mu\nu} = \Lambda^\mu_{\ \rho}\,\Lambda^\nu_{\ \sigma}\,F^{\rho\sigma} \qquad \text{ovvero} \qquad F' = \Lambda\, F\, {}^{t}\Lambda
+    \label{eq:trasf_F}
+\end{equation}
+Per un boost di velocità $v$ lungo $x$ la matrice $\Lambda$ agisce solo sul blocco $(x^0,x^1)$, e svolgendo il prodotto si trova che le componenti dei campi parallele al boost restano invariate mentre quelle trasverse si mescolano fra loro:
+%
+\begin{equation}
+\left\{\begin{array}{l}
+E_x' = E_x \\
+E_y' = \gamma\left(E_y - \beta B_z\right) \\
+E_z' = \gamma\left(E_z + \beta B_y\right)
+\end{array}\right.
+\qquad\qquad
+\left\{\begin{array}{l}
+B_x' = B_x \\
+B_y' = \gamma\left(B_y + \beta E_z\right) \\
+B_z' = \gamma\left(B_z - \beta E_y\right)
+\end{array}\right.
+\label{eq:trasf_campi}
+\end{equation}
+Le trasformazioni inverse, da $S'$ a $S$, si ottengono scambiando le grandezze primate con quelle non primate e cambiando segno a $\beta$. È questo il risultato che useremo nella prossima sezione.
+
+\section{Campo elettrico di una carica in moto}
+
+Adesso che abbiamo introdotto il formalismo necessario, possiamo passare al caso di nostro interesse: il campo elettrico di una carica in moto. 
+
+Consideriamo una particella di carica di carica $e$ che si muove a velocità $v$. Per la descrizione sarà necessario considerare due sistemi di riferimento: il sistema $S$, solidale al laborario, in cui la particella si muove con velocità $\mathbf{v}$ e la cui posizione è indicata con il vettore $\mathbf{Q}$, e il sistema $S'$, solidale alla particella. 
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>={Stealth[length=2.2mm]},scale=0.9,
+      every node/.style={font=\small}]
+    
+    \coordinate (O) at (0,0);
+    \coordinate (E) at (3.2,0);
+    \coordinate (P) at (7.4,2.3);
+    
+    % ---------- assi ----------
+    \draw[->] (-1.4,0) -- (9.3,0) node[right] {$x = x'$};
+    \draw[->] (0,-1.3) -- (0,3.0) node[right,inner sep=3pt] {$y$};
+    \draw[->] (3.2,-1.3) -- (3.2,3.0) node[right,inner sep=3pt] {$y'$};
+    
+    \node at (0,3.35) {$S$};
+    \node at (3.2,3.35) {$S'$};
+    
+    % ---------- carica e sua posizione ----------
+    \draw[->,thick] (O) -- (E) node[midway,above,inner sep=3pt] {$\mathbf{Q}$};
+    \fill (E) circle (2.4pt);
+    \node[below left,inner sep=3pt] at (E) {$e$};
+    
+    \draw[->,thick] (E) -- (4.9,0) node[midway,below,inner sep=3pt] {$\mathbf{v}$};
+    
+    \draw[decorate,decoration={brace,amplitude=5pt,mirror}] (0,-0.55) -- (3.2,-0.55)
+      node[midway,below,inner sep=6pt] {$x_1 = vt$};
+    
+    % ---------- punto campo ----------
+    \draw[->,thick,shorten >=2pt] (E) -- (P) node[midway,above left,inner sep=2pt] {$\mathbf{W}$};
+    \draw[thin] (7.4,0) -- (P);
+    \node[right,inner sep=3pt] at (7.45,1.15) {$y$};
+    
+    \fill (P) circle (2.0pt);
+    \node[right,inner sep=7pt] at (7.45,2.08) {$P(x,y)$};
+    
+    % ---------- campo elettrico ----------
+    \draw[->,thick] ($(P)+(0.17,0.093)$) -- ($(P)+(1.35,0.74)$) node[above,inner sep=2pt] {$\mathbf{E}$};
+    
+    \end{tikzpicture}
+    \caption{I due sistemi di riferimento $S$ e $S'$.}
+    \label{fig:due_sistemi}
+\end{figure}
+
+Identificando un generico punto dello spazio con il vettore $\mathbf{P}$, possiamo definire il quadrivettore $W^\mu = P^\mu - Q^\mu$, dove $P^\mu$ e $Q^\mu$ sono i quadrivettori associati rispettivamente ai vettori posizione $\mathbf{P}$ e $\mathbf{Q}$. In componenti $W^\mu$ può essere scritto come
+\begin{equation*}
+    W^\mu = (0, x - vt, y, z)
+\end{equation*}
+Possiamo passare al sistema $S'$ con una trasformazione di Lorentz del tipo $W^{\mu'} = \Lambda^{\mu'}_{\mu} W^{\mu}$, ottenendo 
+\begin{equation*}
+    W^{\mu'} = (- \beta \gamma x, \gamma(x - vt), y, z) = (- \beta \gamma (X + vt), \gamma X, y, z) \quad ,\quad X \equiv x - vt
+\end{equation*}
+Questo ci permette di descrivere in modo compatto il campo elettrico nel sistema $S'$, infatti, essendo la particella solidale al sistema, il campo elettrico è nella forma $\mathbf{E}' = e/r'^3 \ \mathbf{r}'$, dove $\mathbf{r}'$ corrisponde esattamente a $\mathbf{W}'$. Scrivendo il campo elettrico in componenti si ha 
+\begin{equation}
+    E_x^{\prime} =\frac{\gamma e X}{\left(\gamma^2 X^2 + y^2\right)^{3 / 2}} \quad , \quad E_y^{\prime}=\frac{y e}{\left(y^2+\gamma^2 X^2\right)^{3 / 2}}
+\end{equation}
+
+Non ci resta che riportare queste componenti nel sistema $S$ e per far questo sfruttiamo la trasformazione del tensore elettromagnetico $F^{\mu \nu} = \Lambda^{\mu}_{\sigma} \Lambda^{\nu}_{\rho} F'^{\sigma \rho}$ da cui otteniamo
+\begin{equation}
+\label{eq:campo_S}
+\left\{\begin{array} { l } 
+{ E _ { x } = E _ { x } ^ { \prime } } \\
+{ E _ { y } = \gamma ( E _ { y } ^ { \prime } + \beta B _ { z }' ) } \\
+{ E _ { z } = \gamma ( E _ { z } ^ { \prime } - \beta B _ { y }' ) }
+\end{array} \quad \implies \left\{\begin{array}{l}
+E_x=\frac{\gamma e X}{\left(\gamma^2 X^2+y^2\right)^{3 / 2}} \\
+E_y=\frac{\gamma e y}{\left(\gamma^2 X^2+y^2\right)^{3 / 2}}
+\end{array}\right.\right.
+\end{equation}
+Un fatto interessante è come anche in $S$ il campo elettrico continui a essere radiale rispetto alla particella, infatti
+\begin{equation}
+    \frac{E_y}{E_x} = \frac{y}{X} = \frac{y}{x - vt}
+\end{equation}
+Per questo, chiamando $r$ il modulo del vettore $\mathbf{W}$ e $\phi$ l'angolo che esso forma con l'orizzontale, si ricava che 
+\begin{equation*}
+\left\{\begin{array} { l } 
+{X = r\cos\phi} \\
+{y = r\sin\phi}
+\end{array}\right.
+\end{equation*}
+Allora, sostituendo in \eqref{eq:campo_S} si ottiene
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt] 
+\begin{equation}
+    \mathbf{E}=\frac{e}{\left[r^2 \gamma^2\left(1-\beta^2 \sin ^2 \phi\right)\right]^{3 / 2}} \cdot\left(\gamma r \cos \phi, \gamma r \sin \phi\right) =\frac{e}{r^2} \cdot \frac{\hat{r}}{\gamma^2\left(1-\beta^2 \sin^2 \psi\right)^{3 / 2}}
+\end{equation}
+\end{tcolorbox}
+Si nota che il campo elettrico \emph{non} è isotropo ma dipende dall'angolo $\phi$. 
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>={Stealth[length=3mm,width=2.1mm]},scale=0.9,
+      every node/.style={font=\small}]
+    
+    \def\gam{3}      % fattore di Lorentz
+    \def\Nl{40}      % numero di linee di campo
+    \def\Rad{3.3}    % lunghezza delle linee
+    
+    \foreach \k in {0,...,39}{
+      \pgfmathsetmacro{\psip}{\k*(360/\Nl)}
+      \pgfmathsetmacro{\ux}{cos(\psip)/\gam}
+      \pgfmathsetmacro{\uy}{sin(\psip)}
+      \pgfmathsetmacro{\nn}{sqrt(\ux*\ux+\uy*\uy)}
+      \draw[->,black!50,line width=0.65pt] (0,0) -- ({\Rad*\ux/\nn},{\Rad*\uy/\nn});
+    }
+    
+    \fill (0,0) circle (3pt);
+    
+    \draw[->,line width=1.4pt] (4.4,0) -- (6.0,0) node[midway,below,inner sep=5pt] {$\mathbf{v}$};
+    
+    \end{tikzpicture}
+    \caption{Linee del campo elettrico di una carica in moto uniforme, disegnate per $\gamma = 3$. Il campo resta radiale e diretto verso la posizione istantanea della carica, ma le linee non sono più equispaziate in angolo: si addensano nel piano trasverso al moto e si diradano lungo la direzione di $\mathbf{v}$.}
+    \label{fig:campo_carica_moto}
+\end{figure}
+
+\section{Radiazione di una carica accelerata}
+
+Per adesso abbiamo considerato solo il caso in cui una particella si muove a velocità costante in ogni istante, adesso, invece, passiamo a quello in cui la particella è ferma fino $t = 0$, istante in cui inzia un piccolo periodo di tempo $\tau$ in cui la particella accelera in modo costante fino a raggiungere una velocità $v$. Supporremo $v \ll c$, in modo da poter trascurare gli effetti relativistici studiati nella sezione precedente, e ci porremo in un istante $t \gg \tau$, cioè molto dopo che l'accelerazione è cessata.
+
+Vogliamo sapere come appaia il campo elettrico a distanza $R$ dalla posizione iniziale della carica. La risposta è condizionata dal fatto che nessuna informazione può propagarsi più velocemente della luce, e questo divide lo spazio in tre regioni.\\
+Per $R > ct$ la notizia che la carica si è mossa non è ancora arrivata: lì il campo è ancora quello di una carica ferma nell'origine, radiale e di modulo $e/R^2$. \\
+Per $R < c(t-\tau)$ la notizia è arrivata: il campo è quello di una carica in moto uniforme con velocità $v$, che come abbiamo visto è radiale rispetto alla posizione istantanea della carica, la quale dista $vt$ dall'origine.\\
+Fra i due fronti resta un guscio sferico di spessore $c\tau$, ed è lì che avviene il raccordo fra le due configurazioni.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>={Stealth[length=2.2mm]},scale=0.78,
+      every node/.style={font=\small},
+      freccia/.style={postaction={decorate,decoration={markings,
+         mark=at position #1 with {\arrow{Stealth[length=2.2mm]}}}}}]
+    
+    \def\Ro{5.4}
+    \def\Ri{5.0}
+    
+    % ---------- guscio ----------
+    \fill[black!12] (138:\Ro) arc(138:-18:\Ro) -- (-18:\Ri) arc(-18:138:\Ri) -- cycle;
+    \draw[dashed,black!70] (138:\Ro) arc(138:-18:\Ro);
+    \draw[dashed,black!70] (138:\Ri) arc(138:-18:\Ri);
+    
+    % ---------- asse x ----------
+    \draw[->] (-4.6,0) -- (6.6,0) node[right] {$x$};
+    
+    % ---------- regioni ----------
+    \node at (-4.35,5.05) {Regione I};
+    \node at (-2.60,2.80) {Regione II};
+    
+    % ---------- raggi ----------
+    \draw[<->] (0,0) -- (104:\Ro);
+    \node[rotate=14,fill=white,inner sep=1.5pt] at (104:4.0) {$R = ct$};
+    \draw[<->] (0,0) -- (118:\Ri);
+    \node[rotate=28,fill=white,inner sep=1.5pt] at (118:2.3) {$R = c(t-\tau)$};
+    
+    % ---------- spessore del guscio ----------
+    \draw[->] (2.70,6.20) -- (1.82,5.00);
+    \node at (2.85,6.45) {$c\tau$};
+    
+    % ---------- cariche ----------
+    \draw[fill=white] (0,0) circle (3pt);
+    \node[below] at (0,-0.14) {$x = 0$};
+    \fill (1.55,0) circle (3pt);
+    \node[below] at (1.72,-0.14) {$x = vt$};
+    
+    % ---------- angolo ----------
+    \draw[thin] (1.05,0) arc(0:52:1.05);
+    \node at (26:1.33) {$\theta$};
+    
+    % ---------- linea di campo ----------
+    \draw[dashed,black!70] (0,0) -- (3.325,4.255);
+    \draw[thick,freccia=0.55] (1.55,0) -- (3.948,3.069);
+    \draw[thick] (3.948,3.069) -- (3.325,4.255);
+    \draw[thick,freccia=0.6] (3.325,4.255) -- (4.248,5.437);
+    
+    \node[right,inner sep=3pt] at (3.948,3.069) {$B$};
+    \node[left,inner sep=3pt] at (3.325,4.255) {$C$};
+    \node[right,inner sep=3pt] at (4.248,5.437) {$D$};
+    
+    % ---------- scarto trasverso ----------
+    \draw[<->] (1.847,2.364) -- (2.809,1.612);
+    \node[rotate=-38,fill=white,inner sep=1.5pt] at (2.33,1.99) {$vt\sin\theta$};
+    
+    % ---------- inserto ----------
+    \draw[thin,black!60] (3.636,3.662) -- (5.846,4.899);
+    \begin{scope}[shift={(7.25,4.70)}]
+      \draw[thin,black!60] (-0.40,0.76) circle (1.15);
+      \draw[->,thick] (0,0) -- (0.431,0.552) node[right,inner sep=2pt] {$E_r$};
+      \draw[->,thick] (0,0) -- (-1.222,0.955) node[left,inner sep=2pt] {$E_\theta$};
+      \draw[->,line width=1.1pt] (0,0) -- (-0.791,1.507) node[above,inner sep=2pt] {$E$};
+      \draw[dashed,black!60] (0.431,0.552) -- (-0.791,1.507);
+      \draw[dashed,black!60] (-1.222,0.955) -- (-0.791,1.507);
+    \end{scope}
+    
+    \end{tikzpicture}
+    \caption{Carica ferma in $x=0$ fino a $t=0$, accelerata per un tempo $\tau$ fino alla velocità $v$ e osservata all'istante $t \gg \tau$.}
+    \label{fig:raccordo}
+\end{figure}
+
+Che il raccordo debba esistere è imposto dalle equazioni di Maxwell. Nel guscio non c'è carica, quindi $\nabla\cdot\mathbf{E} = 0$ e le linee di campo non possono né nascere né terminare: ogni linea esterna deve proseguire in una linea interna. Ma le due famiglie di linee escono da due punti diversi (l'origine e la posizione attuale) e sono quindi sfalsate l'una rispetto all'altra. Il collegamento avviene allora attraverso un tratto obliquo, ed è questo tratto a produrre una componente del campo perpendicolare alla direzione radiale.
+
+Chiamiamo $\theta$ l'angolo fra la direzione di osservazione e la direzione del moto. Poiché il campo è tangente alla linea di campo, le sue due componenti nel guscio stanno fra loro come le due proiezioni del segmento
+\begin{equation}
+    \frac{E_\perp}{E_\parallel} = \frac{v\,t\sin\theta}{c\,\tau}
+    \label{eq:rapporto_componenti}
+\end{equation}
+Il numeratore è la distanza tra la stessa linea nelle due regioni mentre il denominatore è lo spessore del guscio, cioè la distanza percorsa dalla luce nel tempo $\tau$.
+
+Sostituiamo ora $R = ct$ e $v = a\tau$
+\begin{equation}
+    \frac{E_\perp}{E_\parallel} = \frac{v\sin\theta \cdot \dfrac{R}{c}}{c\,\dfrac{v}{a}} = \frac{aR\sin\theta}{c^2}
+    \label{eq:rapporto_accelerazione}
+\end{equation}
+Si noti che la velocità si semplifica: il risultato dipende dall'accelerazione e non da quanto velocemente la carica si stia muovendo.
+
+Resta da determinare la componente radiale. Anche questa è fissata dalle equazioni di Maxwell: applicando il teorema di Gauss a una sfera di raggio compreso fra i due fronti, la carica racchiusa è sempre $e$, quindi la componente radiale non può subire salti e mantiene ovunque il valore $E_\parallel = e/R^2$. Il raccordo delle linee aggiunge una componente trasversa, non altera quella radiale. Moltiplicando la \eqref{eq:rapporto_accelerazione} per $E_\parallel$ si ottiene 
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    E_\perp = \frac{aR\sin\theta}{c^2}\cdot\frac{e}{R^2} = \frac{e\,a\sin\theta}{c^2 R}
+    \label{eq:campo_radiazione}
+\end{equation}
+\end{tcolorbox}
+
+Si nota che il campo decresce come $1/R$ e non come $1/R^2$. È questa la differenza essenziale rispetto al campo coulombiano: il flusso di energia attraverso una sfera di raggio $R$ va come $E_\perp^2 R^2$, e quindi un campo $\propto 1/R$ porta energia all'infinito, questo è l'irraggiamento.
