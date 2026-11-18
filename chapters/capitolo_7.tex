@@ -201,7 +201,7 @@ Identificando un generico punto dello spazio con il vettore $\mathbf{P}$, possia
 \end{equation*}
 Possiamo passare al sistema $S'$ con una trasformazione di Lorentz del tipo $W^{\mu'} = \Lambda^{\mu'}_{\mu} W^{\mu}$, ottenendo 
 \begin{equation*}
-    W^{\mu'} = (- \beta \gamma x, \gamma(x - vt), y, z) = (- \beta \gamma (X + vt), \gamma X, y, z) \quad ,\quad X \equiv x - vt
+    W^{\mu'} = (- \beta \gamma (x - vt), \gamma(x - vt), y, z) = (- \beta \gamma X , \gamma X, y, z) \quad ,\quad X \equiv x - vt
 \end{equation*}
 Questo ci permette di descrivere in modo compatto il campo elettrico nel sistema $S'$, infatti, essendo la particella solidale al sistema, il campo elettrico è nella forma $\mathbf{E}' = e/r'^3 \ \mathbf{r}'$, dove $\mathbf{r}'$ corrisponde esattamente a $\mathbf{W}'$. Scrivendo il campo elettrico in componenti si ha 
 \begin{equation}
@@ -371,3 +371,220 @@ Resta da determinare la componente radiale. Anche questa è fissata dalle equazi
 \end{tcolorbox}
 
 Si nota che il campo decresce come $1/R$ e non come $1/R^2$. È questa la differenza essenziale rispetto al campo coulombiano: il flusso di energia attraverso una sfera di raggio $R$ va come $E_\perp^2 R^2$, e quindi un campo $\propto 1/R$ porta energia all'infinito, questo è l'irraggiamento.
+
+\section{Potenziali di Liénard-Wiechert}
+Fino ad ora abbiamo trattato il caso in cui la particella si muove a velocità relativistiche ma di moto rettilineo uniforme e il caso in cui la particella accelera ma raggiunge una velocità $v\ll c$, consideriamo adesso il caso generale di una particella che accelera e si muove a velocità relativistiche.\footnote{Di seguito sarà riportato il modo in cui è stato spiegato questo argomento a lezione, tuttavia nella sezione 12.11 di \cite{jackson} si trova una spiegazione molto simile ma più veloce in cui si vanno a sfruttare i risultati dell'analisi complessa (è esattamente il modo in cui affrontiamo questo tipo di problemi nel corso di Metodi 2).}\\
+
+\subsection*{L'equazione d'onda per il quadripotenziale}
+
+I campi elettromagnetici $F^{\mu \nu}$ dovuti a una sorgente esterna $J^{\mu}$ soddisfano le equazioni di Maxwell non omogenee
+\begin{equation*}
+    \partial_{\mu}F^{\mu \nu} = \frac{4\pi}{c} J^\nu
+\end{equation*}
+Introducendo le definizioni dei campi mediante i potenziali l'equazione precedente diventa
+\begin{equation*}
+    \Box A^{\nu} - \partial^{\nu}(\partial_\mu A^{\mu}) = \frac{4\pi}{c}J^{\nu} 
+\end{equation*}
+Se siamo in gauge di Lorenz $\partial_\mu A^{\mu} = 0$ allora la forma si semplifica 
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+\label{eq:potenziali_qcorrente}
+    \Box A^{\nu} = \frac{4\pi}{c} J^\nu
+\end{equation}
+\end{tcolorbox}
+
+\subsection*{La funzione di Green}
+
+La soluzione della \eqref{eq:potenziali_qcorrente} può essere ricavata cercando una funzione di Green $G(x^{\mu}, x'^{\mu})$ che soddisfa l'equazione 
+\begin{equation}
+\label{eq:Green}
+    \Box G(x^{\mu}, x'^{\mu}) = 4\pi \delta^{(4)} (x^\mu - x'^\mu)
+\end{equation}
+dove $\delta^{(4)} = \delta(c(t - t'))\,\delta^3(\mathbf{x} - \mathbf{x}')$ è la delta di Dirac $4$-dimensionale. \\
+Vediamo una forma esplicita per $x^\mu$ e $x'^\mu$
+\begin{align}
+    x^\mu &= (ct, \mathbf{x}) \quad ,\quad x'^\mu = (ct', \mathbf{x}')\\
+    X^\mu &\equiv x^\mu - x'^\mu = \left(c(t-t'),\ \mathbf{x} - \mathbf{x}'\right) \equiv (cT, \mathbf{R})
+\end{align}
+Allora la \eqref{eq:Green} può essere scritta come
+\begin{equation*}
+    \left(\frac{1}{c^2} \frac{\partial^2}{\partial T^2} - \nabla^2\right)G(T, \mathbf{R}) = 4\pi\, \delta(cT)\, \delta^3(\mathbf{R})
+\end{equation*}
+Andiamo prima a risolvere l'equazione omogenea, cioè a determinare $G$ per $\mathbf{R} \neq 0$, dove la sorgente è assente. Il problema ha simmetria sferica, perché la sorgente è un punto e non esiste alcuna direzione privilegiata, dunque $G = G(T,R)$ con $R = |\mathbf{R}|$ e del laplaciano sopravvive la sola parte radiale
+\begin{equation*}
+    \nabla^2 G = \frac{1}{R^2}\frac{\partial}{\partial R}\left(R^2\frac{\partial G}{\partial R}\right) = \frac{1}{R}\frac{\partial^2}{\partial R^2}\left(R\,G\right)
+\end{equation*}
+Conviene allora porre $u(T,R) \equiv R\,G(T,R)$: moltiplicando per $R$ l'equazione omogenea si ottiene
+\begin{equation}
+    \frac{1}{c^2}\frac{\partial^2 u}{\partial T^2} - \frac{\partial^2 u}{\partial R^2} = 0
+    \label{eq:dalembert_1d}
+\end{equation}
+cioè l'equazione di d'Alembert in una dimensione, la cui soluzione generale è la somma di un'onda progressiva e di una regressiva, $u = f(cT-R) + g(cT+R)$. Tornando a $G$
+\begin{equation}
+    G(T,R) = \frac{f(cT-R)}{R} + \frac{g(cT+R)}{R}
+    \label{eq:G_omogenea}
+\end{equation}
+Il secondo termine descrive un segnale che converge verso l'origine \emph{prima} che la sorgente agisca: è la soluzione anticipata, che scartiamo.
+
+Resta da determinare $f$, che l'equazione omogenea lascia completamente arbitraria. L'informazione mancante è tutta concentrata in $R = 0$ e la si trova integrando l'equazione completa su una sfera di raggio $\varepsilon$ centrata nell'origine. A secondo membro si ha semplicemente
+\begin{equation*}
+    \int_{R<\varepsilon} 4\pi\,\delta(cT)\,\delta^3(\mathbf{R})\,d^3R = 4\pi\,\delta(cT)
+\end{equation*}
+mentre a primo membro, applicando il teorema della divergenza al termine laplaciano,
+\begin{equation}
+    \int_{R<\varepsilon}\Box G\,d^3R = \frac{1}{c^2}\frac{\partial^2}{\partial T^2}\int_{R<\varepsilon} G\,d^3R \;-\; \oint_{S(\varepsilon)}\boldsymbol{\nabla}G\cdot\hat{\mathbf{n}}\,dS
+    \label{eq:integrale_sfera}
+\end{equation}
+I due termini si comportano in modo molto diverso. Il primo si annulla: in coordinate sferiche
+\begin{equation*}
+    \int_{R<\varepsilon} G\,d^3R = 4\pi\int_0^\varepsilon R\,f(cT-R)\,dR \sim 2\pi\varepsilon^2 f(cT)
+\end{equation*}
+che tende a zero per $\varepsilon \to 0$.
+
+Il secondo termine invece sopravvive. Il gradiente è puramente radiale,
+\begin{equation*}
+    \boldsymbol{\nabla}G = \left(-\frac{f'(cT-R)}{R} - \frac{f(cT-R)}{R^2}\right)\hat{\mathbf{R}}
+\end{equation*}
+Moltiplicando per l'area $4\pi\varepsilon^2$ della sfera,
+\begin{equation*}
+    \oint_{S(\varepsilon)}\boldsymbol{\nabla}G\cdot\hat{\mathbf{n}}\,dS = -4\pi\varepsilon\,f'(cT-\varepsilon) - 4\pi f(cT-\varepsilon)
+\end{equation*}
+Il termine con $f'$ porta un fattore $\varepsilon$ residuo e si annulla facendo il limite, mentre quello con $f$ ha un $\varepsilon^2$ a denominatore che si semplifica con l'area della sfera e quindi sopravvive. Mandando dunque $\varepsilon \to 0$ nella \eqref{eq:integrale_sfera} si ottiene
+\begin{equation*}
+    \int \Box G\,d^3R = 4\pi f(cT)
+\end{equation*}
+e il confronto con il secondo membro impone $f = \delta$. La funzione di Green cercata è quindi
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    G(T,R) = \frac{\delta(cT-R)}{R}
+    \label{eq:green_ritardata}
+\end{equation}
+\end{tcolorbox}
+
+Conviene adesso riscrivere la \eqref{eq:green_ritardata} in forma covariante: questo rende manifestamente invariante tutta la costruzione ed è inoltre la forma che ci permetterà di svolgere l'integrale sul tempo proprio più avanti. Analizziamo dunque $\delta(X^\nu X_{\nu})$ tramite la proprietà della delta
+\begin{equation}
+    \delta[f(s)] = \sum_i \frac{\delta(s - s_i)}{\left| \left(\frac{df}{ds}\right)_{s = s_i} \right|}
+    \label{eq:proprieta_delta}
+\end{equation}
+dove i punti $s = s_i$ sono gli zeri della funzione $f(s)$; useremo questa proprietà ripetutamente nel seguito.\\
+Grazie a essa, infatti, possiamo scrivere
+\begin{equation}
+    \delta(X^\nu X_\nu) = \delta(c^2 T^2 - R^2) = \frac{\delta\left( T - \frac{R}{c} \right)}{2cR} + \frac{\delta\left( T + \frac{R}{c} \right)}{2cR}
+\end{equation}
+Inoltre possiamo modificare anche la \eqref{eq:green_ritardata} ottenendo 
+\begin{equation}
+    G(T,R) = \frac{\delta\left(T-\frac{R}{c}\right)}{cR}
+\end{equation}
+Allora si nota che 
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    G(X^\mu) = 2\, \Theta(X^0)\,\delta(X^\nu X_\nu) 
+    \label{eq:green_covariante}
+\end{equation}
+\end{tcolorbox}
+dove la $\Theta$ seleziona la radice ritardata fra le due. Sfruttando questa relazione, possiamo esprimere $A^\mu$ come 
+\begin{equation}
+\label{eq:Quadripotenziale_funzioneJ}
+    A^\mu(x) = \frac{1}{c}\int d^4x'\; 2\, \Theta(X^0)\,\delta(X^\nu X_\nu)\; J^\mu(x')  
+\end{equation}
+
+\subsection*{Il campo di una carica puntiforme}
+
+Tuttavia è conveniente andare ad esprimere anche $J^\mu$ in termini della delta.
+
+Per una carica puntiforme la sorgente è concentrata sulla traiettoria della particella: indicando con $\boldsymbol{\xi}(t)$ la sua posizione all'istante $t$ e con $\mathbf{v} = d\boldsymbol{\xi}/dt$ la sua velocità,
+\begin{equation}
+    \rho(\mathbf{x},t) = e\, \delta^3 \left(\mathbf{x}-\boldsymbol{\xi}(t)\right) \quad , \quad \mathbf{J}(\mathbf{x},t) = e\, \mathbf{v}\, \delta^3 \left(\mathbf{x}-\boldsymbol{\xi}(t)\right)
+    \label{eq:rho_J_puntiforme}
+\end{equation}
+cioè $J^\mu = (c\rho,\mathbf{J}) = e (c,\mathbf{v})\,\delta^3(\mathbf{x}-\boldsymbol{\xi})$. Questa scrittura però non è covariante: né $\delta^3$ né $(c,\mathbf{v})$ sono oggetti con buone proprietà di trasformazione, a differenza della quadrivelocità $U^\mu = \gamma(c,\mathbf{v})$.
+
+Conviene allora descrivere la particella mediante la sua \mkeyword{linea di universo}linea di universo $\xi^\mu(\tau)$, cioè la traiettoria nello spaziotempo parametrizzata dal tempo proprio, con $U^\mu = d\xi^\mu/d\tau$, e porre
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    J^\mu(x) = ec \int_{-\infty}^{+\infty} U^\mu(\tau)\;\delta^{(4)}\!\left(x^\nu - \xi^\nu(\tau)\right)\,d\tau
+    \label{eq:corrente_covariante}
+\end{equation}
+\end{tcolorbox}
+che è un quadrivettore, essendo $U^\mu$ tale e $d\tau$ e $\delta^{(4)}$ invarianti.
+
+Verifichiamo che la \eqref{eq:corrente_covariante} si riduca alla \eqref{eq:rho_J_puntiforme}. Separando la parte temporale della delta,
+\begin{equation*}
+    \delta^{(4)}\!\left(x^\nu - \xi^\nu(\tau)\right) = \delta\!\left(c\left[t - t_\xi(\tau)\right]\right)\,\delta^3\!\left(\mathbf{x}-\boldsymbol{\xi}(\tau)\right)
+\end{equation*}
+e applicando di nuovo la \eqref{eq:proprieta_delta}, questa volta rispetto a $\tau$ e ricordando che $dt_\xi/d\tau = \gamma$,
+\begin{equation*}
+    \delta\!\left(c\left[t-t_\xi(\tau)\right]\right) = \frac{1}{c}\,\delta\!\left(t-t_\xi(\tau)\right) = \frac{1}{c\,\gamma}\,\delta(\tau-\tau_0)
+\end{equation*}
+dove $\tau_0$ è il tempo proprio corrispondente all'istante $t$ nel laboratorio. L'integrale in $\tau$ si svolge allora immediatamente e si ottiene
+\begin{equation*}
+    J^\mu(x) = \frac{e}{\gamma}\,U^\mu(\tau_0)\,\delta^3\!\left(\mathbf{x}-\boldsymbol{\xi}(t)\right) = e\,(c,\mathbf{v})\,\delta^3\!\left(\mathbf{x}-\boldsymbol{\xi}(t)\right)
+\end{equation*}
+
+La \eqref{eq:corrente_covariante} chiarisce anche il ruolo di $x'^\mu$. Nell'integrale che fornisce $A^\mu$ la variabile $x'^\mu$ spazia su tutto lo spaziotempo ed è il punto \emph{da cui parte} il segnale che la funzione di Green trasporta fino al punto di osservazione $x^\mu$. Per una carica puntiforme, però, $J^\mu(x')$ è nulla ovunque tranne che sulla linea di universo, perché la delta annulla il contributo di ogni punto che la particella non occupa: gli unici $x'^\mu$ che contribuiscono sono dunque $x'^\mu = \xi^\mu(\tau)$ e quindi $X^\mu = x^\mu - \xi^\mu(\tau)$.
+
+Adesso possiamo sostituire la \eqref{eq:corrente_covariante} nella \eqref{eq:Quadripotenziale_funzioneJ}
+\begin{equation}
+    A^\mu(x) = e \int d^4x'\; 2\, \Theta(X^0)\,\delta(X^\nu X_\nu) \int_{-\infty}^{+\infty} d\tau \; U^\mu(\tau)\;\delta^{(4)}\!\left(x'^\nu - \xi^\nu(\tau)\right)
+\end{equation}
+La presenza di $\delta^{(4)}$ elimina l'integrale in $d^4x'$, fissando $x'^\nu = \xi^\nu(\tau)$, e quindi si ottiene 
+\begin{equation}
+    A^\mu(x) = 2e \int_{-\infty}^{+\infty} d \tau \; \Theta(X^0)\, \delta\left( X^\nu X_\nu \right) U^\mu(\tau) \quad , \quad X^\mu = x^\mu - \xi^\mu(\tau)
+\end{equation}
+
+Sfruttando nuovamente la \eqref{eq:proprieta_delta}, ponendo $f(\tau) = X^\alpha X_\alpha (\tau)$ e 
+\begin{equation*}
+    \frac{df(\tau)}{d\tau} = 2X^\alpha\frac{dX_\alpha}{d\tau} = - 2 X^\alpha U_\alpha
+\end{equation*}
+in quanto $dX^\alpha/d\tau = - d\xi^\alpha/d\tau = - U^\alpha$, si ottiene 
+\begin{align*}
+    A^\mu(x) &= e\int \frac{d\tau \; 2\,\Theta(X^0)\,\delta(\tau-\tau_{\text{rit}})\, U^\mu(\tau)}{2\,X^\alpha U_\alpha} = \frac{e \; U^\mu(\tau)}{X^\alpha U_\alpha} \Bigg|_{\text{rit}}
+\end{align*} 
+dove dei due zeri di $f(\tau)$ la $\Theta$ seleziona quello ritardato, e il fattore $2$ si semplifica con quello a denominatore. Quindi esplicitando $X^\alpha U_\alpha$ si ottiene
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    A^\mu(x) = \frac{e \; U^\mu(\tau)}{X^\alpha U_\alpha} \Bigg|_{\text{rit}} = \frac{e\, \gamma(c, \mathbf{v})}{\gamma\, c\, R\left(1-\hat{\mathbf{n}} \cdot \boldsymbol{\beta}\right)} \Bigg|_{\text{rit}}
+\end{equation}
+\end{tcolorbox}
+dove abbiamo indicato con $\mathbf{R} = \mathbf{x} - \boldsymbol{\xi}(t_{\text{rit}})$ il vettore che congiunge la posizione occupata dalla particella al tempo ritardato con il punto di osservazione, con $R$ il suo modulo e con $\hat{\mathbf{n}} = \mathbf{R}/R$ il versore corrispondente. Il tempo ritardato è definito implicitamente da
+\begin{equation}
+    t_{\text{rit}} = t - \frac{R(t_{\text{rit}})}{c}
+    \label{eq:tempo_ritardato}
+\end{equation}
+e non è altro che la soluzione della condizione di cono luce $X^\alpha X_\alpha = 0$ con $X^0 > 0$ selezionata dalla $\Theta$.
+
+Semplificando i fattori $\gamma$ e ricordando che $A^\mu = (\varphi, \mathbf{A})$, le due componenti si leggono direttamente
+%
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \varphi = \frac{e}{R\left(1-\boldsymbol{\beta}\cdot\hat{\mathbf{n}}\right)}\Bigg|_{\text{rit}} \qquad , \qquad \mathbf{A} = \frac{e\,\boldsymbol{\beta}}{R\left(1-\boldsymbol{\beta}\cdot\hat{\mathbf{n}}\right)}\Bigg|_{\text{rit}}
+    \label{eq:lienard_wiechert}
+\end{equation}
+\end{tcolorbox}
+che sono i \mkeyword{potenziali di Liénard-Wiechert}potenziali di Liénard-Wiechert. Rispetto al potenziale coulombiano di una carica ferma, $\varphi = e/R$, l'unica novità è il fattore $(1-\boldsymbol{\beta}\cdot\hat{\mathbf{n}})^{-1}$, che non è stato introdotto a mano ma è il modulo di $X^\alpha U_\alpha$, cioè lo jacobiano generato dall'integrazione in $d\tau$. Esso diventa piccolo quando la particella si muove verso l'osservatore, e in quel caso amplifica il potenziale.
+
+I campi si ricavano ora da $\mathbf{E} = -\boldsymbol{\nabla}\varphi - \frac{1}{c}\partial\mathbf{A}/\partial t$ e $\mathbf{B} = \boldsymbol{\nabla}\times\mathbf{A}$. Il conto è laborioso perché il tempo ritardato dipende a sua volta dal punto in cui si valuta il campo, e derivare la \eqref{eq:tempo_ritardato} produce ulteriori fattori $(1-\boldsymbol{\beta}\cdot\hat{\mathbf{n}})^{-1}$, all'origine della potenza cubica nel risultato. Si ottiene
+%
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \mathbf{E} = e\left[\frac{\hat{\mathbf{n}}-\boldsymbol{\beta}}{\gamma^2\left(1-\boldsymbol{\beta}\cdot\hat{\mathbf{n}}\right)^3 R^2}\right]_{\text{rit}} + \frac{e}{c}\left[\frac{\hat{\mathbf{n}}\times\left\{\left(\hat{\mathbf{n}}-\boldsymbol{\beta}\right)\times\dot{\boldsymbol{\beta}}\right\}}{\left(1-\boldsymbol{\beta}\cdot\hat{\mathbf{n}}\right)^3 R}\right]_{\text{rit}}
+    \label{eq:campi_ritardati}
+\end{equation}
+\end{tcolorbox}
+accompagnata da
+\begin{tcolorbox}[colback=black!5!white, colframe=black!45!white, boxrule=0.8pt]
+\begin{equation}
+    \mathbf{B} = \hat{\mathbf{n}}\times\mathbf{E}\Big|_{\text{rit}}
+    \label{eq:campo_magnetico_LW}
+\end{equation}
+\end{tcolorbox}
+cioè il campo magnetico è sempre perpendicolare sia al campo elettrico sia alla direzione di osservazione. In forma covariante lo stesso risultato si scrive compattamente come
+%
+\begin{equation}
+    F^{\mu\nu} = \frac{e}{X^\alpha U_\alpha}\frac{d}{d\tau}\left[\frac{X^\mu U^\nu - X^\nu U^\mu}{X^\alpha U_\alpha}\right]_{\text{rit}}
+    \label{eq:tensore_LW}
+\end{equation}
+
+La \eqref{eq:campi_ritardati} è il risultato centrale del capitolo, e la sua struttura a due addendi riassume tutto il percorso fatto finora.\\
+Il primo termine non contiene l'accelerazione e decresce come $1/R^2$: è il \mkeyword{campo di velocità}campo di velocità, presente anche per una particella in moto rettilineo uniforme. Ponendo $\dot{\boldsymbol{\beta}} = 0$ sopravvive solo lui e si ritrova il campo schiacciato ricavato nella sezione precedente, con il suo denominatore $\gamma^2(1-\beta^2\sin^2\phi)^{3/2}$.\\
+Il secondo termine è lineare in $\dot{\boldsymbol{\beta}}$ e decresce come $1/R$: è il \mkeyword{campo di accelerazione}campo di accelerazione, cioè il campo di irraggiamento. Nel limite $\beta \to 0$ il doppio prodotto vettoriale si riduce a $\hat{\mathbf{n}}\times(\hat{\mathbf{n}}\times\dot{\boldsymbol{\beta}})$, di modulo $a\sin\theta/c$, e si recupera esattamente la \eqref{eq:campo_radiazione}.

@@ -27,7 +27,7 @@ Gli appunti sono divisi in due parti.
 | 4. Effetto tunnel e decadimento $\alpha$| Legge di Geiger-Nuttall, Barriera Coulombiana, Modello di Gamow|
 | 5. Reazioni nucleari| Tipi di reazioni nucleari, Cross section di reazione|
 | 6. Raggio nucleare| Distribuzione della carica nucleare|
-| 7. Interazione di particelle cariche con materia| Formalismo relativistico, campo elettrico di una carica in moto, Radizio di una carica accelerata|
+| 7. Interazione di particelle cariche con materia| Formalismo relativistico, Campo elettrico di una carica in moto, Radiazione di una carica accelerata, Potenziali di Liénard-Wiechert|
 
 ### Esercitazioni
 
